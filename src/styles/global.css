@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;700&family=Space+Grotesk:wght@700&display=swap");
+
+@import "tailwindcss";
+@import "tailwindcss-animated";
+
+/* Tema Centralizado - Variáveis */
+@theme {
+  /* --- PALETA MONOCROMÁTICA (Base & Superfícies) --- */
+  --color-bg-main: #09090b; /* Preto Obsidian */
+  --color-bg-surface: #141416; /* Grafite profundo */
+  --color-bg-surface-hover: #1d1d20; /* hover */
+
+  /* --- TEXTOS (Hierarquia Visual Baseada em Opacidade) --- */
+  --color-text-main: #f4f4f5; /* Branco Gelo */
+  --color-text-muted: #8e8e93; /* Cinza Muted */
+
+  /* --- O DESTAQUE: AZUL HOLOGRÁFICO --- */
+  --color-brand-primary: #03a9f4; /* O seu Azul-Celeste original */
+  --color-brand-hover: #0091ea; /* Azul Técnico (Ajuste para estados ativos) */
+  --color-brand-alpha: rgba(
+    3,
+    169,
+    244,
+    0.1
+  ); /* Versão translúcida para overlays, seleções e glow */
+
+  /* --- BORDAS E LINHAS DE GRID --- */
+  --color-border-muted: #1c1c1f;
+  --color-border-active: #03a9f4; /* Focus */
+
+  /* Fontes */
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-detail: "Geist Mono", monospace;
+}
+
+/* Estilos de Base Globais | Altera preflight (Altera as tags diretamente) */
+@layer base {
+  *,
+  ::before,
+  ::after {
+    @apply box-border p-0 m-0;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-main);
+  }
+}
+
+/* Classes Utilitárias Globais (Layout) */
+@layer utility {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .flex-between {
+    @apply flex justify-between justify-between;
+  }
+  .flex-around {
+    @apply flex justify-around justify-around;
+  }
+}
+
+/* Criação de componentes prontos */
+
+@layer components {
+  container {
+    @apply max-w-7xl mx-auto flex;
+  }
+}

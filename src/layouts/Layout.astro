@@ -1,23 +1,21 @@
+---
+import "../styles/global.css";
+import Footer from "@/components/Footer/index.astro";
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Portifolio | Vitor Dev</title>
 	</head>
-	<body>
+	<body
+		class="min-h-screen min-w-7xl pt-12 mx-auto font-body border border-white"
+	>
 		<slot />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
