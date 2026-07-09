@@ -1,15 +1,19 @@
 ---
+import HeroCard from "../components/Card/HeroCard.astro";
 import Layout from "../layouts/Layout.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
   <!-- <main class="flex-center flex-col border border-amber-200"> -->
-  <main class="flex flex-col gap-12 border border-bs-rose-500">
+  <main class="flex flex-col h-full w-full gap-12 border border-red-600">
     <!-- Hero -->
-    <section class="flex-center border border-amber-200"></section>
-    <section class="border border-orange-400">World</section>
+    <section class="flex-center border min-h-100 border-amber-200">
+      <HeroCard
+        title="Programmming and Automative tasks"
+        description="Arquitetura CI/CD robusta utilizando GitHub Actions e AWS para automação de entrega contínua, reduzindo o tempo de build em ambientes de produção."
+        socials={["linkedin", "GitHub Actions", "AWS", "Automação"]}
+      />
+    </section>
+    <section class="">World</section>
   </main>
 </Layout>

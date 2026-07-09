@@ -27,6 +27,24 @@
     }
   },
   "files": {
-    "includes": ["**/*.js", "**/*.ts", "**/*.jsx", "**/*.tsx", "src/**/*.astro", "**/*.json", "**/*.jsonc"]
-  }
+    "includes": [
+      "**/*.js",
+      "**/*.ts",
+      "**/*.jsx",
+      "**/*.tsx",
+      "src/**/*.astro",
+      "**/*.json",
+      "**/*.jsonc"
+    ]
+  },
+  "overrides": [
+    {
+      "includes": [
+        "**/*.astro"
+      ],
+      "linter": {
+        "enabled": false
+      }
+    }
+  ]
 }

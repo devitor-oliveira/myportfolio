@@ -56,10 +56,10 @@
     @apply flex justify-center items-center;
   }
   .flex-between {
-    @apply flex justify-between justify-between;
+    @apply flex  justify-between;
   }
   .flex-around {
-    @apply flex justify-around justify-around;
+    @apply flex  justify-around;
   }
 }
 

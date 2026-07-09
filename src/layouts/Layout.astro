@@ -1,6 +1,6 @@
 ---
+import ClickSpark from "@/components/ui/clickspark";
 import "../styles/global.css";
-import Footer from "@/components/Footer/index.astro";
 ---
 
 <!doctype html>
@@ -13,9 +13,18 @@ import Footer from "@/components/Footer/index.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>Portifolio | Vitor Dev</title>
 	</head>
+
 	<body
 		class="min-h-screen min-w-7xl pt-12 mx-auto font-body border border-white"
 	>
-		<slot />
+		<ClickSpark
+			sparkSize={8}
+			sparkRadius={15}
+			duration={400}
+			sparkCount={8}
+			client:load
+		>
+			<slot />
+		</ClickSpark>
 	</body>
 </html>
