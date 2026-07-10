@@ -1,4 +1,7 @@
 ---
+import { Icon } from "astro-icon/components";
+import MagnetLines from "../ui/MagnetLines";
+
 interface CardProps {
   title: string;
   description: string;
@@ -14,21 +17,24 @@ const { title, description, image, socials } = Astro.props as CardProps;
 
 const SocialLinks: Record<string, socialItem[]> = {
   linkedin: [
-    { icon: "", link: "https://www.linkedin.com/in/vitor-oliveira-0a1b2b1a3/" },
+    {
+      icon: "mdi:linkedin",
+      link: "https://www.linkedin.com/in/vitor-oliveira-0a1b2b1a3/",
+    },
   ],
   github: [{ icon: "", link: "" }],
 };
 ---
 
 <div
-  class="flex min-w-5xl h-80 border border-border-muted gap-4 bg-bg-surface rounded-lg shadow-lg"
+  class="flex min-w-5xl h-80 border border-border-muted bg-bg-surface rounded-lg shadow-lg"
 >
   <div
-    class="flex justify-around max-w-prose flex-col gap-4 p-4 border border-yellow-300"
+    class="flex min-w-2/3 justify-around max-w-prose flex-col gap-4 p-4 border-blue"
   >
     <div class="flex flex-col gap-4">
-      <h2 class="text-4xl font-bold font-display">{title}</h2>
-      <p class="text-gray-600">{description}</p>
+      <h2 class="text-hero leading-tight font-bold font-display">{title}</h2>
+      <p class="text-text-muted text-body">{description}</p>
     </div>
     {
       socials && (
@@ -38,9 +44,12 @@ const SocialLinks: Record<string, socialItem[]> = {
             const socialItem = socialDataList && socialDataList[0];
 
             return socialItem && socialItem.link ? (
-              <a class="text-xs" href={socialItem.link}>
-                {" "}
-                {socialItem.icon} <span class="uppercase">{socialKey}</span>
+              <a
+                class="flex-center gap-1 text-xs font-detail tracking-widest"
+                href={socialItem.link}
+              >
+                <Icon name={socialItem.icon} class="w-5 h-5" />{" "}
+                <span class="uppercase">{socialKey}</span>
               </a>
             ) : null;
           })}
@@ -48,5 +57,7 @@ const SocialLinks: Record<string, socialItem[]> = {
       )
     }
   </div>
-  <div class="w-1/3 h-full border border-green-300"></div>
+  <div class="w-full h-full border-green">
+    <!-- Terminal component -->
+  </div>
 </div>

@@ -32,6 +32,12 @@
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-detail: "Geist Mono", monospace;
+
+  /* Typography */
+  --text-hero: clamp(2rem, 1rem + 5vw, 3rem);
+  --text-body: clamp(0.5rem, 0.25rem + 2vw, 1rem);
+
+  
 }
 
 /* Estilos de Base Globais | Altera preflight (Altera as tags diretamente) */
@@ -56,10 +62,24 @@
     @apply flex justify-center items-center;
   }
   .flex-between {
-    @apply flex  justify-between;
+    @apply justify-between;
+    
   }
   .flex-around {
     @apply flex  justify-around;
+  }
+  /* Dev aux */
+  .border-y {
+    @apply border border-yellow-300;
+  }
+  .border-red {
+    @apply border border-red-600;
+  }
+  .border-blue {
+    @apply border border-blue-600;
+  }
+  .border-green {
+    @apply border border-emerald-500;
   }
 }
 
