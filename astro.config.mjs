@@ -5,7 +5,7 @@ import react from '@astrojs/react';
 
 import tailwindcss from '@tailwindcss/vite';
 
-import tailwind from "@astrojs/tailwind"
+
 
 import icon from 'astro-icon';
 
