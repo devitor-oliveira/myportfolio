@@ -1,0 +1,29 @@
+import Button from '../ui/Button.tsx';
+
+interface NavProps {
+  activeTab: string;
+  handleTabChange: (tab: 'projects' | 'blog') => void;
+}
+
+function Nav({ activeTab, handleTabChange }: NavProps) {
+  return (
+    <nav className="flex-center w-full gap-24 border border-bg-surface-hover p-2">
+      <Button
+        isActive={activeTab === 'blog'}
+        variant={'tab'}
+        onClick={() => handleTabChange('blog')}
+      >
+        _blogs
+      </Button>
+      <Button
+        isActive={activeTab === 'projects'}
+        variant={'tab'}
+        onClick={() => handleTabChange('projects')}
+      >
+        _projects
+      </Button>
+    </nav>
+  );
+}
+
+export default Nav;

@@ -1,11 +1,12 @@
 ---
 import HeroCard from "../components/Card/HeroCard.astro";
 import Layout from "../layouts/Layout.astro";
+import ContentClient from "@/components/ContentClient";
 ---
 
 <Layout>
   <!-- <main class="flex-center flex-col border border-amber-200"> -->
-  <main class="flex flex-col h-full w-full gap-12 border border-red-600">
+  <main class="flex flex-col h-full w-full">
     <!-- Hero -->
     <section class="flex-center border min-h-100 border-amber-200">
       <HeroCard
@@ -14,6 +15,12 @@ import Layout from "../layouts/Layout.astro";
         socials={["linkedin", "GitHub Actions", "AWS", "Automação"]}
       />
     </section>
-    <section class="">World</section>
+    <!-- Content Section -->
+    <section class="flex-center border border-amber-800">
+      <ContentClient client:load>
+        <div slot="blogContentSlot">blog content</div>
+        <div slot="projectContentSlot">project content</div>
+      </ContentClient>
+    </section>
   </main>
 </Layout>

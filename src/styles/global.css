@@ -58,6 +58,7 @@
 
 /* Classes Utilitárias Globais (Layout) */
 @layer utility {
+  /* Helpers */
   .flex-center {
     @apply flex justify-center items-center;
   }
@@ -68,6 +69,12 @@
   .flex-around {
     @apply flex  justify-around;
   }
+
+  /* Common styles */
+  .active-tab {
+    @apply border-b-2 border-border-active text-brand-primary;
+  }
+
   /* Dev aux */
   .border-y {
     @apply border border-yellow-300;
