@@ -1,0 +1,57 @@
+---
+interface BlogCardProps {
+  title: string;
+  shortDesc: string;
+  date: string;
+  topic?: string;
+  tags?: string[];
+}
+
+const { title, shortDesc, date, topic, tags } = Astro.props as BlogCardProps;
+---
+
+<article
+  class="w-3xl max-w-5xl cursor-pointer py-4 px-6 bg-bg-surface hover:bg-bg-surface-hover flex flex-col gap-2 border border-white/50"
+>
+  <!-- ASsunto + data -->
+  <header
+    class="flex font-detail tracking-widest justify-between w-full text-xs"
+  >
+    {
+      topic ? (
+        <span class="uppercase text-text-muted text-hover-blogcard">
+          [{topic}]
+        </span>
+      ) : null
+    }
+    {
+      date ? (
+        <time class="text-hover-blogcard" datetime={date}>
+          {date}
+        </time>
+      ) : null
+    }
+  </header>
+  <!-- corpo: titulo + descrição -->
+  <div class="flex flex-col gap-3">
+    <a href="/blog" class="w-fit">
+      <h3 class="font-display text-[22px]">{title}</h3>
+    </a>
+    <p class="text-text-main/75 text-sm">{shortDesc}</p>
+  </div>
+
+  <!-- Footer: tags -->
+  <aside class="flex py-4 gap-2 mt-2 border-t border-border-muted-alt">
+    {
+      tags
+        ? tags.map((tag) => {
+            return (
+              <span class="uppercase text-text-muted font-detail text-xs tracking-wide">
+                {tag}
+              </span>
+            );
+          })
+        : null
+    }
+  </aside>
+</article>

@@ -13,7 +13,7 @@ function ContentClient({
   const [activeTab, setActiveTab] = useState<'projects' | 'blog'>('blog');
 
   return (
-    <div className="max-w-5xl items-center w-full flex flex-col border-green">
+    <div className="max-w-5xl gap-8 items-center w-full flex flex-col">
       <Nav activeTab={activeTab} handleTabChange={setActiveTab} />
 
       <div>

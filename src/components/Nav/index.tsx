@@ -7,7 +7,7 @@ interface NavProps {
 
 function Nav({ activeTab, handleTabChange }: NavProps) {
   return (
-    <nav className="flex-center w-full gap-24 border border-bg-surface-hover p-2">
+    <nav className="flex-center w-full pt-2 pb-4 gap-24 border-b border-border-muted p-2">
       <Button
         isActive={activeTab === 'blog'}
         variant={'tab'}

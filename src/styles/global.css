@@ -26,6 +26,7 @@
 
   /* --- BORDAS E LINHAS DE GRID --- */
   --color-border-muted: #1c1c1f;
+  --color-border-muted-alt: #2c2c2f;
   --color-border-active: #03a9f4; /* Focus */
 
   /* Fontes */
@@ -62,17 +63,14 @@
   .flex-center {
     @apply flex justify-center items-center;
   }
-  .flex-between {
-    @apply justify-between;
-    
-  }
-  .flex-around {
-    @apply flex  justify-around;
-  }
-
+  
   /* Common styles */
   .active-tab {
     @apply border-b-2 border-border-active text-brand-primary;
+  }
+  /* BlogCard common styles */
+  .text-hover-blogcard {
+    @apply hover:text-brand-hover;
   }
 
   /* Dev aux */
