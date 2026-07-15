@@ -1,7 +1,8 @@
 ---
+import { getCollection } from "astro:content";
 import BlogCard from "../BlogCard/BlogCard.astro";
 
-interface BlogListProps {}
+const posts = await getCollection("blog");
 ---
 
 <article class="min-w-5xl gap-6 flex-center flex-col p-2">
