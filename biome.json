@@ -14,10 +14,10 @@
   },
   "formatter": {
     "enabled": true,
-    "formatWithErrors": false,
-    "indentStyle": "space",
+    "formatWithErrors": true,
+    "indentStyle": "tab",
     "indentWidth": 2,
-    "lineWidth": 80
+    "lineWidth": 60
   },
   "javascript": {
     "formatter": {
@@ -44,6 +44,9 @@
       ],
       "linter": {
         "enabled": false
+      },
+      "formatter": {
+        "enabled": true
       }
     }
   ]

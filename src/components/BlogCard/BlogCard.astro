@@ -13,7 +13,8 @@ const { title, slug, shortDesc, date, topic, tags } =
 ---
 
 <article
-  class="w-3xl max-w-5xl cursor-pointer py-4 px-6 bg-bg-surface hover:bg-bg-surface-hover flex flex-col gap-2 border border-white/50"
+  class="w-3xl group max-w-5xl cursor-pointer py-4 px-6 bg-bg-surface
+  hover:bg-bg-surface-hover flex flex-col gap-2 border border-white/50 hover:border-brand-hover"
 >
   <!-- ASsunto + data -->
   <header
@@ -21,14 +22,17 @@ const { title, slug, shortDesc, date, topic, tags } =
   >
     {
       topic ? (
-        <span class="uppercase text-text-muted text-hover-blogcard">
+        <span class="uppercase group-hover:text-brand-hover   text-text-muted ">
           [{topic}]
         </span>
       ) : null
     }
     {
       date ? (
-        <time class="text-hover-blogcard uppercase" datetime={date}>
+        <time
+          class=" group-hover:text-brand-hover  text-text-muted uppercase"
+          datetime={date}
+        >
           {date}
         </time>
       ) : null

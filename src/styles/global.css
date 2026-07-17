@@ -68,10 +68,7 @@
   .active-tab {
     @apply border-b-2 border-border-active text-brand-primary;
   }
-  /* BlogCard common styles */
-  .text-hover-blogcard {
-    @apply hover:text-brand-hover;
-  }
+
 
   /* Dev aux */
   .border-y {
