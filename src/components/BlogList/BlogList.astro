@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BlogCard from "../BlogCard/BlogCard.astro";
+import { formatDate } from "@/lib/utils";
 
 const posts = await getCollection("blog");
 ---
@@ -10,12 +11,10 @@ const posts = await getCollection("blog");
     posts.map((post) => {
       return (
         <BlogCard
+          slug={post.id}
           title={post.data.title}
           shortDesc={post.data.description}
-          date={post.data.date.toLocaleDateString("pt-BR", {
-            month: "short",
-            year: "2-digit",
-          })}
+          date={formatDate(post.data.date)}
           topic={post.data.topic}
           tags={post.data.tags}
         />

@@ -3,7 +3,7 @@ import type { ComponentProps } from 'react';
 type Variants = 'default' | 'tab';
 
 interface ButtonProps extends ComponentProps<'button'> {
-  isActive?: boolean;
+  isactive?: boolean;
   variant?: Variants;
 }
 
@@ -17,12 +17,13 @@ const activeTabStyle = 'active-tab';
 export default function Button({
   variant = 'default',
   className = '',
+  isactive = false,
   ...props
 }: ButtonProps) {
   return (
     <button
       type="button"
-      className={`${variantStyle[variant]} font-body text-2xs transition-colors duration-150 ${className} ${props.isActive ? activeTabStyle : ''}`}
+      className={`${variantStyle[variant]} font-body text-2xs transition-colors duration-150 ${className} ${isactive ? activeTabStyle : ''}`}
       {...props}
     />
   );

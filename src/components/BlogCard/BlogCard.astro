@@ -1,5 +1,6 @@
 ---
 interface BlogCardProps {
+  slug: string;
   title: string;
   shortDesc: string;
   date: string;
@@ -7,7 +8,8 @@ interface BlogCardProps {
   tags?: string[];
 }
 
-const { title, shortDesc, date, topic, tags } = Astro.props as BlogCardProps;
+const { title, slug, shortDesc, date, topic, tags } =
+  Astro.props as BlogCardProps;
 ---
 
 <article
@@ -26,7 +28,7 @@ const { title, shortDesc, date, topic, tags } = Astro.props as BlogCardProps;
     }
     {
       date ? (
-        <time class="text-hover-blogcard" datetime={date}>
+        <time class="text-hover-blogcard uppercase" datetime={date}>
           {date}
         </time>
       ) : null
@@ -34,7 +36,7 @@ const { title, shortDesc, date, topic, tags } = Astro.props as BlogCardProps;
   </header>
   <!-- corpo: titulo + descrição -->
   <div class="flex flex-col gap-3">
-    <a href="/blog" class="w-fit">
+    <a href={`/blog/${slug}`} class="w-fit">
       <h3 class="font-display text-[22px]">{title}</h3>
     </a>
     <p class="text-text-main/75 text-sm">{shortDesc}</p>
