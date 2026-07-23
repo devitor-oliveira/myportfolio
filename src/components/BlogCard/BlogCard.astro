@@ -1,15 +1,15 @@
 ---
 interface BlogCardProps {
-  slug: string;
-  title: string;
-  shortDesc: string;
-  date: string;
-  topic?: string;
-  tags?: string[];
+	slug: string;
+	title: string;
+	shortDesc: string;
+	date: string;
+	topic?: string;
+	tags?: string[];
 }
 
 const { title, slug, shortDesc, date, topic, tags } =
-  Astro.props as BlogCardProps;
+	Astro.props as BlogCardProps;
 ---
 
 <article
@@ -47,12 +47,12 @@ const { title, slug, shortDesc, date, topic, tags } =
   </div>
 
   <!-- Footer: tags -->
-  <aside class="flex py-4 gap-2 mt-2 border-t border-border-muted-alt">
+  <aside class="flex pt-4 gap-2 mt-2 border-t border-border-muted-alt">
     {
       tags
         ? tags.map((tag) => {
             return (
-              <span class="uppercase text-text-muted font-detail text-xs tracking-wide">
+              <span class="uppercase p-1 border border-text-muted/80 bg-bg-surface-hover text-text-main/60 font-medium font-detail text-xs tracking-wide">
                 {tag}
               </span>
             );

@@ -1,6 +1,7 @@
 ---
-import ClickSpark from "@/components/ui/clickspark";
-import "../styles/global.css";
+import ClickSpark from '@/components/ui/clickspark';
+import '../styles/global.css';
+import { TooltipProvider } from '@/components/ui/tooltip';
 ---
 
 <!doctype html>
@@ -22,7 +23,9 @@ import "../styles/global.css";
 			sparkCount={8}
 			client:load
 		>
+		<TooltipProvider>
 			<slot />
+		</TooltipProvider>
 		</ClickSpark>
 	</body>
 </html>

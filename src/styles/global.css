@@ -2,7 +2,7 @@
 
 @import "tailwindcss";
 @import "tailwindcss-animated";
-
+@import "tw-animate-css";
 /* Tema Centralizado - Variáveis */
 @theme {
   /* --- PALETA MONOCROMÁTICA (Base & Superfícies) --- */
@@ -37,8 +37,6 @@
   /* Typography */
   --text-hero: clamp(2rem, 1rem + 5vw, 3rem);
   --text-body: clamp(0.5rem, 0.25rem + 2vw, 1rem);
-
-  
 }
 
 /* Estilos de Base Globais | Altera preflight (Altera as tags diretamente) */
@@ -63,12 +61,11 @@
   .flex-center {
     @apply flex justify-center items-center;
   }
-  
+
   /* Common styles */
   .active-tab {
     @apply border-b-2 border-border-active text-brand-primary;
   }
-
 
   /* Dev aux */
   .border-y {

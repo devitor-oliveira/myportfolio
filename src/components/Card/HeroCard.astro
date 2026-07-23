@@ -1,33 +1,45 @@
 ---
-import { Icon } from "astro-icon/components";
-import MagnetLines from "../ui/MagnetLines";
+import SocialLink from '../ui/SocialLink';
+import {type socialItem} from '../ui/SocialLink'
 
 interface CardProps {
-  title: string;
-  description: string;
-  image?: string;
-  socials?: string[];
-}
-interface socialItem {
-  icon: string;
-  link: string;
+	title: string;
+	description: string;
+	image?: string;
+	socials?: string[];
 }
 
-const { title, description, image, socials } = Astro.props as CardProps;
+
+const { title, description, image, socials } =
+	Astro.props as CardProps;
 
 const SocialLinks: Record<string, socialItem[]> = {
-  linkedin: [
-    {
-      icon: "mdi:linkedin",
-      link: "https://www.linkedin.com/in/vitor-oliveira-0a1b2b1a3/",
-    },
-  ],
-  github: [{ icon: "", link: "" }],
+	linkedin: [
+		{
+			icon: 'mdi:linkedin',
+			link: 'https://www.linkedin.com/in/vitor-oliveira-0a1b2b1a3/',
+			tooltipValue: 'Perfil Profissional',
+		},
+	],
+	github: [
+		{
+			icon: 'mdi:github',
+			link: 'https://github.com/devitor-oliveira',
+			tooltipValue: 'Meus Projetos',
+		},
+	],
+	discord: [
+		{
+			icon: 'ic:baseline-discord',
+			link: 'https://discord.gg/VHbfhkCSA',
+			tooltipValue: 'Meu servidor no discord',
+		},
+	],
 };
 ---
 
 <div
-  class="flex min-w-5xl h-80 border border-border-muted bg-bg-surface rounded-lg shadow-lg"
+  class="flex min-w-5xl h-80 border border-border-muted-alt bg-bg-surface shadow-lg"
 >
   <div class="flex min-w-2/3 justify-around max-w-prose flex-col gap-4 p-4">
     <div class="flex flex-col gap-4">
@@ -36,21 +48,15 @@ const SocialLinks: Record<string, socialItem[]> = {
     </div>
     {
       socials && (
-        <div class="flex gap-2 mt-4">
+        <div class="flex  gap-4 mt-4">
           {socials.map((socialKey) => {
             const socialDataList = SocialLinks[socialKey];
             const socialItem = socialDataList && socialDataList[0];
-
+						
+						
             return socialItem && socialItem.link ? (
-              <a
-                target="_blank"
-                class="flex-center gap-1 text-xs font-detail tracking-widest"
-                href={socialItem.link}
-              >
-                <Icon name={socialItem.icon} class="w-5 h-5" />{" "}
-                <span class="uppercase">{socialKey}</span>
-              </a>
-            ) : null;
+							<SocialLink client:load social={socialItem} socialName={socialKey} />
+            ) : null
           })}
         </div>
       )
