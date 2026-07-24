@@ -41,10 +41,10 @@
 		{
 			"includes": ["**/*.astro"],
 			"linter": {
-				"enabled": false
+				"enabled": true
 			},
 			"formatter": {
-				"enabled": false
+				"enabled": true
 			}
 		}
 	]
