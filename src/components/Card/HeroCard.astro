@@ -1,4 +1,5 @@
 ---
+import TerminalHero from '../TerminalHero';
 import SocialLink, {
 	type socialItem,
 } from '../ui/SocialLink';
@@ -62,7 +63,7 @@ const SocialLinks: Record<string, socialItem[]> = {
       )
     }
   </div>
-  <div class="w-full h-full">
-    <!-- Terminal component -->
+  <div class=" w-full h-full max-w-xl">
+    <TerminalHero client:load />
   </div>
 </div>

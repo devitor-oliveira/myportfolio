@@ -4,7 +4,7 @@
 @import "tailwindcss-animated";
 @import "tw-animate-css";
 /* Tema Centralizado - Variáveis */
-@theme {
+@theme inline{
   /* --- PALETA MONOCROMÁTICA (Base & Superfícies) --- */
   --color-bg-main: #09090b; /* Preto Obsidian */
   --color-bg-surface: #141416; /* Grafite profundo */
@@ -37,6 +37,21 @@
   /* Typography */
   --text-hero: clamp(2rem, 1rem + 5vw, 3rem);
   --text-body: clamp(0.5rem, 0.25rem + 2vw, 1rem);
+
+  /* ripple button */
+  --animate-rippling: rippling var(--duration) ease-out;
+ 
+  
+@keyframes rippling {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  
 }
 
 /* Estilos de Base Globais | Altera preflight (Altera as tags diretamente) */
