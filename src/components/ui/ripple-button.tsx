@@ -90,7 +90,7 @@ export const RippleButton = React.forwardRef<
 		return (
 			<button
 				className={cn(
-					'bg-background text-primary relative flex cursor-pointer items-center justify-center overflow-hidden rounded-lg border-2 px-4 py-2 text-center',
+					'bg-background text-primary relative flex cursor-pointer items-center justify-center overflow-hidden rounded-lg border-2 px-4 py-2 text-center ',
 					className
 				)}
 				onClick={handleClick}
@@ -98,7 +98,7 @@ export const RippleButton = React.forwardRef<
 				{...props}
 			>
 				<div className="relative z-10">{children}</div>
-				<span className="pointer-events-none absolute inset-0">
+				<span className="pointer-events-none absolute inset-0 ">
 					{buttonRipples.map((ripple) => (
 						<span
 							className="animate-rippling bg-background absolute rounded-full opacity-30"

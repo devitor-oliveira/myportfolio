@@ -19,7 +19,8 @@ import {
 	type MotionProps,
 } from 'motion/react';
 
-import { cn } from '@/lib/utils';
+import { cn, terminalTitles } from '@/lib/utils';
+import TextType from './text-type';
 
 interface SequenceContextValue {
 	completeItem: (index: number) => void;
@@ -331,11 +332,17 @@ export const Terminal = ({
 				className
 			)}
 		>
-			<div className="border-border flex flex-col gap-y-2 border-b p-4 shrink-0">
-				<div className="flex flex-row gap-x-2">
-					<div className="h-2 w-2 rounded-full bg-red-500"></div>
+			<div className="border-border flex flex-col gap-y-2 border-b p-2 px-4 shrink-0">
+				<div className="flex flex-row justify-between items-center">
+					<TextType
+						words={terminalTitles}
+						className="font-detail text-xs text-brand-primary"
+						typingSpeed={80}
+					/>
+					<p className="text-xs">Terminal</p>
+					{/* <div className="h-2 w-2 rounded-full bg-red-500"></div>
 					<div className="h-2 w-2 rounded-full bg-yellow-500"></div>
-					<div className="h-2 w-2 rounded-full bg-green-500"></div>
+					<div className="h-2 w-2 rounded-full bg-green-500"></div> */}
 				</div>
 			</div>
 			<pre className="p-4 flex min-h-0 flex-1 flex-col overflow-hidden">

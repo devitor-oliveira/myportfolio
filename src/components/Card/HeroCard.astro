@@ -1,8 +1,9 @@
 ---
-import TerminalHero from '../TerminalHero';
+import { getCollection } from 'astro:content';
 import SocialLink, {
 	type socialItem,
 } from '../ui/SocialLink';
+import TerminalHero from '../TerminalHero';
 
 interface CardProps {
 	title: string;
@@ -37,6 +38,13 @@ const SocialLinks: Record<string, socialItem[]> = {
 		},
 	],
 };
+
+const blogPosts = await getCollection('blog');
+const sortedPosts = blogPosts.sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const latestPost = sortedPosts[0].id;
+console.log(latestPost);
 ---
 
 <div
@@ -64,6 +72,7 @@ const SocialLinks: Record<string, socialItem[]> = {
     }
   </div>
   <div class=" w-full h-full max-w-xl">
-    <TerminalHero client:load />
+    <TerminalHero lastPostID={latestPost} client:load />
+		
   </div>
 </div>
