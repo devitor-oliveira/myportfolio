@@ -1,15 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;700&family=Space+Grotesk:wght@700&display=swap");
+	@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;700&family=Space+Grotesk:wght@700&display=swap");
 
 @import "tailwindcss";
 @import "tailwindcss-animated";
 @import "tw-animate-css";
 
-/* =========================================================
-   CAMADA 1 — PRIMITIVOS (valores crus, sem significado)
-   Ficam em :root (não em @theme) para permitir troca em
-   runtime no futuro (ex: dark/light mode via toggle de classe
-   ou JS), já que @theme inline "baka" o valor em build-time.
-   ========================================================= */
+/* Custom data variants for tabs */
+@custom-variant data-active (&[data-state="active"]);
+@custom-variant data-horizontal (&[data-orientation="horizontal"]);
+@custom-variant data-vertical (&[data-orientation="vertical"]);
+
 :root  {
 	/* Neutros — hue 286 (o mesmo leve tom azulado que você já tinha) */
 	--neutral-50: oklch(96.7% 0.001 286.4);
@@ -45,11 +44,7 @@
 	--danger-500: oklch(63% 0.19 25);
 }
 
-/* =========================================================
-   CAMADA 2 — SEMÂNTICOS (o que o Tailwind expõe como utility)
-   Mapeados a partir dos primitivos acima. Trocar tema =
-   trocar só a Camada 1 ou o valor aqui, nunca os componentes.
-   ========================================================= */
+
 @theme {
 	/* --- Superfícies --- */
 	--color-bg-main: var(--neutral-900);
@@ -124,8 +119,14 @@
 	   curvas nomeadas em vez de cubic-bezier solto no componente) --- */
 	--ease-snappy: cubic-bezier(0.2, 0, 0, 1);
 	--ease-fluid: cubic-bezier(0.3, 0, 0, 1);
-  /* ripple button */
-	
+  
+	/* --- Mapeamento shadcn (usado por componentes ui/*) --- */
+	--color-background: var(--neutral-900);
+	--color-foreground: var(--neutral-50);
+	--color-muted: var(--neutral-800);
+	--color-muted-foreground: var(--neutral-400);
+	--color-input: var(--neutral-700);
+	--color-ring: var(--brand-500);
   
 }
 
@@ -175,11 +176,7 @@
 	} */
 }
 
-/* =========================================================
-   UTILITIES CUSTOMIZADAS
-   Usando @utility (não @layer utilities) para que suportem
-   variantes automaticamente: hover:active-tab, md:flex-center etc.
-   ========================================================= */
+
 @utility flex-center {
 	display: flex;
 	align-items: center;

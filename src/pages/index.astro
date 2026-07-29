@@ -1,27 +1,48 @@
 ---
-import BlogList from '@/components/BlogList/BlogList.astro';
-import ContentClient from '@/components/ContentClient';
-import HeroCard from '../components/Card/HeroCard.astro';
-import Layout from '../layouts/Layout.astro';
+import BlogList from "@/components/BlogList/BlogList.astro";
+import ContentClient from "@/components/ContentClient";
+import HeroCard from "../components/Card/HeroCard.astro";
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import TerminalHero from "@/components/TerminalHero";
+import HeroContentWrapper from "@/components/HeroContentWrapper";
+
+const blogPosts = await getCollection("blog");
+const sortedPosts = blogPosts.sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+const latestPost = sortedPosts[0].id;
 ---
 
 <Layout>
-  <!-- <main class="flex-center flex-col border border-amber-200"> -->
-  <main class="flex flex-col h-full w-full">
-    <!-- Hero -->
-    <section class="flex-center min-h-100">
-      <HeroCard
-        title="Desenvolvedor Full Stack"
-        description="Desenvolvedor com experiência prática na criação de APIs, infraestrutura e automações utilizando React, Typescript, Next.js, Postgres e N8N."
-        socials={["linkedin", "github", "discord"]}
-      />
-    </section>
-    <!-- Content Section -->
-    <section class="flex-center">
-      <ContentClient client:load>
-        <div slot="blogContentSlot"><BlogList /></div>
-        <div slot="projectContentSlot">Under development</div>
-      </ContentClient>
-    </section>
-  </main>
+	<!-- <main class="flex-center flex-col border border-amber-200"> -->
+	<main class="flex flex-col h-full w-full">
+		<!-- Hero -->
+		<section class="flex-center">
+			<HeroContentWrapper client:load>
+				<HeroCard
+					slot="CardHeroSlot"
+					title="Desenvolvedor Full Stack"
+					description="Desenvolvedor com experiência prática na criação de APIs, infraestrutura e automações utilizando React, Typescript, Next.js, Postgres e N8N."
+					socials={["linkedin", "github", "discord"]}
+				/>
+
+				<TerminalHero
+					slot="TerminalSlot"
+					lastPostID={latestPost}
+					client:load
+				/>
+			</HeroContentWrapper>
+		</section>
+
+		<!-- Content Section -->
+		<section class="flex-center mt-12">
+			<ContentClient client:idle>
+				<div slot="blogContentSlot"><BlogList /></div>
+				<div slot="projectContentSlot">
+					Under development
+				</div>
+			</ContentClient>
+		</section>
+	</main>
 </Layout>

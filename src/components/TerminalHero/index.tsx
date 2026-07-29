@@ -32,7 +32,7 @@ function TerminalHero({ lastPostID }: TerminalHeroProps) {
 	return (
 		<Terminal
 			sequence={false}
-			className=" flex flex-col h-full w-full max-h-none border border-blue bg-bg-main shadow-xl"
+			className=" flex flex-col h-full w-full max-w-none max-h-none border-none bg-bg-main shadow-xl"
 		>
 			<div className="flex flex-col min-h-0 flex-1">
 				<div className="flex flex-col overflow-y-auto min-h-0 flex-1 pr-2 font-detail text-caption">

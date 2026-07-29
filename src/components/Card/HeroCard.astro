@@ -1,9 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
-import SocialLink, {
-	type socialItem,
-} from '../ui/SocialLink';
-import TerminalHero from '../TerminalHero';
+import SocialLink, { type socialItem } from "../ui/SocialLink";
 
 interface CardProps {
 	title: string;
@@ -12,68 +8,58 @@ interface CardProps {
 	socials?: string[];
 }
 
-const { title, description, socials } =
-	Astro.props as CardProps;
+const { title, description, socials } = Astro.props as CardProps;
 
 const SocialLinks: Record<string, socialItem[]> = {
 	linkedin: [
 		{
-			icon: 'mdi:linkedin',
-			link: 'https://www.linkedin.com/in/vitor-oliveira-0a1b2b1a3/',
-			tooltipValue: 'Perfil Profissional',
+			icon: "mdi:linkedin",
+			link: "https://www.linkedin.com/in/vitor-oliveira-0a1b2b1a3/",
+			tooltipValue: "Perfil Profissional",
 		},
 	],
 	github: [
 		{
-			icon: 'mdi:github',
-			link: 'https://github.com/devitor-oliveira',
-			tooltipValue: 'Meus Projetos',
+			icon: "mdi:github",
+			link: "https://github.com/devitor-oliveira",
+			tooltipValue: "Meus Projetos",
 		},
 	],
 	discord: [
 		{
-			icon: 'ic:baseline-discord',
-			link: 'https://discord.gg/VHbfhkCSA',
-			tooltipValue: 'Meu servidor no discord',
+			icon: "ic:baseline-discord",
+			link: "https://discord.gg/VHbfhkCSA",
+			tooltipValue: "Meu servidor no discord",
 		},
 	],
 };
-
-const blogPosts = await getCollection('blog');
-const sortedPosts = blogPosts.sort(
-	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
-const latestPost = sortedPosts[0].id;
-console.log(latestPost);
 ---
 
-<div
-  class="flex min-w-5xl h-80 border border-border-muted-alt bg-bg-surface shadow-lg"
->
-  <div class="flex  justify-around max-w-prose flex-col gap-4 p-4">
-    <div class="flex flex-col gap-4">
-      <h2 class="text-hero leading-tight font-bold font-display">{title}</h2>
-      <p class="text-text-muted text-body">{description}</p>
-    </div>
-    {
-      socials && (
-        <div class="flex  gap-4 mt-4">
-          {socials.map((socialKey) => {
-            const socialDataList = SocialLinks[socialKey];
-            const socialItem = socialDataList && socialDataList[0];
-						
-						
-            return socialItem && socialItem.link ? (
-							<SocialLink client:load social={socialItem} socialName={socialKey} />
-            ) : null
-          })}
-        </div>
-      )
-    }
-  </div>
-  <div class=" w-full h-full max-w-xl">
-		<!-- Temporary postid prop -->
-    <TerminalHero lastPostID={latestPost} client:load />
-		
-  </div>
+<div class="flex bg-bg-surface">
+	<div class="flex justify-around flex-col gap-4 p-4">
+		<div class="flex flex-col gap-4">
+			<h2 class="text-hero leading-tight font-bold font-display">
+				{title}
+			</h2>
+			<p class="text-text-muted text-body">{description}</p>
+		</div>
+		{
+			socials && (
+				<div class="flex  gap-4 mt-4">
+					{socials.map((socialKey) => {
+						const socialDataList = SocialLinks[socialKey];
+						const socialItem = socialDataList && socialDataList[0];
+
+						return socialItem && socialItem.link ? (
+							<SocialLink
+								client:load
+								social={socialItem}
+								socialName={socialKey}
+							/>
+						) : null;
+					})}
+				</div>
+			)
+		}
+	</div>
 </div>
