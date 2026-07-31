@@ -21,6 +21,7 @@ import {
 
 import { cn, terminalTitles } from '@/lib/utils';
 import TextType from './text-type';
+import { Icon } from '@iconify/react';
 
 interface SequenceContextValue {
 	completeItem: (index: number) => void;
@@ -332,14 +333,22 @@ export const Terminal = ({
 				className
 			)}
 		>
-			<div className="border-border flex flex-col gap-y-2 border-b p-2 px-4 shrink-0">
+			<div className="border-muted flex flex-col gap-y-2 border-b p-2 px-4 shrink-0">
 				<div className="flex flex-row justify-between items-center">
 					<TextType
 						words={terminalTitles}
-						className="font-detail text-xs text-brand-primary"
+						className="font-detail text-xs text-primary"
 						typingSpeed={80}
 					/>
-					<p className="text-xs">Terminal</p>
+					<span className="flex-center gap-1.5">
+						<Icon
+							icon={'mdi:circle'}
+							className="w-2 h-2 text-success"
+						/>
+						<p className="text-detail font-detail text-text-muted/50">
+							HOST SESSION: 1
+						</p>
+					</span>
 					{/* <div className="h-2 w-2 rounded-full bg-red-500"></div>
 					<div className="h-2 w-2 rounded-full bg-yellow-500"></div>
 					<div className="h-2 w-2 rounded-full bg-green-500"></div> */}

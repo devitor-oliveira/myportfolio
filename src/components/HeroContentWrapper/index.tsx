@@ -15,7 +15,7 @@ function HeroContentWrapper({
 		useState<TabsType>('split');
 
 	return (
-		<section className=" flex flex-col min-h-120 max-w-7xl border border-border-muted-alt">
+		<section className=" flex flex-col min-h-120 max-w-6xl border border-border-muted-alt">
 			<HeroTabs
 				tab={activeTab}
 				setTab={setActiveTab}
@@ -25,16 +25,18 @@ function HeroContentWrapper({
 					<div className="flex max-w-1/2">
 						{CardHeroSlot}
 					</div>
-					<div className="flex grow">{TerminalSlot}</div>
+					<div className="flex grow border-l border-muted">
+						{TerminalSlot}
+					</div>
 				</div>
 			) : null}
 			{activeTab === 'card' ? (
-				<div className="flex max-w-7xl grow">
+				<div className="flex min-w-6xl grow">
 					<div className="flex grow">{CardHeroSlot}</div>
 				</div>
 			) : null}
 			{activeTab === 'terminal' ? (
-				<div className="flex grow">
+				<div className="flex min-w-6xl grow">
 					<div className="flex grow">{TerminalSlot}</div>
 				</div>
 			) : null}
