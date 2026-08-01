@@ -35,7 +35,7 @@ const tabIconVariants = cva(
 
 const HeroTabs = ({ tab, setTab }: HeroTabsProps) => {
 	return (
-		<header className="flex justify-between items-center w-full h-14 bg-surface-container-low border-b border-border-muted-alt  py-0">
+		<header className="flex justify-between items-center w-full h-12 bg-surface-container-low border-b border-border-muted-alt  py-0">
 			<Tabs
 				value={tab}
 				onValueChange={(val) => setTab?.(val as TabsType)}

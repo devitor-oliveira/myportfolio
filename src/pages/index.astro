@@ -15,10 +15,9 @@ const latestPost = sortedPosts[0].id;
 ---
 
 <Layout>
-	<!-- <main class="flex-center flex-col border border-amber-200"> -->
-	<main class="flex flex-col h-full w-full">
+	<main class="flex items-center flex-col h-full w-full">
 		<!-- Hero -->
-		<section class="flex-center">
+		<section class="flex-center max-w-7xl">
 			<HeroContentWrapper client:load>
 				<HeroCard
 					slot="CardHeroSlot"
@@ -27,21 +26,15 @@ const latestPost = sortedPosts[0].id;
 					socials={["linkedin", "github", "discord"]}
 				/>
 
-				<TerminalHero
-					slot="TerminalSlot"
-					lastPostID={latestPost}
-					client:load
-				/>
+				<TerminalHero slot="TerminalSlot" lastPostID={latestPost} client:load />
 			</HeroContentWrapper>
 		</section>
 
 		<!-- Content Section -->
-		<section class="flex-center mt-12">
+		<section class="flex-center max-w-7xl mt-12">
 			<ContentClient client:idle>
 				<div slot="blogContentSlot"><BlogList /></div>
-				<div slot="projectContentSlot">
-					Under development
-				</div>
+				<div slot="projectContentSlot">Under development</div>
 			</ContentClient>
 		</section>
 	</main>

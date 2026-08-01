@@ -1,7 +1,7 @@
 ---
-import ClickSpark from '@/components/ui/clickspark';
-import '../styles/global.css';
-import { TooltipProvider } from '@/components/ui/tooltip';
+import ClickSpark from "@/components/ui/clickspark";
+import "../styles/global.css";
+import { TooltipProvider } from "@/components/ui/tooltip";
 ---
 
 <!doctype html>
@@ -15,7 +15,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 		<title>Portifolio | Vitor Dev</title>
 	</head>
 
-	<body class="min-h-screen max-w-7xl pt-12 mx-auto font-body">
+	<body class="min-h-screen pt-12 mx-auto font-body">
 		<ClickSpark
 			sparkSize={8}
 			sparkRadius={15}
@@ -23,9 +23,9 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 			sparkCount={8}
 			client:load
 		>
-		<TooltipProvider>
-			<slot />
-		</TooltipProvider>
+			<TooltipProvider>
+				<slot />
+			</TooltipProvider>
 		</ClickSpark>
 	</body>
 </html>

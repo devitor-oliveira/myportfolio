@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Input } from '../ui/input';
+
 import { RippleButton } from '../ui/ripple-button';
 import {
 	AnimatedSpan,
@@ -13,6 +13,11 @@ import {
 } from '@/hooks/useTerminalCommand';
 import TextType from '../ui/text-type';
 import { commands } from '@/lib/utils';
+import {
+	InputGroup,
+	InputGroupAddon,
+	InputGroupInput,
+} from '../ui/input-group';
 
 interface TerminalHeroProps {
 	lastPostID: string;
@@ -41,7 +46,7 @@ function TerminalHero({ lastPostID }: TerminalHeroProps) {
 					</p>
 					<TypingAnimation
 						startOnView={false}
-						delay={0}
+						delay={1000}
 						duration={30}
 						className="text-success"
 					>
@@ -49,20 +54,28 @@ function TerminalHero({ lastPostID }: TerminalHeroProps) {
 					</TypingAnimation>
 					<TypingAnimation
 						startOnView={false}
-						delay={1000}
+						delay={2000}
 						duration={30}
 						className="text-warning"
 					>
 						{'[WARN] Aguardando comandos...'}
 					</TypingAnimation>
+					{/* <TypingAnimation
+						startOnView={false}
+						delay={2000}
+						duration={30}
+						className="text-text-main/90"
+					>
+						{'$'}
+					</TypingAnimation> */}
 					{logs.map((log: CommandLog) => {
 						return (
 							<>
 								<TypingAnimation
-									className="text-success"
+									className="text-text-main/90 mt-5"
 									key={log.id}
 								>
-									{log.command}
+									{`$ ${log.command}`}
 								</TypingAnimation>
 								{log.status === 'pending' && (
 									<TextType
@@ -90,7 +103,7 @@ function TerminalHero({ lastPostID }: TerminalHeroProps) {
 						? commands.map((cmd) => {
 								return (
 									<RippleButton
-										className="rounded-full border border-border-muted-alt bg-bg-surface px-2 py-0.5 font-detail text-[11px] leading-none text-text-main/75 transition-colors hover:border-brand-hover  hover:text-brand-hover"
+										className="rounded-full border border-border-muted bg-surface-container-low px-2 py-0.5 font-detail text-[11px] leading-none text-text-main/75 transition-colors hover:border-primary  hover:text-primary"
 										rippleColor="#03a9f4"
 										key={cmd.name}
 										onClick={() => setInputCMD(cmd.input)}
@@ -105,23 +118,36 @@ function TerminalHero({ lastPostID }: TerminalHeroProps) {
 					onSubmit={handleSubmit}
 					className="mt-2 flex shrink-0 items-center gap-1"
 				>
-					<Input
-						placeholder="Insira um comando..."
-						type="text"
-						value={inputCMD}
-						onChange={(ev) => setInputCMD(ev.target.value)}
-						className="border-border-muted bg-bg-surface font-detail text-body-sm text-text-main placeholder:text-text-muted focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:border-border-muted"
-					/>
-					<RippleButton
-						type="submit"
-						disabled={!inputCMD.trim()}
-						className=" border-none h-auto w-auto p-0 font-detail text-caption font-medium text-brand-primary transition-colors  disabled:cursor-not-allowed disabled:opacity-40"
-					>
-						<Icon
-							className="h-8 w-8"
-							icon="ic:round-keyboard-arrow-right"
+					<InputGroup className=" has-[[data-slot=input-group-control]:focus-visible]:border-border-muted has-[[data-slot=input-group-control]:focus-visible]:ring-0">
+						<InputGroupAddon>
+							<Icon icon="ic:outline-keyboard-arrow-right" />
+						</InputGroupAddon>
+						<InputGroupInput
+							placeholder="Insira um comando..."
+							type="text"
+							value={inputCMD}
+							onChange={(ev) =>
+								setInputCMD(ev.target.value)
+							}
+							className="border-border-muted bg-bg-surface font-detail text-body-sm text-text-main placeholder:text-text-muted"
 						/>
-					</RippleButton>
+
+						<InputGroupAddon
+							align="inline-end"
+							className=" bg-transparent focus-visible:ring-0 focus-visible:outline-none "
+						>
+							<RippleButton
+								type="submit"
+								disabled={!inputCMD.trim()}
+								className="border-none bg-bg-surface h-auto w-auto p-0 font-detail text-caption font-medium text-brand-primary transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+							>
+								<Icon
+									className="h-8 w-8"
+									icon="ic:outline-keyboard-arrow-up"
+								/>
+							</RippleButton>
+						</InputGroupAddon>
+					</InputGroup>
 				</form>
 			</div>
 		</Terminal>

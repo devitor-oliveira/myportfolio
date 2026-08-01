@@ -7,18 +7,18 @@ const posts = await getCollection("blog");
 ---
 
 <article class="min-w-5xl gap-6 flex-center flex-col p-2">
-  {
-    posts.map((post) => {
-      return (
-        <BlogCard
-          slug={post.id}
-          title={post.data.title}
-          shortDesc={post.data.description}
-          date={formatDate(post.data.date)}
-          topic={post.data.topic}
-          tags={post.data.tags}
-        />
-      );
-    })
-  }
+	{
+		posts.map((post) => {
+			return (
+				<BlogCard
+					slug={post.id}
+					title={post.data.title}
+					shortDesc={post.data.description}
+					date={formatDate(post.data.date)}
+					topic={post.data.topic}
+					tags={post.data.tags}
+				/>
+			);
+		})
+	}
 </article>

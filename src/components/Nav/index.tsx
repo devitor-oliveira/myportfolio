@@ -1,4 +1,4 @@
-import Button from '../ui/Button.tsx';
+import ButtonTab from '../ui/buttontab.tsx';
 
 interface NavProps {
 	activeTab: string;
@@ -8,20 +8,20 @@ interface NavProps {
 function Nav({ activeTab, handleTabChange }: NavProps) {
 	return (
 		<nav className="flex-center w-full pt-2 pb-4 gap-24 border-b border-border-muted p-2">
-			<Button
+			<ButtonTab
 				isactive={activeTab === 'blog'}
 				variant={'tab'}
 				onClick={() => handleTabChange('blog')}
 			>
 				_blogs
-			</Button>
-			<Button
+			</ButtonTab>
+			<ButtonTab
 				isactive={activeTab === 'projects'}
 				variant={'tab'}
 				onClick={() => handleTabChange('projects')}
 			>
 				_projects
-			</Button>
+			</ButtonTab>
 		</nav>
 	);
 }
