@@ -18,6 +18,7 @@ import {
 	InputGroupAddon,
 	InputGroupInput,
 } from '../ui/input-group';
+import { Spinner } from '../ui/spinner';
 
 interface TerminalHeroProps {
 	lastPostID: string;
@@ -37,7 +38,7 @@ function TerminalHero({ lastPostID }: TerminalHeroProps) {
 	return (
 		<Terminal
 			sequence={false}
-			className=" flex flex-col h-full w-full max-w-none max-h-none border-none bg-bg-main shadow-xl"
+			className="flex flex-col h-full w-full max-w-none max-h-none border-none bg-bg-main shadow-xl"
 		>
 			<div className="flex flex-col min-h-0 flex-1">
 				<div className="flex flex-col overflow-y-auto min-h-0 flex-1 pr-2 font-detail text-caption">
@@ -98,7 +99,7 @@ function TerminalHero({ lastPostID }: TerminalHeroProps) {
 						);
 					})}
 				</div>
-				<div className="flex gap-1.5">
+				<div className="flex gap-1.5 shrink-0">
 					{commands
 						? commands.map((cmd) => {
 								return (
@@ -118,8 +119,8 @@ function TerminalHero({ lastPostID }: TerminalHeroProps) {
 					onSubmit={handleSubmit}
 					className="mt-2 flex shrink-0 items-center gap-1"
 				>
-					<InputGroup className=" has-[[data-slot=input-group-control]:focus-visible]:border-border-muted has-[[data-slot=input-group-control]:focus-visible]:ring-0">
-						<InputGroupAddon>
+					<InputGroup className=" has-[[data-slot=input-group-control]:focus-visible]:border-border-muted-alt has-[[data-slot=input-group-control]:focus-visible]:ring-0">
+						<InputGroupAddon className="text-primary">
 							<Icon icon="ic:outline-keyboard-arrow-right" />
 						</InputGroupAddon>
 						<InputGroupInput
@@ -139,12 +140,17 @@ function TerminalHero({ lastPostID }: TerminalHeroProps) {
 							<RippleButton
 								type="submit"
 								disabled={!inputCMD.trim()}
-								className="border-none bg-bg-surface h-auto w-auto p-0 font-detail text-caption font-medium text-brand-primary transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+								className="border-none bg-bg-surface h-auto w-auto p-0 font-detail text-caption font-medium text-brand-primary transition-colors disabled:cursor-not-allowed disabled:opacity-80"
 							>
-								<Icon
-									className="h-8 w-8"
-									icon="ic:outline-keyboard-arrow-up"
-								/>
+								{logs[logs.length - 1]?.status ===
+								'pending' ? (
+									<Spinner className="h-5 w-5" />
+								) : (
+									<Icon
+										className="h-8 w-8"
+										icon="ic:outline-keyboard-arrow-up"
+									/>
+								)}
 							</RippleButton>
 						</InputGroupAddon>
 					</InputGroup>

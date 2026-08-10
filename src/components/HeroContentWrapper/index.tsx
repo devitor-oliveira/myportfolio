@@ -21,22 +21,22 @@ function HeroContentWrapper({
 				setTab={setActiveTab}
 			></HeroTabs>
 			{activeTab === 'split' ? (
-				<div className="flex w-full grow">
-					<div className="flex max-w-1/2">
+				<div className="flex min-h-120 w-full grow">
+					<div className="flex min-h-120 max-w-1/2">
 						{CardHeroSlot}
 					</div>
-					<div className="flex grow border-l border-muted">
+					<div className="flex min-h-120 grow border-l border-muted">
 						{TerminalSlot}
 					</div>
 				</div>
 			) : null}
 			{activeTab === 'card' ? (
-				<div className="flex min-w-6xl grow">
+				<div className="flex min-h-120 min-w-6xl grow">
 					<div className="flex grow">{CardHeroSlot}</div>
 				</div>
 			) : null}
 			{activeTab === 'terminal' ? (
-				<div className="flex min-w-6xl grow">
+				<div className="flex min-h-120 min-w-6xl grow">
 					<div className="flex grow">{TerminalSlot}</div>
 				</div>
 			) : null}
