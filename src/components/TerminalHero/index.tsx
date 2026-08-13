@@ -45,49 +45,49 @@ function TerminalHero({ lastPostID }: TerminalHeroProps) {
             startOnView={false}
             delay={1000}
             duration={30}
-            className="text-success"
+            className="text-success/90 mt-2  tracking-wide text-xs"
           >
-            {"[OK] Componentes carregados..."}
+            {"[OK] Componentes carregados"}
           </TypingAnimation>
           <TypingAnimation
             startOnView={false}
             delay={2000}
             duration={30}
-            className="text-warning"
+            className="text-warning/90 mt-2 text-xs tracking-wide"
           >
             {"[WARN] Aguardando comandos..."}
           </TypingAnimation>
-          {/* <TypingAnimation
-						startOnView={false}
-						delay={2000}
-						duration={30}
-						className="text-text-main/90"
-					>
-						{'$'}
-					</TypingAnimation> */}
+          <TypingAnimation
+            startOnView={false}
+            delay={4000}
+            duration={30}
+            className="text-text-main/90 mt-6 text-xs tracking-wide animate-fade-up"
+          >
+            {"$  system --status: ONLINE"}
+          </TypingAnimation>
           {logs.map((log: CommandLog) => {
             return (
               <>
                 <TypingAnimation
-                  className="text-text-main/90 mt-5"
+                  className="text-text-main/90 mt-2 text-xs"
                   key={log.id}
                 >
-                  {`$ ${log.command}`}
+                  {`$  ${log.command}`}
                 </TypingAnimation>
                 {log.status === "pending" && (
                   <TextType
-                    className="text-text-main/80"
+                    className="text-text-main/80 mt-2"
                     words={["Executando..."]}
                     variant="one-word"
                   />
                 )}
                 {log.status === "success" && (
-                  <AnimatedSpan className="text-success">
+                  <AnimatedSpan className="text-success mt-2 tracking-wide text-xs">
                     {log.output}
                   </AnimatedSpan>
                 )}
                 {log.status === "failed" && (
-                  <AnimatedSpan className="text-danger">
+                  <AnimatedSpan className="text-danger mt-2 tracking-wide text-xs">
                     {log.output}
                   </AnimatedSpan>
                 )}

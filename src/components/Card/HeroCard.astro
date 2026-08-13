@@ -1,6 +1,6 @@
 ---
 import SocialLink, { type socialItem } from "../ui/SocialLink";
-
+import { Icon } from "astro-icon/components";
 interface CardProps {
 	title: string;
 	description: string;
@@ -13,21 +13,21 @@ const { title, description, socials } = Astro.props as CardProps;
 const SocialLinks: Record<string, socialItem[]> = {
 	linkedin: [
 		{
-			icon: "mdi:linkedin",
+			icon: "ic:baseline-share",
 			link: "https://www.linkedin.com/in/vitor-oliveira-0a1b2b1a3/",
 			tooltipValue: "Perfil Profissional",
 		},
 	],
 	github: [
 		{
-			icon: "mdi:github",
+			icon: "ic:round-terminal",
 			link: "https://github.com/devitor-oliveira",
 			tooltipValue: "Meus Projetos",
 		},
 	],
 	discord: [
 		{
-			icon: "ic:baseline-discord",
+			icon: "mdi:chat-bubble-outline",
 			link: "https://discord.gg/VHbfhkCSA",
 			tooltipValue: "Meu servidor no discord",
 		},
@@ -36,16 +36,22 @@ const SocialLinks: Record<string, socialItem[]> = {
 ---
 
 <div class="flex bg-surface-dim h-full">
-	<div class="flex justify-around flex-col p-4">
-		<div class="flex flex-col gap-6">
-			<h2 class="text-hero leading-tight font-bold font-display">
+	<div class="flex justify-around flex-col p-6">
+		<div class="flex flex-col gap-4">
+			<span
+				class="flex items-center gap-2 text-brand-primary text-xs font-detail"
+			>
+				<Icon name="mdi:circle" class="w-2 h-2" />
+				<p class="uppercase tracking-widest">Vitor Hugo</p>
+			</span>
+			<h1 class="text-hero leading-tight font-bold font-display text-text-main">
 				{title}
-			</h2>
-			<p class="text-text-muted text-body">{description}</p>
+			</h1>
+			<p class="text-text-muted text-body font-body mt-4">{description}</p>
 		</div>
 		{
 			socials && (
-				<div class="flex  gap-4 mt-4">
+				<div class="flex gap-8 mt-4">
 					{socials.map((socialKey) => {
 						const socialDataList = SocialLinks[socialKey];
 						const socialItem = socialDataList && socialDataList[0];
