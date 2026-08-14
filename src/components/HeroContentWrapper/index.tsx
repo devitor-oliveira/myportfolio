@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import HeroTabs from "../HeroTabs";
-import { animate, motion, useSpring, useTransform } from "motion/react";
+import { motion, useSpring, useTransform } from "motion/react";
 import { useMediaQuery } from "usehooks-ts";
 
 interface HeroContentProps {
