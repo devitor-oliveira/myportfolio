@@ -26,3 +26,5 @@ env/
 
 # Dev
 temp/
+/temp/*
+temp/**/*
