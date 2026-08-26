@@ -31,9 +31,9 @@ const latestPost = sortedPosts[0].id;
 		</section>
 
 		<!-- Content Section -->
-		<section class="flex-center max-w-7xl mt-12">
+		<section class="flex-center max-w-7xl mt-12 w-full">
 			<ContentClient client:idle>
-				<div slot="blogContentSlot"><BlogList /></div>
+				<BlogList slot="blogContentSlot" />
 				<div slot="projectContentSlot">Under development</div>
 			</ContentClient>
 		</section>

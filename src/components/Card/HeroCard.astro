@@ -47,11 +47,13 @@ const SocialLinks: Record<string, socialItem[]> = {
 			<h1 class="text-hero leading-tight font-bold font-display text-text-main">
 				{title}
 			</h1>
-			<p class="text-text-muted text-body font-body mt-4">{description}</p>
+			<p class="text-text-muted text-body font-body mt-4 md:text-body">
+				{description}
+			</p>
 		</div>
 		{
 			socials && (
-				<div class="flex gap-8 mt-4">
+				<div class="flex gap-5 md:gap-8 md:mt-4">
 					{socials.map((socialKey) => {
 						const socialDataList = SocialLinks[socialKey];
 						const socialItem = socialDataList && socialDataList[0];

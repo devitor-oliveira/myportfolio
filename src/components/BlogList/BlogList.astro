@@ -6,7 +6,7 @@ import { formatDate } from "@/lib/utils";
 const posts = await getCollection("blog");
 ---
 
-<article class="min-w-5xl gap-6 flex-center flex-col p-2">
+<article class="max-w-3xl w-full gap-6 flex-center flex-col p-2">
 	{
 		posts.map((post) => {
 			return (

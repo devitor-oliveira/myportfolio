@@ -71,7 +71,7 @@ const HeroTabs = ({ tab, setTab }: HeroTabsProps) => {
           })}
         </TabsList>
       </Tabs>
-      <span className="flex-center gap-6 h-full">
+      <span className="flex-center gap-6 h-full mr-4 ">
         <p className="uppercase font-detail text-text-muted text-caption">
           Build_System_v1.0.0
         </p>
