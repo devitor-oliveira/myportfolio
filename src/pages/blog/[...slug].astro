@@ -1,14 +1,17 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import DockNav from "@/components/DockNav";
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import { formatDate } from "@/lib/utils";
+import { Icon } from "astro-icon/components";
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+	const posts = await getCollection("blog");
 
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: { post },
+	}));
 }
 
 // Pega a prop enviada pelo getStaticPaths
@@ -18,9 +21,35 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Layout title={post.data.title}>
-  <article>
-    <h1>{post.data.title}</h1>
-    <Content />
-  </article>
-</Layout>
+<BlogLayout title={post.data.title}>
+	<article
+		class="h-full w-full mx-auto max-w-4xl px-2 md:px-4 py-2 debug-border-blue"
+	>
+		<nav class="fixed inset-x-0 bottom-20 z-50 flex w-full justify-center">
+			<DockNav client:load />
+		</nav>
+		<header class="flex flex-col gap-4 w-full debug-border-green">
+			<span class="flex items-center gap-1">
+				<Icon name="mdi:circle" class="w-2 h-2 text-primary" />
+				<p class="text-caption text-primary">{post.data.topic}</p>
+			</span>
+			<h1 class="font-display text-h2">{post.data.title}</h1>
+			<div>
+				<span
+					>data: {formatDate(post.data.date, true)} | author: {
+						post.data.author
+					}</span
+				>
+			</div>
+			<p>{post.data.description}</p>
+		</header>
+		<main
+			class="prose prose-lg prose-invert max-w-none mt-4 min-w-0 overflow-hidden"
+		>
+			<Content />
+		</main>
+		<footer class="w-full flex flex-wrap">
+			{post.data.tags?.map((tag) => <span>{tag}</span>)}
+		</footer>
+	</article>
+</BlogLayout>
