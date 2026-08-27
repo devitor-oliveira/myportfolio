@@ -18,7 +18,7 @@ const DIVIDER_TARGET: Record<TabsType, number> = {
 function HeroContentWrapper({ CardHeroSlot, TerminalSlot }: HeroContentProps) {
   const viewWidth = useMediaQuery("(min-width: 768px)"); // md breakpoint
 
-  const [activeTab, setActiveTab] = useState<TabsType>("split");
+  const [activeTab, setActiveTab] = useState<TabsType>("card");
   const defaultApplied = useRef(false);
   // const reduceMotion = useReducedMotion();
 
@@ -59,8 +59,9 @@ function HeroContentWrapper({ CardHeroSlot, TerminalSlot }: HeroContentProps) {
           // style={{ height: "var(--divider-x)" }}
         >
           <motion.div
-            className="h-full w-full"
+            className="group h-full w-full"
             style={{ opacity: cardOpacity }}
+            data-active-tab={activeTab}
           >
             {CardHeroSlot}
           </motion.div>

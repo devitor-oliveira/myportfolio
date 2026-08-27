@@ -1,7 +1,7 @@
 ---
 import SocialLink, { type socialItem } from "../ui/SocialLink";
 import { Icon } from "astro-icon/components";
-interface CardProps {
+export interface CardProps {
 	title: string;
 	description: string;
 	image?: string;
@@ -35,25 +35,54 @@ const SocialLinks: Record<string, socialItem[]> = {
 };
 ---
 
+<style>
+	@reference "../../styles/global.css";
+	.hero-card {
+		@apply flex justify-around flex-col p-6;
+	}
+	:global([data-active-tab="card"]) .hero-card {
+		@apply justify-evenly max-w-170 mx-auto;
+
+		#desc {
+			@apply text-lg;
+		}
+		#socials {
+			@apply md:mt-0;
+		}
+		#socials a {
+			@apply text-body;
+		}
+	}
+</style>
+
 <div class="flex bg-surface-dim h-full">
-	<div class="flex justify-around flex-col p-6">
+	<div class="hero-card">
 		<div class="flex flex-col gap-4">
-			<span
-				class="flex items-center gap-2 text-brand-primary text-xs font-detail"
-			>
-				<Icon name="mdi:circle" class="w-2 h-2" />
-				<p class="uppercase tracking-widest">Vitor Hugo</p>
+			<span class="flex text-brand-hover text-detail font-detail">
+				<Icon name="ic:outline-keyboard-arrow-right" class="w-4 h-4" />
+				<p class="tracking-widest">whoami</p>
 			</span>
-			<h1 class="text-hero leading-tight font-bold font-display text-text-main">
+			<span
+				class="flex items-center gap-2 text-secondary/85 text-xs font-detail"
+			>
+				<Icon name="mdi:circle" class="w-2 h-2 text-success" />
+				<p class="tracking-wide">Vitor Hugo · online</p>
+			</span>
+			<h1
+				class="text-hero leading-tight font-bold font-display text-text-main/80"
+			>
 				{title}
 			</h1>
-			<p class="text-text-muted text-body font-body mt-4 md:text-body">
+			<p
+				id="desc"
+				class="text-text-muted text-body font-body mt-4 md:text-body"
+			>
 				{description}
 			</p>
 		</div>
 		{
 			socials && (
-				<div class="flex gap-5 md:gap-8 md:mt-4">
+				<div id="socials" class="flex gap-5 md:gap-8 md:mt-4">
 					{socials.map((socialKey) => {
 						const socialDataList = SocialLinks[socialKey];
 						const socialItem = socialDataList && socialDataList[0];
