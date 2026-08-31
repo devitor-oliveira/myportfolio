@@ -4,11 +4,11 @@ import { Icon } from "astro-icon/components";
 export interface CardProps {
 	title: string;
 	description: string;
-	image?: string;
+	techstack?: string[];
 	socials?: string[];
 }
 
-const { title, description, socials } = Astro.props as CardProps;
+const { title, description, socials, techstack } = Astro.props as CardProps;
 
 const SocialLinks: Record<string, socialItem[]> = {
 	linkedin: [
@@ -38,14 +38,14 @@ const SocialLinks: Record<string, socialItem[]> = {
 <style>
 	@reference "../../styles/global.css";
 	.hero-card {
-		@apply flex justify-around flex-col p-6;
+		@apply flex justify-evenly flex-col p-4 md:p-6;
 	}
 	:global([data-active-tab="card"]) .hero-card {
-		@apply justify-evenly max-w-170 mx-auto;
+		@apply justify-evenly max-w-150 mx-auto;
 
-		#desc {
+		/* #desc {
 			@apply text-lg;
-		}
+		} */
 		#socials {
 			@apply md:mt-0;
 		}
@@ -68,21 +68,28 @@ const SocialLinks: Record<string, socialItem[]> = {
 				<Icon name="mdi:circle" class="w-2 h-2 text-success" />
 				<p class="tracking-wide">Vitor Hugo · online</p>
 			</span>
-			<h1
-				class="text-hero leading-tight font-bold font-display text-text-main/80"
-			>
-				{title}
-			</h1>
-			<p
-				id="desc"
-				class="text-text-muted text-body font-body mt-4 md:text-body"
-			>
-				{description}
-			</p>
+			<div class="flex flex-col gap-3 mt-2">
+				<h1
+					class="text-lead tracking-wide font-bold font-display text-text-main/85"
+				>
+					{title}
+				</h1>
+				<p id="desc" class="text-text-muted text-body font-body">
+					{description} e...
+				</p>
+			</div>
 		</div>
+		<div class="flex gap-1.5">
+			{
+				techstack?.map((stack) => {
+					return <p class="text-text-main">{stack}</p>;
+				})
+			}
+		</div>
+		<hr class="border-inverse-on-surface" />
 		{
 			socials && (
-				<div id="socials" class="flex gap-5 md:gap-8 md:mt-4">
+				<div id="socials" class="flex gap-5 md:gap-8">
 					{socials.map((socialKey) => {
 						const socialDataList = SocialLinks[socialKey];
 						const socialItem = socialDataList && socialDataList[0];

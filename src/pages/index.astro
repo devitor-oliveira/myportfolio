@@ -14,7 +14,7 @@ const sortedPosts = blogPosts.sort(
 );
 const latestPost = sortedPosts[0].id;
 
-const { title, description, socials } = heroCardContent;
+const { title, description, socials, techstack } = heroCardContent;
 ---
 
 <Layout>
@@ -27,6 +27,7 @@ const { title, description, socials } = heroCardContent;
 					title={title}
 					description={description}
 					socials={socials}
+					techstack={techstack}
 				/>
 
 				<TerminalHero slot="TerminalSlot" lastPostID={latestPost} client:load />

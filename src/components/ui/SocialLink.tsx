@@ -25,12 +25,14 @@ const SocialLink = ({ social, socialName }: socialProps) => {
         <TooltipTrigger asChild>
           <a
             rel="noreferrer"
-            className="flex-center p-1 hover:text-brand-primary gap-3 text-xs font-detail tracking-widest text-text-main/90"
+            className="flex-center p-1 hover:text-primary gap-3 font-detail tracking-wide text-text-main/90"
             target="_blank"
             href={social.link}
           >
-            <Icon className="w-5 h-5" icon={social.icon} />
-            <span className="uppercase ">{socialName}</span>
+            {/* <Icon className="w-5 h-5" icon={social.icon} /> */}
+            <span className="capitalize text-caption md:text-body-sm">
+              {socialName}
+            </span>
           </a>
         </TooltipTrigger>
         {social.tooltipValue ? (
