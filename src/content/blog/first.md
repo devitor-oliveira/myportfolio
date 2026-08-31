@@ -7,7 +7,7 @@ topic: Desenvolvimento Web
 tags: [react, nextjs, typescript, tailwindcss, testing, jest, cypress, storybook, graphql, apollo, prisma, postgresql, docker, kubernetes, aws, cicd, github-actions, eslint, prettier]
 ---
 
-# Welcome to the Test Blog Post! 🚀
+# Welcome to the Test Blog Post
 
 This is a **fake content** post designed specifically to test your blog's reading page rendering capabilities.
 
