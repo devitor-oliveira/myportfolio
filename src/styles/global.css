@@ -314,6 +314,6 @@
 
 @layer components {
   .page-container {
-    @apply max-w-[var(--spacing-page-max)] mx-auto flex px-4 md:px-8;
+    @apply max-w-(--spacing-page-max) mx-auto flex px-4 md:px-8;
   }
 }
