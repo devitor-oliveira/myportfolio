@@ -1,32 +1,27 @@
-import { useState } from "react";
-
-import { RippleButton } from "../ui/ripple-button";
-import { AnimatedSpan, Terminal, TypingAnimation } from "../ui/terminal";
 import { Icon } from "@iconify/react";
+import { useState } from "react";
 import {
-  useTerminalCommand,
   type CommandLog,
+  useTerminalCommand,
 } from "@/hooks/useTerminalCommand";
-import TextType from "../ui/text-type";
 import { commands } from "@/lib/utils";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
 } from "../ui/input-group";
+import { RippleButton } from "../ui/ripple-button";
 import { Spinner } from "../ui/spinner";
+import { AnimatedSpan, Terminal, TypingAnimation } from "../ui/terminal";
+import TextType from "../ui/text-type";
 
-interface TerminalHeroProps {
-  lastPostID: string;
-}
-
-function TerminalHero({ lastPostID }: TerminalHeroProps) {
+function TerminalHero() {
   const [inputCMD, setInputCMD] = useState("");
   const { logs, executeCommand } = useTerminalCommand();
 
   const handleSubmit = (ev: React.SubmitEvent) => {
     ev.preventDefault();
-    executeCommand(inputCMD, lastPostID);
+    executeCommand(inputCMD);
     setInputCMD("");
     return;
   };
@@ -82,12 +77,18 @@ function TerminalHero({ lastPostID }: TerminalHeroProps) {
                   />
                 )}
                 {log.status === "success" && (
-                  <AnimatedSpan className="text-success mt-2 tracking-wide text-xs">
+                  <AnimatedSpan
+                    delay={500}
+                    className="text-success mt-2 tracking-wide text-xs"
+                  >
                     {log.output}
                   </AnimatedSpan>
                 )}
                 {log.status === "failed" && (
-                  <AnimatedSpan className="text-danger mt-2 tracking-wide text-xs">
+                  <AnimatedSpan
+                    delay={1500}
+                    className="text-danger mt-2 tracking-wide text-xs"
+                  >
                     {log.output}
                   </AnimatedSpan>
                 )}
@@ -102,10 +103,10 @@ function TerminalHero({ lastPostID }: TerminalHeroProps) {
                   <RippleButton
                     className="rounded-full border border-border-muted bg-surface-container-low px-2 py-0.5 font-detail text-[11px] leading-none text-text-main/75 transition-colors hover:border-primary  hover:text-primary"
                     rippleColor="#03a9f4"
-                    key={cmd.name}
-                    onClick={() => setInputCMD(cmd.input)}
+                    key={cmd}
+                    onClick={() => setInputCMD(`cd ${cmd}`)}
                   >
-                    {cmd.name}
+                    {cmd}
                   </RippleButton>
                 );
               })

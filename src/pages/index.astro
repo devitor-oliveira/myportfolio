@@ -3,16 +3,9 @@ import BlogList from "@/components/BlogList/BlogList.astro";
 import ContentClient from "@/components/ContentClient";
 import HeroCard from "../components/Card/HeroCard.astro";
 import Layout from "../layouts/Layout.astro";
-import { getCollection } from "astro:content";
 import TerminalHero from "@/components/TerminalHero";
 import HeroContentWrapper from "@/components/HeroContentWrapper";
 import { heroCardContent } from "@/lib/siteContent";
-
-const blogPosts = await getCollection("blog");
-const sortedPosts = blogPosts.sort(
-	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
-);
-const latestPost = sortedPosts[0].id;
 
 const { title, description, socials, techstack } = heroCardContent;
 ---
@@ -30,7 +23,7 @@ const { title, description, socials, techstack } = heroCardContent;
 					techstack={techstack}
 				/>
 
-				<TerminalHero slot="TerminalSlot" lastPostID={latestPost} client:load />
+				<TerminalHero slot="TerminalSlot" client:load />
 			</HeroContentWrapper>
 		</section>
 
