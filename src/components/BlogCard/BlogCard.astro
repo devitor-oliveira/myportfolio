@@ -1,6 +1,7 @@
 ---
 interface BlogCardProps {
 	slug: string;
+	author?: string;
 	title: string;
 	shortDesc: string;
 	date: string;
@@ -47,7 +48,9 @@ const { title, slug, shortDesc, date, topic, tags } =
 	</div>
 
 	<!-- Footer: tags -->
-	<aside class="flex pt-4 gap-2 mt-2 border-t border-border-muted-alt">
+	<aside
+		class="flex flex-wrap pt-4 gap-2 mt-2 border-t border-border-muted-alt"
+	>
 		{
 			tags
 				? tags.map((tag) => {

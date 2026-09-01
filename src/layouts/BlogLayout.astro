@@ -1,0 +1,29 @@
+---
+import ClickSpark from "@/components/ui/clickspark";
+import "../styles/global.css";
+import { TooltipProvider } from "@/components/ui/tooltip";
+---
+
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" initial-scale="1.0" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Portifolio | {Astro.props.title}</title>
+	</head>
+
+	<body class="min-h-screen w-full mx-auto font-body bg-surface">
+		<ClickSpark
+			sparkSize={8}
+			sparkRadius={15}
+			duration={400}
+			sparkCount={8}
+			client:load
+		>
+			<slot />
+		</ClickSpark>
+	</body>
+</html>

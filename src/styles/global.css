@@ -6,6 +6,8 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/inter";
 
+@plugin "@tailwindcss/typography";
+
 /* Custom data variants for tabs & accessibility */
 @custom-variant data-active (&[data-state="active"]);
 @custom-variant data-horizontal (&[data-orientation="horizontal"]);
