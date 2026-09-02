@@ -1,5 +1,6 @@
 ---
 import DockNav from "@/components/DockNav";
+import TagList from "@/components/ui/TagList";
 import BlogLayout from "@/layouts/BlogLayout.astro";
 import { formatDate } from "@/lib/utils";
 import { Icon } from "astro-icon/components";
@@ -22,7 +23,7 @@ const { Content } = await render(post);
 ---
 
 <BlogLayout title={post.data.title}>
-	<article class="h-full w-full mx-auto max-w-4xl px-2 md:px-4 py-2 mt-12">
+	<article class="h-full w-full mx-auto max-w-4xl px-4 md:px-4 py-2">
 		<nav class="fixed inset-x-0 bottom-20 z-50 flex w-full justify-center">
 			<DockNav client:load />
 		</nav>
@@ -40,7 +41,7 @@ const { Content } = await render(post);
 			</p>
 		</header>
 		<div
-			class="mt-10 md:mt-14 mb-16 md:mb-20 flex items-center gap-4 text-xs font-medium text-secondary font-detail"
+			class="mt-12 md:mt-14 mb-16 md:mb-20 flex items-center gap-4 text-xs font-medium text-secondary font-detail"
 		>
 			<div class="h-px flex-1 bg-surface-tint/80"></div>
 			<span>Por {post.data.author}</span>
@@ -55,8 +56,17 @@ const { Content } = await render(post);
 		>
 			<Content />
 		</main>
+		<div
+			class="my-8 flex items-center gap-4 text-xs font-medium text-secondary font-detail"
+		>
+			<div class="h-px flex-1 bg-surface-tint/90"></div>
+			<span class="text-surface-tint">•</span>
+			<span class="text-surface-tint font-detail italic">Fim</span>
+			<span class="text-surface-tint">•</span>
+			<div class="h-px flex-1 bg-surface-tint/90"></div>
+		</div>
 		<footer id="down" class="w-full flex flex-wrap mb-30">
-			{post.data.tags?.map((tag: string) => <span>{tag}</span>)}
+			<TagList client:visible tags={post.data.tags as string[]} max={12} />
 		</footer>
 	</article>
 </BlogLayout>

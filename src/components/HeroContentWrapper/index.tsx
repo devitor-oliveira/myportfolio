@@ -18,7 +18,7 @@ const DIVIDER_TARGET: Record<TabsType, number> = {
 function HeroContentWrapper({ CardHeroSlot, TerminalSlot }: HeroContentProps) {
   const viewWidth = useMediaQuery("(min-width: 768px)"); // md breakpoint
 
-  const [activeTab, setActiveTab] = useState<TabsType>("card");
+  const [activeTab, setActiveTab] = useState<TabsType>("split");
   const defaultApplied = useRef(false);
   // const reduceMotion = useReducedMotion();
 
