@@ -6,6 +6,7 @@ import Layout from "../layouts/Layout.astro";
 import TerminalHero from "@/components/TerminalHero";
 import HeroContentWrapper from "@/components/HeroContentWrapper";
 import { heroCardContent } from "@/lib/siteContent";
+import ProjectsList from "@/components/ProjectsList/ProjectsList.astro";
 
 const { title, description, socials, techstack } = heroCardContent;
 ---
@@ -31,7 +32,7 @@ const { title, description, socials, techstack } = heroCardContent;
 		<section class="flex-center max-w-7xl mt-12 w-full">
 			<ContentClient client:idle>
 				<BlogList slot="blogContentSlot" />
-				<div slot="projectContentSlot">Under development</div>
+				<ProjectsList slot="projectContentSlot" />
 			</ContentClient>
 		</section>
 	</main>

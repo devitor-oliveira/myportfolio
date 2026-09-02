@@ -1,0 +1,73 @@
+---
+import { Icon } from "astro-icon/components";
+import TagsList from "../ui/TagList";
+
+interface ProjectCardProps {
+	slug: string;
+	type: string;
+	title: string;
+	description: string;
+	year: string;
+	// update?: Date;
+	tags?: string[];
+	liveURL?: string;
+	repositoryURL?: string;
+}
+
+const { slug, type, title, description, year, tags, liveURL, repositoryURL } =
+	Astro.props as ProjectCardProps;
+---
+
+<article class="w-full max-w-2xl h-full flex flex-col gap-2">
+	<header class="flex flex-col gap-1.5">
+		<span class="text-detail text-text-main/90 tracking-wider font-detail">
+			{type}
+		</span>
+		<div class="flex justify-between font-display items-center">
+			<h2 class="text-lead text-primary tracking-wide md:text-[17px]">
+				<a target="_blank" href={`/projects/${slug}`}>{title}</a>
+			</h2>
+			{
+				year ? (
+					<time class="text-text-muted text-detail" datetime={year}>
+						{year}
+					</time>
+				) : null
+			}
+		</div>
+	</header>
+	<main class="flex flex-col gap-2">
+		<p class="text-body-sm text-justify text-text-main/90">{description}</p>
+	</main>
+	<footer class="flex items-start justify-between gap-6 mt-2">
+		<div class="flex-1 min-w-0">
+			<TagsList className="capitalize" client:visible tags={tags as string[]} />
+		</div>
+		<span class="flex shrink-0 items-center gap-6 text-caption">
+			{
+				liveURL && (
+					<a
+						class="flex items-center gap-2 tracking-wide"
+						href={liveURL}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<Icon name="mdi:external-link" class="w-4 h-4" /> Visite o Site
+					</a>
+				)
+			}
+			{
+				repositoryURL && (
+					<a
+						href={repositoryURL}
+						class="flex items-center gap-2 tracking-wide"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<Icon name="mdi:github" class="w-4 h-4" /> Repositório
+					</a>
+				)
+			}
+		</span>
+	</footer>
+</article>

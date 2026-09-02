@@ -44,11 +44,11 @@ const { title, slug, shortDesc, date, topic, tags } =
 	<!-- corpo: titulo + descrição -->
 	<div class="flex flex-col gap-3">
 		<a href={`/blog/${slug}`} target="_blank" class="w-fit flex flex-col gap-2">
-			<h3 class="font-display text-text-main/80 text-lead md:text-[18px]">
+			<h3 class="font-display text-text-main/85 text-lead md:text-[18px]">
 				{title}
 			</h3>
 			<p
-				class="text-text-muted text-caption tracking-wide md:tracking-normal md:text-sm"
+				class="text-text-main/80 text-caption tracking-wide md:tracking-normal md:text-sm"
 			>
 				{shortDesc}
 			</p>
@@ -58,7 +58,7 @@ const { title, slug, shortDesc, date, topic, tags } =
 	<!-- Footer: tags -->
 	<aside class="flex flex-wrap pt-4 mt-2 border-t border-border-muted-alt">
 		<TagList
-			className="text-outline font-body"
+			className="text-text-main/80 capitalize font-body"
 			client:visible
 			tags={tags as string[]}
 			max={6}

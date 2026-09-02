@@ -1,11 +1,11 @@
-import { defineCollection } from 'astro:content';
+import { defineCollection } from "astro:content";
 
-import { glob } from 'astro/loaders';
+import { glob } from "astro/loaders";
 
-import { z } from 'astro/zod';
+import { z } from "astro/zod";
 
 const blog = defineCollection({
-  loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
+  loader: glob({ base: "./src/content/blog", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     title: z.string(),
     topic: z.string().optional(),
@@ -16,5 +16,18 @@ const blog = defineCollection({
   }),
 });
 
-// 5. Export a single `collections` object to register your collection(s)
-export const collections = { blog };
+const projects = defineCollection({
+  loader: glob({ base: "./src/content/projects", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    type: z.enum(["personal", "professional", "open-source", "freelance"]),
+    title: z.string(),
+    description: z.string(),
+    year: z.coerce.date(),
+    // update: z.coerce.date().optional(),
+    liveURL: z.string().optional(),
+    repositoryURL: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+  }),
+});
+
+export const collections = { blog, projects };

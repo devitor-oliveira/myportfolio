@@ -1,0 +1,20 @@
+---
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+	const projects = await getCollection("projects");
+
+	return projects.map((project) => ({
+		params: { slug: project.id },
+		props: { project },
+	}));
+}
+
+// Pega a prop enviada pelo getStaticPaths
+const { project } = Astro.props;
+
+// Renderiza o markdown transformando em componente HTML
+const { Content } = await render(project);
+---
+
+<Content />

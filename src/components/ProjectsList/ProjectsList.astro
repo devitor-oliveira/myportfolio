@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import { formatDate } from "@/lib/utils";
+import ProjectCard from "../ProjectCard/ProjectCard.astro";
+
+const projects = await getCollection("projects");
+---
+
+<article
+	class="max-w-3xl w-full gap-16 flex-center flex-col p-2 animate-fade-up"
+>
+	{
+		projects.map((project, index) => {
+			return (
+				<ProjectCard
+					slug={project.id}
+					type={project.data.type}
+					title={project.data.title}
+					description={project.data.description}
+					year={formatDate(project.data.year, false, true)}
+					tags={project.data.tags}
+					liveURL={project.data.liveURL}
+					repositoryURL={project.data.repositoryURL}
+				/>
+			);
+		})
+	}
+</article>
