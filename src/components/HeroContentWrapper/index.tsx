@@ -48,7 +48,7 @@ function HeroContentWrapper({ CardHeroSlot, TerminalSlot }: HeroContentProps) {
   const terminalOpacity = useTransform(dividerX, [70, 100], [1, 0]);
 
   return (
-    <section className="flex flex-col min-h-120 w-full max-w-6xl border border-border-muted-alt ">
+    <section className="flex flex-col min-h-120 w-full max-w-5xl border border-border-muted-alt ">
       <HeroTabs tab={activeTab} setTab={setActiveTab} />
       <motion.div
         className="relative min-h-120 w-full grow overflow-hidden "
