@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon/components";
+import AboutLayout from "@/layouts/AboutLayout.astro";
+import AboutExperiences from "@/components/AboutExperiences";
+---
+
+<AboutLayout>
+	<header class="relative flex justify-between items-center">
+		<nav class="absolute -left-13">
+			<a href="/"><Icon name="mdi:arrow-left" class="w-5 h-5" /></a>
+		</nav>
+		<h1 class="font-display text-h3 text-text-main">Sobre mim</h1>
+		<a href="" class="text-caption text-text-main/85 font-detail">Currículo</a>
+	</header>
+	<main class="flex flex-col gap-8 h-full w-full mt-6">
+		<section>
+			<p class="text-justify text-body text-text-main/90">
+				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+				illo vitae aliquid, cumque quia et quasi voluptates error, autem
+				quisquam sint aspernatur sed magnam quidem velit consequatur! Nemo
+				deleniti officiis ipsum maxime dicta nulla dignissimos beatae cupiditate
+				fugiat impedit natus dolorem omnis voluptatem eveniet illo aliquid
+				dolorum magni, atque dolor, sequi cumque! Similique obcaecati quos fuga
+				molestiae odio quo laborum! Lorem, ipsum dolor sit amet consectetur
+				adipisicing elit.
+			</p>
+		</section>
+		<section>
+			<h2 class="md:text-[20px] text-text-main font-display mb-2">
+				Experiência
+			</h2>
+			<AboutExperiences client:load />
+
+			<h3 class="text-body mt-6">Trabalhou comigo? Deixe um comentário...</h3>
+		</section>
+	</main>
+	<footer class="mt-16">
+		<div>
+			<hr class="border-border-muted-alt mb-6" />
+			<span class="flex justify-between items-center font-detail text-caption">
+				<p>© 2026 • Vitor Hugo</p>
+				<a href="mailto:contato.dev@gmail.com">contato.dev@gmail.com</a>
+				<p>
+					<a href="">Termos</a>
+					<i>•</i>
+					<a href="">Privacidade</a>
+				</p>
+			</span>
+		</div>
+	</footer>
+</AboutLayout>
