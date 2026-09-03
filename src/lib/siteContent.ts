@@ -1,6 +1,38 @@
 import type { CardProps } from "@/components/Card/HeroCard.astro";
+import type { socialItem } from "@/components/ui/SocialLink";
 
-const socials = ["linkedin", "github", "discord"];
+export const SocialLinks: Record<string, socialItem[]> = {
+  linkedin: [
+    {
+      icon: "ic:baseline-share",
+      link: "https://www.linkedin.com/in/vitor-oliveira-0a1b2b1a3/",
+      tooltipValue: "Perfil Profissional",
+    },
+  ],
+  github: [
+    {
+      icon: "ic:round-terminal",
+      link: "https://github.com/devitor-oliveira",
+      tooltipValue: "Meus Projetos",
+    },
+  ],
+  discord: [
+    {
+      icon: "mdi:chat-bubble-outline",
+      link: "https://discord.gg/VHbfhkCSA",
+      tooltipValue: "Meu servidor no discord",
+    },
+  ],
+  email: [
+    {
+      icon: "mdi:mailbox",
+      link: "contato.dev@gmail.com",
+      tooltipValue: "E-mail",
+    },
+  ],
+};
+
+const heroCardSocials = ["linkedin", "github", "discord"];
 
 export const heroCardContent: CardProps = {
   title: "Obrigado por vir! Sou desenvolvedor Full Stack",
@@ -17,5 +49,5 @@ export const heroCardContent: CardProps = {
     "N8N",
     "Supabase",
   ],
-  socials: socials,
+  socials: heroCardSocials,
 };

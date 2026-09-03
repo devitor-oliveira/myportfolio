@@ -1,5 +1,6 @@
 ---
-import SocialLink, { type socialItem } from "../ui/SocialLink";
+import SocialLink from "../ui/SocialLink";
+import { SocialLinks } from "@/lib/siteContent";
 import { Icon } from "astro-icon/components";
 export interface CardProps {
 	title: string;
@@ -9,30 +10,6 @@ export interface CardProps {
 }
 
 const { title, description, socials, techstack } = Astro.props as CardProps;
-
-const SocialLinks: Record<string, socialItem[]> = {
-	linkedin: [
-		{
-			icon: "ic:baseline-share",
-			link: "https://www.linkedin.com/in/vitor-oliveira-0a1b2b1a3/",
-			tooltipValue: "Perfil Profissional",
-		},
-	],
-	github: [
-		{
-			icon: "ic:round-terminal",
-			link: "https://github.com/devitor-oliveira",
-			tooltipValue: "Meus Projetos",
-		},
-	],
-	discord: [
-		{
-			icon: "mdi:chat-bubble-outline",
-			link: "https://discord.gg/VHbfhkCSA",
-			tooltipValue: "Meu servidor no discord",
-		},
-	],
-};
 ---
 
 <style>

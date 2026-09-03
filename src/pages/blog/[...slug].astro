@@ -23,8 +23,8 @@ const { Content } = await render(post);
 ---
 
 <BlogLayout title={post.data.title}>
-	<article class="h-full w-full mx-auto max-w-4xl px-4 md:px-4 py-2">
-		<nav class="fixed inset-x-0 bottom-20 z-50 flex w-full justify-center">
+	<article class="h-full w-full mx-auto max-w-3xl px-4 md:px-4 py-2">
+		<nav class="fixed inset-x-0 bottom-6 z-50 flex w-full justify-center">
 			<DockNav client:load />
 		</nav>
 		<header id="top" class="flex flex-col gap-4 w-full">
@@ -52,7 +52,7 @@ const { Content } = await render(post);
 			<div class="h-px flex-1 bg-surface-tint/80"></div>
 		</div>
 		<main
-			class="prose prose-sm md:prose-base md:prose-h1:text-[2rem] prose-invert prose-headings:text-text-main/90 max-w-none min-w-0 overflow-hidden text-text-main/80 font-body prose-strong:text-text-main/90"
+			class="prose prose-sm md:prose-base md:prose-h1:text-[2rem] prose-invert prose-headings:text-text-main/90 max-w-none min-w-0 overflow-hidden text-text-main/80 font-body prose-strong:text-text-main/90 text-justify"
 		>
 			<Content />
 		</main>
@@ -65,8 +65,23 @@ const { Content } = await render(post);
 			<span class="text-surface-tint">•</span>
 			<div class="h-px flex-1 bg-surface-tint/90"></div>
 		</div>
-		<footer id="down" class="w-full flex flex-wrap mb-30">
+
+		<footer id="down" class="w-full flex flex-wrap">
 			<TagList client:visible tags={post.data.tags as string[]} max={12} />
+			<div class="w-full">
+				<hr class="border-border-muted-alt my-8" />
+				<span
+					class="flex justify-between items-center font-detail text-caption"
+				>
+					<p>© 2026 • Vitor Hugo</p>
+					<a href="mailto:contato.dev@gmail.com">contato.dev@gmail.com</a>
+					<p>
+						<a href="">Termos</a>
+						<i>•</i>
+						<a href="">Privacidade</a>
+					</p>
+				</span>
+			</div>
 		</footer>
 	</article>
 </BlogLayout>
