@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import AboutLayout from "@/layouts/AboutLayout.astro";
 import AboutExperiences from "@/components/AboutExperiences";
+import AboutCommentsForm from "@/components/AboutCommentsForm";
 ---
 
 <AboutLayout>
@@ -13,7 +14,7 @@ import AboutExperiences from "@/components/AboutExperiences";
 		<a href="" class="text-caption text-text-main/85 font-detail">Currículo</a>
 	</header>
 	<main class="flex flex-col gap-8 h-full w-full mt-6">
-		<section>
+		<section class="w-full">
 			<p class="text-justify text-body text-text-main/90">
 				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
 				illo vitae aliquid, cumque quia et quasi voluptates error, autem
@@ -25,21 +26,26 @@ import AboutExperiences from "@/components/AboutExperiences";
 				adipisicing elit.
 			</p>
 		</section>
-		<section>
+		<section class="w-full">
 			<h2 class="md:text-[20px] text-text-main font-display mb-2">
 				Experiência
 			</h2>
 			<AboutExperiences client:load />
 
-			<h3 class="text-body mt-6">Trabalhou comigo? Deixe um comentário...</h3>
+			<div class="flex justify-between items-center mt-6">
+				<AboutCommentsForm
+					title="Me conhece ou trabalhou comigo? Deixe um comentário..."
+					client:load
+				/>
+			</div>
 		</section>
 	</main>
 	<footer class="mt-16">
 		<div>
-			<hr class="border-border-muted-alt mb-6" />
+			<hr class="border-border-muted-alt/90 mb-6" />
 			<span class="flex justify-between items-center font-detail text-caption">
 				<p>© 2026 • Vitor Hugo</p>
-				<a href="mailto:contato.dev@gmail.com">contato.dev@gmail.com</a>
+				<a href="mailto:contato.dev@gmail.com">contato.teste@teste.com</a>
 				<p>
 					<a href="">Termos</a>
 					<i>•</i>

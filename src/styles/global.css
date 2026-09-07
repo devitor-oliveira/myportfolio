@@ -278,6 +278,7 @@
 }
 
 @layer base {
+  
   *, ::before, ::after {
     @apply box-border p-0 m-0;
   }
