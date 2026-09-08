@@ -31,6 +31,7 @@
 		"react": "19.2.6",
 		"react-dom": "19.2.6",
 		"shadcn": "4.16.1",
+		"swr": "^2.5.1",
 		"tailwind-merge": "3.6.0",
 		"tailwindcss": "4.3.0",
 		"usehooks-ts": "3.1.1"

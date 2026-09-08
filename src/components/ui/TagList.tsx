@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronRight } from "lucide-react";
 
-const EASE_SNAPPY = [0.2, 0, 0, 1] as const;
+import { EASE_SNAPPY } from "@/lib/motion";
 
 interface TagListProps {
   tags: string[];

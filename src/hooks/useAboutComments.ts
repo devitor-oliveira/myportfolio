@@ -7,6 +7,8 @@ export interface CommentFormData {
   relationship: string;
   jobtitle: string;
   experience: ExperienceValue | "";
+  github: string;
+  linkedin: string;
 }
 
 export interface WebhookCommentPayload {
@@ -16,6 +18,8 @@ export interface WebhookCommentPayload {
   jobtitle: string;
   experience: ExperienceValue;
   postedon: string;
+  github: string;
+  linkedin: string;
 }
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -30,6 +34,8 @@ const EMPTY_FORM_DATA: CommentFormData = {
   relationship: "",
   jobtitle: "",
   experience: "",
+  github: "",
+  linkedin: "",
 };
 
 function isExperienceValue(value: string): value is ExperienceValue {
@@ -106,6 +112,8 @@ export function useAboutComments() {
       jobtitle: sanitizeText(formData.jobtitle),
       experience: formData.experience,
       postedon: new Date().toISOString(),
+      github: sanitizeText(formData.github),
+      linkedin: sanitizeText(formData.linkedin),
     };
 
     const controller = new AbortController();

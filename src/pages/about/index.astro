@@ -3,6 +3,35 @@ import { Icon } from "astro-icon/components";
 import AboutLayout from "@/layouts/AboutLayout.astro";
 import AboutExperiences from "@/components/AboutExperiences";
 import AboutCommentsForm from "@/components/AboutCommentsForm";
+
+import type { CommentsApiResponse } from "@/hooks/useGetComments";
+import AboutCommentsSection from "@/components/AboutCommentsSection";
+
+// Fetch em build pra evitar layout shift
+// Melhorar entrega de comentários pré-existentes
+const URL = import.meta.env.PUBLIC_GET_COMMENTS_WEBHOOK_URL;
+
+let initialComments: CommentsApiResponse;
+
+try {
+	const res = await fetch(`${URL}?action=list`, {
+		method: "GET",
+		headers: {
+			Accept: "application/json",
+		},
+	});
+
+	if (!res.ok) throw new Error(`Failed: ${res.status}`);
+	initialComments = await res.json();
+	console.log(
+		`Dados no build: ${initialComments.comments.map((cmt) => {
+			return cmt.data.name;
+		})} Total: ${initialComments.total}`,
+	);
+} catch (e) {
+	initialComments = { total: 0, comments: [] };
+	console.error("Falha na busca de comentários", e);
+}
 ---
 
 <AboutLayout>
@@ -32,11 +61,13 @@ import AboutCommentsForm from "@/components/AboutCommentsForm";
 			</h2>
 			<AboutExperiences client:load />
 
-			<div class="flex justify-between items-center mt-6">
+			<div class="flex flex-col gap-4 mt-6">
 				<AboutCommentsForm
 					title="Me conhece ou trabalhou comigo? Deixe um comentário..."
 					client:load
 				/>
+				<hr class="border-border-muted-alt/60 mb-3 mt-3" />
+				<AboutCommentsSection initialData={initialComments} client:load />
 			</div>
 		</section>
 	</main>

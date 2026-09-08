@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Select } from "radix-ui";
+import { Icon } from "@iconify/react";
 import {
   AlertCircle,
   Briefcase,
@@ -23,12 +24,11 @@ import {
 import { Spinner } from "@/components/ui/spinner";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { useAboutComments } from "@/hooks/useAboutComments";
+import { EASE_SNAPPY } from "@/lib/motion";
 import { EXPERIENCE_OPTIONS, type ExperienceValue } from "@/lib/siteContent";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { RippleButton } from "../ui/ripple-button";
-
-const EASE_SNAPPY = [0.2, 0, 0, 1] as const;
 
 const containerVariants = {
   hidden: {},
@@ -126,6 +126,8 @@ function CommentPanel({
   const relationshipId = useId();
   const experienceId = useId();
   const messageId = useId();
+  const linkedinId = useId();
+  const githubId = useId();
 
   const isLoading = status === "loading";
   const isSuccess = status === "success";
@@ -311,6 +313,48 @@ function CommentPanel({
                       </select>
                       <ChevronDown className="pointer-events-none absolute right-2.5 top-1/2 size-4 -translate-y-1/2 text-text-muted" />
                     </div>
+                  </Field>
+                </motion.div>
+
+                <motion.div variants={fieldVariants}>
+                  <Field>
+                    <FieldLabel htmlFor={linkedinId}>
+                      LinkedIn (opcional)
+                    </FieldLabel>
+                    <InputGroup>
+                      <InputGroupInput
+                        id={linkedinId}
+                        value={formData.linkedin}
+                        onChange={(e) =>
+                          updateField("linkedin", e.target.value)
+                        }
+                        placeholder="Ex: linkedin.com/in/maria-silva"
+                        maxLength={120}
+                      />
+                      <InputGroupAddon align="inline-start">
+                        <Icon icon="mdi:linkedin" className="size-4 text-text-muted" />
+                      </InputGroupAddon>
+                    </InputGroup>
+                  </Field>
+                </motion.div>
+
+                <motion.div variants={fieldVariants}>
+                  <Field>
+                    <FieldLabel htmlFor={githubId}>
+                      GitHub (opcional)
+                    </FieldLabel>
+                    <InputGroup>
+                      <InputGroupInput
+                        id={githubId}
+                        value={formData.github}
+                        onChange={(e) => updateField("github", e.target.value)}
+                        placeholder="Ex: github.com/maria-silva"
+                        maxLength={120}
+                      />
+                      <InputGroupAddon align="inline-start">
+                        <Icon icon="mdi:github" className="size-4 text-text-muted" />
+                      </InputGroupAddon>
+                    </InputGroup>
                   </Field>
                 </motion.div>
               </div>
