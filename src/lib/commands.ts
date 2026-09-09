@@ -22,11 +22,29 @@ export const commandRegistry: Record<string, CommandConfig> = {
       return `Encontrado! Abrindo "${data.latestPost.title}"...`;
     },
   },
+  "/last-project": {
+    description: "Navega para o projeto mais recente",
+    handler: async () => {
+      const response = await fetch("/api/terminalData.json");
+      if (!response.ok) throw new Error("Erro ao carregar o manifesto");
+
+      const data = await response.json();
+
+      if (!data.latestProj)
+        throw new Error("Nenhum projeto publicado encontrado.");
+
+      setTimeout(() => {
+        window.location.href = data.latestProj.url;
+      }, 3000);
+
+      return `Encontrado! Abrindo projeto "${data.latestProj.title}"...`;
+    },
+  },
   "/sobre": {
     description: "Navega para a página Sobre",
     handler: async () => {
       setTimeout(() => {
-        window.location.href = "/sobre";
+        window.location.href = "/about";
       }, 3000);
 
       return `Abrindo a página Sobre...`;

@@ -155,6 +155,7 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
+    if (e.target !== e.currentTarget) return;
     if (e.key !== "Enter" && e.key !== " ") return;
     e.preventDefault();
 
