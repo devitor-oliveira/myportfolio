@@ -4,7 +4,7 @@ import React, { useRef, type PropsWithChildren } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import {
   motion,
-  MotionValue,
+  type MotionValue,
   useMotionValue,
   useSpring,
   useTransform,
@@ -23,13 +23,14 @@ export interface DockProps extends VariantProps<typeof dockVariants> {
   children: React.ReactNode;
 }
 
-const DEFAULT_SIZE = 40;
+// 44px é o alvo de toque mínimo recomendado pelo WCAG 2.5.5.
+const DEFAULT_SIZE = 44;
 const DEFAULT_MAGNIFICATION = 60;
 const DEFAULT_DISTANCE = 140;
 const DEFAULT_DISABLEMAGNIFICATION = false;
 
 const dockVariants = cva(
-  "supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-[58px] w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md",
+  "mx-auto mt-8 flex h-[64px] w-max max-w-[calc(100vw-2rem)] items-center justify-center gap-1 rounded-2xl border border-border-muted bg-surface-container/85 p-2 backdrop-blur-lg",
 );
 
 const Dock = React.forwardRef<HTMLDivElement, DockProps>(
