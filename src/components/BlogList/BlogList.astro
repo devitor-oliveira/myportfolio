@@ -1,16 +1,14 @@
 ---
 import { getCollection } from "astro:content";
-import BlogCard from "../BlogCard/BlogCard.astro";
 import { formatDate } from "@/lib/utils";
+import BlogCard from "../BlogCard/BlogCard.astro";
 
 const posts = await getCollection("blog");
 ---
 
-<article
-	class="max-w-3xl w-full gap-6 flex-center flex-col p-2 animate-fade-up"
->
+<main class="max-w-2xl w-full gap-6 flex-center flex-col p-0 md:p-1">
 	{
-		posts.map((post) => {
+		posts.map((post, index) => {
 			return (
 				<BlogCard
 					slug={post.id}
@@ -19,8 +17,10 @@ const posts = await getCollection("blog");
 					date={formatDate(post.data.date)}
 					topic={post.data.topic}
 					tags={post.data.tags}
+					class="animate-fade-up animate-once animate-duration-500 animate-ease-out"
+					style={`animation-delay: ${index * 100}ms`}
 				/>
 			);
 		})
 	}
-</article>
+</main>

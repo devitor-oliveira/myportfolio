@@ -13,12 +13,12 @@ function ContentClient({
   const [activeTab, setActiveTab] = useState<"projects" | "blog">("projects");
 
   return (
-    <div className="max-w-5xl  gap-8 items-center w-full flex flex-col">
+    <div className="max-w-3xl gap-8 items-center p-2 w-full flex flex-col">
       <Nav activeTab={activeTab} handleTabChange={setActiveTab} />
 
-      <div className="w-full flex justify-center ">
-        {activeTab === "blog" && blogContentSlot}
+      <div className="w-full flex justify-center p-1">
         {activeTab === "projects" && projectContentSlot}
+        {activeTab === "blog" && blogContentSlot}
       </div>
     </div>
   );

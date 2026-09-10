@@ -9,15 +9,26 @@ interface BlogCardProps {
 	date: string;
 	topic?: string;
 	tags?: string[];
+	class?: string;
+	style: string;
 }
 
-const { title, slug, shortDesc, date, topic, tags } =
-	Astro.props as BlogCardProps;
+const {
+	title,
+	slug,
+	shortDesc,
+	date,
+	topic,
+	tags,
+	class: className,
+	style,
+} = Astro.props as BlogCardProps;
 ---
 
 <article
-	class="group w-full h-full cursor-pointer py-4 px-6 bg-surface-dim
-  hover:bg-surface-container-low flex flex-col gap-2 border border-border-muted-alt hover:border-primary-container transition-colors"
+	class=`group w-full h-full cursor-pointer py-4 px-3 md:px-6 bg-surface-dim
+  hover:bg-surface-container-low flex flex-col gap-2 border border-border-muted-alt hover:border-primary-container transition-colors ${className}`
+	style={style}
 >
 	<!-- ASsunto + data -->
 	<header
@@ -25,7 +36,7 @@ const { title, slug, shortDesc, date, topic, tags } =
 	>
 		{
 			topic ? (
-				<span class="uppercase text-[10px] group-hover:text-brand-primary text-text-muted/85">
+				<span class="uppercase text-[10px] group-hover:text-brand-primary text-text-muted">
 					[{topic}]
 				</span>
 			) : null
@@ -33,7 +44,7 @@ const { title, slug, shortDesc, date, topic, tags } =
 		{
 			date ? (
 				<time
-					class=" group-hover:text-brand-primary text-[10px] text-text-muted/85 uppercase"
+					class=" group-hover:text-brand-primary text-[10px] text-text-muted uppercase"
 					datetime={date}
 				>
 					{date}
@@ -44,12 +55,10 @@ const { title, slug, shortDesc, date, topic, tags } =
 	<!-- corpo: titulo + descrição -->
 	<div class="flex flex-col gap-3">
 		<a href={`/blog/${slug}`} target="_blank" class="w-fit flex flex-col gap-2">
-			<h3 class="font-display text-text-main/85 text-lead md:text-[18px]">
+			<h3 class="font-display text-text-main/85 text-body md:text-[18px]">
 				{title}
 			</h3>
-			<p
-				class="text-text-main/80 text-caption tracking-wide md:tracking-normal md:text-sm"
-			>
+			<p class="text-text-main/80 text-body-sm md:tracking-normal md:text-sm">
 				{shortDesc}
 			</p>
 		</a>
@@ -58,7 +67,7 @@ const { title, slug, shortDesc, date, topic, tags } =
 	<!-- Footer: tags -->
 	<aside class="flex flex-wrap pt-4 mt-2 border-t border-border-muted-alt">
 		<TagList
-			className="text-text-main/80 capitalize font-body"
+			className="text-text-main/80 capitalize text-detail"
 			client:visible
 			tags={tags as string[]}
 			max={6}

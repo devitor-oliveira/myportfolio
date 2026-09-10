@@ -1,3 +1,4 @@
+import { Folder, NotebookText } from "lucide-react";
 import ButtonTab from "../ui/buttontab.tsx";
 
 interface NavProps {
@@ -5,24 +6,30 @@ interface NavProps {
   handleTabChange: (tab: "projects" | "blog") => void;
 }
 
+const TABS = [
+  { id: "projects", label: "Projetos", icon: Folder },
+  { id: "blog", label: "Blogs", icon: NotebookText },
+] as const;
+
 function Nav({ activeTab, handleTabChange }: NavProps) {
   return (
-    <nav className="flex-center w-full pt-2 pb-4 gap-24 border-b border-border-muted p-2">
-      <ButtonTab
-        isactive={activeTab === "blog"}
-        variant={"tab"}
-        onClick={() => handleTabChange("blog")}
-      >
-        Blogs
-      </ButtonTab>
-      <ButtonTab
-        isactive={activeTab === "projects"}
-        variant={"tab"}
-        onClick={() => handleTabChange("projects")}
-      >
-        Projetos
-      </ButtonTab>
-    </nav>
+    <div
+      role="tablist"
+      aria-label="Conteúdo do portfólio"
+      className="flex w-full max-w-2xl items-center gap-4 border-b border-border-muted p-0"
+    >
+      {TABS.map(({ id, label, icon }) => (
+        <ButtonTab
+          key={id}
+          isactive={activeTab === id}
+          variant="tab"
+          icon={icon}
+          onClick={() => handleTabChange(id)}
+        >
+          {label}
+        </ButtonTab>
+      ))}
+    </div>
   );
 }
 
