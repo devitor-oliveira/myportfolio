@@ -102,7 +102,7 @@ function TerminalHero() {
             ? commands.map((cmd) => {
                 return (
                   <RippleButton
-                    className="rounded-full border border-border-muted bg-surface-container-low px-2 py-0.5 font-detail text-[11px] leading-none text-text-main/75 transition-colors hover:border-primary  hover:text-primary"
+                    className="rounded-full border border-border-muted bg-surface-container-low px-2 py-0.5 font-detail text-[11px] leading-none text-text-main/90 transition-colors hover:border-primary  hover:text-primary"
                     rippleColor="#03a9f4"
                     key={cmd}
                     onClick={() => {
@@ -130,7 +130,7 @@ function TerminalHero() {
               ref={inputRef}
               value={inputCMD}
               onChange={(ev) => setInputCMD(ev.target.value)}
-              className="border-border-muted bg-bg-surface font-detail text-body-sm text-text-main placeholder:text-text-muted"
+              className="border-border-muted bg-bg-surface font-detail text-xs md:text-sm text-text-main placeholder:text-text-muted placeholder:text-caption"
             />
 
             <InputGroupAddon
@@ -143,7 +143,7 @@ function TerminalHero() {
                 className="border-none bg-bg-surface h-auto w-auto p-0 font-detail text-caption font-medium text-brand-primary transition-colors disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {logs[logs.length - 1]?.status === "pending" ? (
-                  <Spinner className="h-5 w-5" />
+                  <Spinner className="h-5 w-5 text-brand-primary opacity-100 disabled:opacity-100" />
                 ) : (
                   <Icon
                     className="h-8 w-8"
