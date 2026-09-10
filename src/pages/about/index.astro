@@ -36,8 +36,10 @@ try {
 
 <AboutLayout>
 	<header class="relative flex justify-between items-center">
-		<nav class="absolute -left-13">
-			<a href="/"><Icon name="mdi:arrow-left" class="w-5 h-5" /></a>
+		<nav class="absolute -top-12 -left-2 md:-left-13">
+			<a href="/"
+				><Icon name="mdi:chevron-left" class="w-8 h-8 md:w-5 md:h-5" /></a
+			>
 		</nav>
 		<h1 class="font-display text-h3 text-text-main">Sobre mim</h1>
 		<a href="" class="text-caption text-text-main/85 font-detail">Currículo</a>
@@ -72,17 +74,36 @@ try {
 		</section>
 	</main>
 	<footer class="mt-16">
-		<div>
-			<hr class="border-border-muted-alt/90 mb-6" />
-			<span class="flex justify-between items-center font-detail text-caption">
-				<p>© 2026 • Vitor Hugo</p>
-				<a href="mailto:contato.dev@gmail.com">contato.teste@teste.com</a>
-				<p>
-					<a href="">Termos</a>
-					<i>•</i>
-					<a href="">Privacidade</a>
+		<div class="w-full">
+			<hr class="border-border-muted-alt my-6 md:my-8" />
+			<div
+				class="flex flex-col gap-3 items-center md:flex-row md:items-center md:justify-between font-detail text-caption text-on-surface-variant"
+			>
+				<p class="shrink-0">© 2026 • Vitor Hugo</p>
+
+				<a
+					href="mailto:contato.dev@gmail.com"
+					class="break-all transition-colors hover:text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
+				>
+					contato.dev@gmail.com
+				</a>
+
+				<p class="flex items-center gap-2 shrink-0">
+					<a
+						href="/termos"
+						class="transition-colors hover:text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
+					>
+						Termos
+					</a>
+					<span aria-hidden="true" class="text-on-surface-variant/60">•</span>
+					<a
+						href="/privacidade"
+						class="transition-colors hover:text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
+					>
+						Privacidade
+					</a>
 				</p>
-			</span>
+			</div>
 		</div>
 	</footer>
 </AboutLayout>

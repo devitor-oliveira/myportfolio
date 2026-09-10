@@ -51,7 +51,10 @@ export default function AboutCommentsForm({ title }: AboutCommentsFormProps) {
   return (
     <div className="w-full">
       <div className="flex items-center justify-between gap-4">
-        <h3 id={titleId} className="text-display text-text-main">
+        <h3
+          id={titleId}
+          className="text-display text-body-sm md:text-body text-text-main"
+        >
           {title}
         </h3>
         <RippleButton
@@ -59,7 +62,7 @@ export default function AboutCommentsForm({ title }: AboutCommentsFormProps) {
           onClick={() => setIsOpen((open) => !open)}
           aria-expanded={isOpen}
           rippleColor="var(--primary)"
-          className="border-outline-variant bg-transparent text-text-main hover:bg-surface-container shrink-0 rounded-md border px-4 py-2 text-sm font-medium"
+          className="border-outline-variant bg-transparent text-text-main hover:bg-surface-container shrink-0 rounded-md border px-4 py-2 text-caption md:text-sm font-medium"
         >
           <AnimatePresence mode="wait" initial={false}>
             {isOpen ? (
@@ -332,7 +335,10 @@ function CommentPanel({
                         maxLength={120}
                       />
                       <InputGroupAddon align="inline-start">
-                        <Icon icon="mdi:linkedin" className="size-4 text-text-muted" />
+                        <Icon
+                          icon="mdi:linkedin"
+                          className="size-4 text-text-muted"
+                        />
                       </InputGroupAddon>
                     </InputGroup>
                   </Field>
@@ -352,7 +358,10 @@ function CommentPanel({
                         maxLength={120}
                       />
                       <InputGroupAddon align="inline-start">
-                        <Icon icon="mdi:github" className="size-4 text-text-muted" />
+                        <Icon
+                          icon="mdi:github"
+                          className="size-4 text-text-muted"
+                        />
                       </InputGroupAddon>
                     </InputGroup>
                   </Field>

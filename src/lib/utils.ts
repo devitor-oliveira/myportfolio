@@ -33,7 +33,7 @@ export const terminalTitles: string[] = [
   "[ Available for projects ]",
 ];
 
-export const commands = ["/last-post", "/last-project"];
+export const commands = ["/last-post", "/last-project", "/sobre"];
 
 export const MOCK_COMMENTS: Comment[] = [
   {
