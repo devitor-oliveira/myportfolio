@@ -122,7 +122,7 @@ function TerminalHero() {
         >
           <InputGroup className=" has-[[data-slot=input-group-control]:focus-visible]:border-border-muted-alt has-[[data-slot=input-group-control]:focus-visible]:ring-0">
             <InputGroupAddon className="text-primary">
-              <Icon icon="ic:outline-keyboard-arrow-right" />
+              <Icon icon="mdi:chevron-right" />
             </InputGroupAddon>
             <InputGroupInput
               placeholder="Insira um comando..."
@@ -147,7 +147,7 @@ function TerminalHero() {
                 ) : (
                   <Icon
                     className="h-8 w-8"
-                    icon="ic:outline-keyboard-arrow-up"
+                    icon="mdi:chevron-up"
                   />
                 )}
               </RippleButton>

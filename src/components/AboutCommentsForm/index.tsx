@@ -17,7 +17,7 @@ import { useAboutComments } from "@/hooks/useAboutComments";
 import { EASE_SNAPPY } from "@/lib/motion";
 import { EXPERIENCE_OPTIONS, type ExperienceValue } from "@/lib/siteContent";
 import { cn } from "@/lib/utils";
-import { Button } from "../ui/button";
+import { Button } from "../ui/Button";
 import { RippleButton } from "../ui/ripple-button";
 
 const containerVariants = {

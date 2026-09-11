@@ -55,14 +55,14 @@ export const EXPERIENCE_OPTIONS = [
 export const SocialLinks: Record<string, socialItem[]> = {
   linkedin: [
     {
-      icon: "ic:baseline-share",
+      icon: "mdi:share-variant",
       link: "https://www.linkedin.com/in/vitor-oliveira-0a1b2b1a3/",
       tooltipValue: "Perfil Profissional",
     },
   ],
   github: [
     {
-      icon: "ic:round-terminal",
+      icon: "mdi:console",
       link: "https://github.com/devitor-oliveira",
       tooltipValue: "Meus Projetos",
     },
