@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronRight } from "lucide-react";
+import { Icon } from "@iconify/react";
 
 import { EASE_SNAPPY } from "@/lib/motion";
 
@@ -69,7 +69,7 @@ export default function TagList({
             transition={{ duration: 0.15, ease: EASE_SNAPPY }}
             className="flex"
           >
-            <ChevronRight size={16} />
+            <Icon icon="mdi:chevron-right" className="w-4 h-4" />
           </motion.span>
         </button>
       )}

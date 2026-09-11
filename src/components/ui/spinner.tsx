@@ -1,9 +1,13 @@
-import { Loader2Icon } from "lucide-react";
+import { Icon } from "@iconify/react";
 import { cn } from "@/lib/utils";
 
-function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
+function Spinner({
+  className,
+  ...props
+}: Omit<React.ComponentProps<typeof Icon>, "icon">) {
   return (
-    <Loader2Icon
+    <Icon
+      icon="mdi:loading"
       data-slot="spinner"
       role="status"
       aria-label="Loading"

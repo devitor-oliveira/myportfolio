@@ -2,17 +2,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Select } from "radix-ui";
 import { Icon } from "@iconify/react";
-import {
-  AlertCircle,
-  Briefcase,
-  Check,
-  CheckCircle2,
-  ChevronDown,
-  MessageSquare,
-  User,
-  Users,
-  X,
-} from "lucide-react";
+
 
 import {
   InputGroup,
@@ -74,7 +64,7 @@ export default function AboutCommentsForm({ title }: AboutCommentsFormProps) {
                 transition={{ duration: 0.15 }}
                 className="flex items-center gap-2"
               >
-                <X className="size-4" />
+                <Icon icon="mdi:close" className="w-4 h-4" />
                 Fechar
               </motion.span>
             ) : (
@@ -86,7 +76,7 @@ export default function AboutCommentsForm({ title }: AboutCommentsFormProps) {
                 transition={{ duration: 0.15 }}
                 className="flex items-center gap-2"
               >
-                <MessageSquare className="size-4" />
+                <Icon icon="mdi:message-text" className="w-4 h-4" />
                 Comentar
               </motion.span>
             )}
@@ -155,7 +145,7 @@ function CommentPanel({
             aria-live="polite"
             className="flex flex-col items-center gap-3 py-8 text-center"
           >
-            <CheckCircle2 className="size-8 text-success" />
+            <Icon icon="mdi:check-circle" className="w-8 h-8 text-success" />
             <p className="font-display text-h3 text-text-main">
               Comentário enviado
             </p>
@@ -225,7 +215,7 @@ function CommentPanel({
                         maxLength={80}
                       />
                       <InputGroupAddon align="inline-start">
-                        <User className="size-4 text-text-muted" />
+                        <Icon icon="mdi:account" className="w-4 h-4 text-text-muted" />
                       </InputGroupAddon>
                     </InputGroup>
                   </Field>
@@ -247,7 +237,7 @@ function CommentPanel({
                         maxLength={80}
                       />
                       <InputGroupAddon align="inline-start">
-                        <Briefcase className="size-4 text-text-muted" />
+                        <Icon icon="mdi:briefcase-outline" className="w-4 h-4 text-text-muted" />
                       </InputGroupAddon>
                     </InputGroup>
                   </Field>
@@ -269,7 +259,7 @@ function CommentPanel({
                         maxLength={80}
                       />
                       <InputGroupAddon align="inline-start">
-                        <Users className="size-4 text-text-muted" />
+                        <Icon icon="mdi:account-group" className="w-4 h-4 text-text-muted" />
                       </InputGroupAddon>
                     </InputGroup>
                   </Field>
@@ -314,7 +304,7 @@ function CommentPanel({
                           </option>
                         ))}
                       </select>
-                      <ChevronDown className="pointer-events-none absolute right-2.5 top-1/2 size-4 -translate-y-1/2 text-text-muted" />
+                      <Icon icon="mdi:chevron-down" className="pointer-events-none absolute right-2.5 top-1/2 w-4 h-4 -translate-y-1/2 text-text-muted" />
                     </div>
                   </Field>
                 </motion.div>
@@ -337,7 +327,7 @@ function CommentPanel({
                       <InputGroupAddon align="inline-start">
                         <Icon
                           icon="mdi:linkedin"
-                          className="size-4 text-text-muted"
+                          className="w-4 h-4 text-text-muted"
                         />
                       </InputGroupAddon>
                     </InputGroup>
@@ -360,7 +350,7 @@ function CommentPanel({
                       <InputGroupAddon align="inline-start">
                         <Icon
                           icon="mdi:github"
-                          className="size-4 text-text-muted"
+                          className="w-4 h-4 text-text-muted"
                         />
                       </InputGroupAddon>
                     </InputGroup>
@@ -407,7 +397,7 @@ function CommentPanel({
               {status === "error" && (
                 <FieldError role="alert">
                   <span className="flex items-center gap-2 text-danger">
-                    <AlertCircle className="size-4 shrink-0" />
+                    <Icon icon="mdi:alert-circle" className="w-4 h-4 shrink-0" />
                     {errorMessage}
                   </span>
                 </FieldError>

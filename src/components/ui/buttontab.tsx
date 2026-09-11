@@ -1,12 +1,13 @@
-import type { ComponentProps, ElementType, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { motion } from "motion/react";
+import { Icon } from "@iconify/react";
 
 type Variants = "default" | "tab";
 
 interface ButtonProps extends Omit<ComponentProps<"button">, "children"> {
   isactive?: boolean;
   variant?: Variants;
-  icon?: ElementType;
+  icon?: string;
   children: ReactNode;
 }
 
@@ -19,7 +20,7 @@ export default function ButtonTab({
   variant = "default",
   className = "",
   isactive = false,
-  icon: Icon,
+  icon,
   children,
   ...props
 }: ButtonProps) {
@@ -29,7 +30,7 @@ export default function ButtonTab({
 
   const content = (
     <>
-      {Icon && <Icon size={14} strokeWidth={2} aria-hidden="true" />}
+      {icon && <Icon icon={icon} className="w-3.5 h-3.5" aria-hidden="true" />}
       {children}
       {isactive && (
         <motion.span

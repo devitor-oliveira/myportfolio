@@ -1,4 +1,3 @@
-import { Folder, NotebookText } from "lucide-react";
 import ButtonTab from "../ui/buttontab.tsx";
 
 interface NavProps {
@@ -7,8 +6,8 @@ interface NavProps {
 }
 
 const TABS = [
-  { id: "projects", label: "Projetos", icon: Folder },
-  { id: "blog", label: "Blogs", icon: NotebookText },
+  { id: "projects", label: "Projetos", icon: "mdi:folder" },
+  { id: "blog", label: "Blogs", icon: "mdi:notebook" },
 ] as const;
 
 function Nav({ activeTab, handleTabChange }: NavProps) {
