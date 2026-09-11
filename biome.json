@@ -12,12 +12,24 @@
 			}
 		}
 	},
+	"vcs": {
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	},
 	"formatter": {
 		"enabled": true,
 		"formatWithErrors": true,
 		"indentStyle": "tab",
 		"indentWidth": 2,
-		"lineWidth": 60
+		"lineWidth": 80
 	},
 	"javascript": {
 		"formatter": {
@@ -34,7 +46,8 @@
 			"**/*.tsx",
 			"src/**/*.astro",
 			"**/*.json",
-			"**/*.jsonc"
+			"**/*.jsonc",
+			"**/*.mjs"
 		]
 	},
 	"overrides": [
