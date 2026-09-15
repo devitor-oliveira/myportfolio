@@ -20,14 +20,14 @@ export const SocialLinks: Record<string, socialItem[]> = {
     {
       icon: "mdi:chat-bubble-outline",
       link: "https://discord.gg/VHbfhkCSA",
-      tooltipValue: "Meu servidor no discord",
+      tooltipValue: "Servidor no discord",
     },
   ],
   email: [
     {
       icon: "mdi:mailbox",
-      link: "contato.dev@gmail.com",
-      tooltipValue: "E-mail",
+      link: "mailto:contato.dev@gmail.com",
+      tooltipValue: "Enviar E-mail",
     },
   ],
 };
@@ -106,7 +106,7 @@ export const EXPERIENCE_OPTIONS = [
 ] as const;
 
 // Hero
-const heroCardSocials = ["linkedin", "github", "discord"];
+const heroCardSocials = ["linkedin", "github", "discord", "email"];
 
 export const heroCardContent: CardProps = {
   title: "Seja Bem Vindo ao meu Refúgio Digital",
