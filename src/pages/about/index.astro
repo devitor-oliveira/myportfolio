@@ -10,12 +10,15 @@ import { contato } from "@/lib/siteContent";
 
 import { GET } from "@/pages/api/commentsData.json";
 import type { CommentsApiResponse } from "@/hooks/useGetComments";
+import { MOCK_COMMENTS } from "@/lib/utils";
 
 // Fetch em build pra evitar layout shift
 let initialComments: CommentsApiResponse;
 const resp = await GET(Astro);
 const commentsData = await resp.json();
 initialComments = commentsData.initialComments;
+
+const mocked: CommentsApiResponse = { total: 0, comments: MOCK_COMMENTS };
 ---
 
 <AboutLayout>
@@ -31,18 +34,20 @@ initialComments = commentsData.initialComments;
 		</nav>
 
 		<h1 class="font-display text-h3 text-text-main">Sobre mim</h1>
-		<a href="" class="text-caption text-text-main/85 font-detail">Currículo</a>
+		<!-- <a href="" class="text-caption text-text-main/85 font-detail" >Currículo</a> -->
 	</header>
 	<main class="flex flex-col gap-8 h-full w-full mt-6">
-		<section class="w-full flex flex-col gap-4">
-			<p class="text-justify text-body text-text-main/90">
+		<section
+			class="w-full flex flex-col gap-4 text-body-sm md:text-body font-body"
+		>
+			<p class="text-justify text-text-main/90">
 				Sou Desenvolvedor Fullstack graduado em Análise e Desenvolvimento de
 				Sistemas, com foco em transformar problemas complexos em interfaces
 				performáticas e sistemas resilientes. Minha jornada iniciou-se aos 13
 				anos com lógica de programação em Python e expandiu-se com a fundação de
 				uma comunidade de tecnologia focada em aprendizado contínuo.
 			</p>
-			<p class="text-justify text-body text-text-main/90">
+			<p class="text-justify text-text-main/90">
 				Atuei em equipe de Transformação Digital, sendo responsável pela
 				arquitetura e integração da API do Pix Automático do Banco do Brasil,
 				criação de automações com N8N e estruturação de bancos de dados com
@@ -52,8 +57,10 @@ initialComments = commentsData.initialComments;
 			</p>
 		</section>
 		<section>
-			<h2 class="md:text-[20px] text-text-main font-display">Contato</h2>
-			<p>
+			<h2 class="text-lead mb-1 md:text-[20px] text-text-main font-display">
+				Contato
+			</h2>
+			<p class="text-body-sm md:text-body">
 				Tem um projeto ou vaga? Mande uma mensagem: <a
 					href=`mailto:${contato.email}`
 					class="text-primary">{contato.email}</a
@@ -61,7 +68,7 @@ initialComments = commentsData.initialComments;
 			</p>
 		</section>
 		<section class="w-full">
-			<h2 class="md:text-[20px] text-text-main font-display mb-2">
+			<h2 class="text-lead md:text-[20px] text-text-main font-display mb-2">
 				Experiência
 			</h2>
 			<AboutExperiences client:load />
@@ -72,7 +79,7 @@ initialComments = commentsData.initialComments;
 					client:load
 				/>
 				<hr class="border-border-muted-alt/60 mb-3 mt-3" />
-				<AboutCommentsSection initialData={initialComments} client:load />
+				<AboutCommentsSection initialData={mocked} client:load />
 			</div>
 		</section>
 	</main>

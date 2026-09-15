@@ -72,10 +72,10 @@ function AboutCommentsSection({ initialData }: Props) {
       <TooltipProvider>
         <article className="flex h-full w-full flex-col gap-6">
           <div className="flex items-center justify-between">
-            <h4 className="font-display md:text-[18px] capitalize text-text-main/95">
+            <h4 className="font-display text-body md:text-[18px] capitalize text-text-main/95">
               comentários, depoimentos & recomendações
             </h4>
-            <span className="font-detail text-caption uppercase text-text-muted">
+            <span className="min-w-fit font-detail text-[10px] md:text-caption uppercase text-text-muted">
               {total} registrados
             </span>
           </div>
@@ -137,19 +137,20 @@ function AboutCommentsSection({ initialData }: Props) {
                     <div className="flex h-full w-full flex-col gap-2.5 transition-opacity duration-200 group-hover/cards:opacity-60 group-hover/item:opacity-100">
                       <header className="flex flex-col gap-y-1">
                         <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
-                          <h4 className="font-display text-body text-text-main">
+                          <h4 className="font-display tracking-wide md:tracking-normal text-body-sm md:text-body text-text-main">
                             {comment.data.name}
                           </h4>
-                          <time className="font-detail text-detail uppercase text-text-muted">
+                          <time className="font-detail text-[10px] md:text-detail uppercase text-text-main/70">
                             {formatDate(new Date(comment.data.postedon), true)}
                           </time>
                         </div>
-                        <div className="flex flex-wrap items-center gap-x-1 gap-y-1">
-                          <span className="text-caption text-primary/90">
+
+                        <div className="text-detail md:text-caption flex flex-wrap items-center gap-x-1 gap-y-1">
+                          <span className="text-primary/90">
                             {comment.data.jobtitle}
                           </span>
-                          <i className="text-caption text-text-muted">•</i>
-                          <span className="text-caption text-text-main/75">
+                          <i className="text-text-muted">•</i>
+                          <span className="text-text-main/80">
                             {comment.data.relationship}
                           </span>
                         </div>
@@ -157,7 +158,7 @@ function AboutCommentsSection({ initialData }: Props) {
 
                       <div className="flex flex-col gap-2.5">
                         <p
-                          className={`text-caption text-justify sm:text-body-sm font-light leading-tight text-text-main/85 ${
+                          className={`text-caption text-justify sm:text-body-sm font-light  text-text-main/90 ${
                             isLong && expandedKey !== comment.key
                               ? "line-clamp-3"
                               : ""
@@ -184,12 +185,12 @@ function AboutCommentsSection({ initialData }: Props) {
                         )}
 
                         <div className="flex items-center justify-between">
-                          <span className="text-caption text-text-main/70">
+                          <span className="text-detail md:text-caption text-text-main/70">
                             Relacionado a {comment.data.experience}
                           </span>
 
                           {(linkedinUrl || githubUrl) && (
-                            <span className="flex uppercase tracking-wide text-caption font-detail items-center gap-1.5">
+                            <span className="flex uppercase text-detail md:tracking-wide md:text-caption font-detail items-center gap-1 md:gap-1.5">
                               {linkedinUrl && (
                                 <Tooltip>
                                   <TooltipTrigger asChild>
@@ -197,7 +198,7 @@ function AboutCommentsSection({ initialData }: Props) {
                                       href={linkedinUrl}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="text-text-muted transition-colors hover:text-primary"
+                                      className="text-text-main/70 transition-colors hover:text-primary"
                                       aria-label={`LinkedIn de ${comment.data.name}`}
                                     >
                                       Linkedin
@@ -219,7 +220,7 @@ function AboutCommentsSection({ initialData }: Props) {
                               )}
 
                               {linkedinUrl && githubUrl && (
-                                <i className="text-text-muted/50">|</i>
+                                <i className="text-text-muted">|</i>
                               )}
 
                               {githubUrl && (
@@ -229,7 +230,7 @@ function AboutCommentsSection({ initialData }: Props) {
                                       href={githubUrl}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="text-text-muted transition-colors hover:text-primary"
+                                      className="text-text-main/70 transition-colors hover:text-primary"
                                       aria-label={`GitHub de ${comment.data.name}`}
                                     >
                                       GitHub

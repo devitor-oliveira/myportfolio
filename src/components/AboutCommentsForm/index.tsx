@@ -41,7 +41,7 @@ export default function AboutCommentsForm({ title }: AboutCommentsFormProps) {
       <div className="flex items-center justify-between gap-4">
         <h3
           id={titleId}
-          className="text-display text-body-sm md:text-body text-text-main"
+          className="font-body text-body-sm md:text-body text-text-main"
         >
           {title}
         </h3>
