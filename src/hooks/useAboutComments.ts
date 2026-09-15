@@ -142,7 +142,7 @@ export function useAboutComments() {
           "Tempo limite excedido. Verifique sua conexão e tente novamente.",
         );
       } else {
-        console.log("Error: " + error);
+        console.log(`Error: ${error}`);
         setErrorMessage(
           "Não foi possível enviar agora. Tente novamente em instantes.",
         );

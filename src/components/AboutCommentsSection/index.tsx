@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   useGetComments,
-  type Comment,
   type CommentsApiResponse,
 } from "@/hooks/useGetComments";
 import { formatDate } from "@/lib/utils";
@@ -63,52 +62,45 @@ function AboutCommentsSection({ initialData }: Props) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [expandedKey, setExpandedKey] = useState<string | null>(null);
 
-  const { comments, total, loading, error, refetch } =
-    useGetComments(initialData);
-  // console.log(
-  //   `Dados no componente vindos do hook: ${comments.map((cmt) => {
-  //     return cmt.data.name;
-  //   })} total: ${total}, loading: ${loading} erro: ${error}`,
-  // );
-  if (total <= 0) {
-    return (
-      <div>
-        <Icon icon="mdi:load" className="w-5 h-5"></Icon>
-      </div>
-    );
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
+  const { comments, total, loading } = useGetComments(initialData);
 
   return (
     <TooltipProvider>
       <article className="flex h-full w-full flex-col gap-6">
         <div className="flex items-center justify-between">
-          <h4 className="font-display md:text-[18px] capitalize text-text-main">
+          <h4 className="font-display md:text-[18px] capitalize text-text-main/95">
             comentários, depoimentos & recomendações
           </h4>
           <span className="font-detail text-caption uppercase text-text-muted">
             {total} registrados
           </span>
         </div>
-        <div className="group/cards relative flex h-full w-full flex-col gap-10 pl-6 sm:pl-8">
-          {/* Linha vertical decorativa da timeline */}
-          <span
-            aria-hidden="true"
-            className="absolute left-2 sm:left-2.5 top-3 bottom-5 w-px bg-border-muted"
-          />
-          {comments ? (
-            comments.map((comment, index) => {
+
+        {loading && comments.length === 0 ? (
+          <div className="flex items-center justify-center p-8 text-text-muted">
+            <Icon icon="mdi:loading" className="w-6 h-6 animate-spin" />
+          </div>
+        ) : comments.length > 0 ? (
+          <div className="group/cards relative flex h-full w-full flex-col gap-10 pl-6 sm:pl-8">
+            <span
+              aria-hidden="true"
+              className="absolute left-2 sm:left-2.5 top-3 bottom-5 w-px bg-border-muted"
+            />
+            {comments.map((comment, index) => {
               const dotStyle = getTimelineDotStyle(
                 hoveredIndex === index ? 0 : index,
                 comments.length,
               );
               const isLong = comment.data.comment.length > COMMENT_LONG_LENGTH;
 
+              const linkedinUrl = comment.data.linkedin
+                ? normalizeUrl(comment.data.linkedin)
+                : null;
+              const githubUrl = comment.data.github
+                ? normalizeUrl(comment.data.github)
+                : null;
+
               return (
-                // card
                 <article
                   key={comment.key}
                   onMouseEnter={() => setHoveredIndex(index)}
@@ -119,7 +111,6 @@ function AboutCommentsSection({ initialData }: Props) {
                     animationDuration: "0.6s",
                   }}
                 >
-                  {/* Nó (bolinha) da timeline */}
                   <span
                     aria-hidden="true"
                     className="absolute -left-6 sm:-left-8 top-1 flex items-center justify-center"
@@ -158,9 +149,10 @@ function AboutCommentsSection({ initialData }: Props) {
                         </span>
                       </div>
                     </header>
+
                     <div className="flex flex-col gap-2.5">
                       <p
-                        className={`text-caption sm:text-body-sm font-light leading-relaxed text-text-main/85 ${
+                        className={`text-caption text-justify sm:text-body-sm font-light leading-tight text-text-main/85 ${
                           isLong && expandedKey !== comment.key
                             ? "line-clamp-3"
                             : ""
@@ -168,6 +160,7 @@ function AboutCommentsSection({ initialData }: Props) {
                       >
                         {comment.data.comment}
                       </p>
+
                       {isLong && (
                         <button
                           type="button"
@@ -177,85 +170,96 @@ function AboutCommentsSection({ initialData }: Props) {
                             )
                           }
                           aria-expanded={expandedKey === comment.key}
-                          className="self-start text-caption text-text-muted transition-colors hover:text-primary cursor-pointer"
+                          className="self-start text-caption text-primary transition-colors hover:text-brand-hover cursor-pointer"
                         >
                           {expandedKey === comment.key
                             ? "Ler menos"
                             : "Ler mais"}
                         </button>
                       )}
+
                       <div className="flex items-center justify-between">
-                        <span className="text-caption text-text-muted">
+                        <span className="text-caption text-text-main/70">
                           Relacionado a {comment.data.experience}
                         </span>
 
-                        <span className="flex uppercase tracking-wide text-caption font-detail items-center gap-1.5">
-                          {comment.data.linkedin && (
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <a
-                                  href={normalizeUrl(comment.data.linkedin)}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-text-muted transition-colors hover:text-primary"
-                                  aria-label={`LinkedIn de ${comment.data.name}`}
+                        {(linkedinUrl || githubUrl) && (
+                          <span className="flex uppercase tracking-wide text-caption font-detail items-center gap-1.5">
+                            {linkedinUrl && (
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <a
+                                    href={linkedinUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-text-muted transition-colors hover:text-primary"
+                                    aria-label={`LinkedIn de ${comment.data.name}`}
+                                  >
+                                    Linkedin
+                                  </a>
+                                </TooltipTrigger>
+                                <TooltipContent
+                                  side="top"
+                                  sideOffset={6}
+                                  className={TOOLTIP_CONTENT_CLASS}
                                 >
-                                  Linkedin
-                                </a>
-                              </TooltipTrigger>
-                              <TooltipContent
-                                side="top"
-                                sideOffset={6}
-                                className={TOOLTIP_CONTENT_CLASS}
-                              >
-                                <span>Ir para LinkedIn</span>
-                                <Icon
-                                  icon="mdi:external-link"
-                                  className="size-3.5 shrink-0"
-                                  aria-hidden="true"
-                                />
-                              </TooltipContent>
-                            </Tooltip>
-                          )}
-                          <i>|</i>
-                          {comment.data.github && (
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <a
-                                  href={normalizeUrl(comment.data.github)}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-text-muted  transition-colors hover:text-primary"
-                                  aria-label={`GitHub de ${comment.data.name}`}
+                                  <span>Ir para LinkedIn</span>
+                                  <Icon
+                                    icon="mdi:external-link"
+                                    className="size-3.5 shrink-0"
+                                    aria-hidden="true"
+                                  />
+                                </TooltipContent>
+                              </Tooltip>
+                            )}
+
+                            {linkedinUrl && githubUrl && (
+                              <i className="text-text-muted/50">|</i>
+                            )}
+
+                            {githubUrl && (
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <a
+                                    href={githubUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-text-muted transition-colors hover:text-primary"
+                                    aria-label={`GitHub de ${comment.data.name}`}
+                                  >
+                                    GitHub
+                                  </a>
+                                </TooltipTrigger>
+                                <TooltipContent
+                                  side="top"
+                                  sideOffset={6}
+                                  className={TOOLTIP_CONTENT_CLASS}
                                 >
-                                  GitHub
-                                </a>
-                              </TooltipTrigger>
-                              <TooltipContent
-                                side="top"
-                                sideOffset={6}
-                                className={TOOLTIP_CONTENT_CLASS}
-                              >
-                                <span>Ir para Github</span>
-                                <Icon
-                                  icon="mdi:external-link"
-                                  className="size-3.5 shrink-0"
-                                  aria-hidden="true"
-                                />
-                              </TooltipContent>
-                            </Tooltip>
-                          )}
-                        </span>
+                                  <span>Ir para Github</span>
+                                  <Icon
+                                    icon="mdi:external-link"
+                                    className="size-3.5 shrink-0"
+                                    aria-hidden="true"
+                                  />
+                                </TooltipContent>
+                              </Tooltip>
+                            )}
+                          </span>
+                        )}
                       </div>
                     </div>
                   </div>
                 </article>
               );
-            })
-          ) : (
-            <p>Sem Comentários</p>
-          )}
-        </div>
+            })}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-border-muted p-8 text-center">
+            <p className="text-body-sm text-text-muted">
+              Nenhum comentário registrado até o momento.
+            </p>
+          </div>
+        )}
       </article>
     </TooltipProvider>
   );

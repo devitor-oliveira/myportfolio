@@ -43,7 +43,7 @@ export function useGetComments(initialData?: CommentsApiResponse) {
     fetcher,
     {
       revalidateOnFocus: false,
-      // revalidateOnMount: false,
+      revalidateOnMount: false,
       dedupingInterval: 5 * 60 * 1000,
       fallbackData: initialData,
     },

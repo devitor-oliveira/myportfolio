@@ -32,6 +32,10 @@ export const SocialLinks: Record<string, socialItem[]> = {
   ],
 };
 
+export const contato = {
+  email: "contato.dev@gmail.com",
+};
+
 // About
 export enum ExperienceValue {
   MASTERCLASSIC_DEV = "masterclassic-2025-2026",
@@ -68,7 +72,7 @@ export const EXPERIENCES: Experience[] = [
     value: ExperienceValue.FREELANCE_HELOYSA,
     year: "2026",
     title: "Desenvolvedor Fullstack",
-    company: "Freelance",
+    company: "Cliente",
     label: "Imobiliária Heloysa Maria",
     description:
       "Desenvolvimento da plataforma web da corretora Heloysa Maria. Construída com Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS, Supabase (PostgreSQL/Auth) e Cloudinary.",

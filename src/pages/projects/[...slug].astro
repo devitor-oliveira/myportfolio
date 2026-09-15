@@ -1,9 +1,10 @@
 ---
 import DockNav from "@/components/DockNav";
-import SocialLink from "@/components/ui/SocialLink";
+import Footer from "@/components/Footer/Footer.astro";
+
 import TagList from "@/components/ui/TagList";
 import ProjectLayout from "@/layouts/ProjectLayout.astro";
-import { SocialLinks } from "@/lib/siteContent";
+
 import { formatDate } from "@/lib/utils";
 import { Icon } from "astro-icon/components";
 import { getCollection, render } from "astro:content";
@@ -20,8 +21,6 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 // Renderiza o markdown transformando em componente HTML
 const { Content } = await render(project);
-
-const footerSocials = ["linkedin", "email"];
 ---
 
 <ProjectLayout title={project.data.title}>
@@ -118,64 +117,11 @@ const footerSocials = ["linkedin", "email"];
 			<span class="text-surface-tint">•</span>
 			<div class="h-px flex-1 bg-surface-tint/80"></div>
 		</div>
-		<footer id="down" class="w-full">
-			<div class="flex flex-col gap-4">
-				<div
-					class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
-				>
-					<p class="text-body-sm text-text-main/90">
-						Precisa de uma solução? Entre em contato!
-					</p>
-					<a
-						href="mailto:contato.dev@gmail.com"
-						class="text-caption font-detail text-on-surface-variant transition-colors hover:text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
-					>
-						contato.dev@gmail.com
-					</a>
-				</div>
 
-				{
-					footerSocials && (
-						<div id="footerSocials" class="flex flex-wrap gap-5 md:gap-8">
-							{footerSocials.map((socialKey) => {
-								const socialDataList = SocialLinks[socialKey];
-								const socialItem = socialDataList && socialDataList[0];
+		<p class="text-body text-text-main/95">
+			Precisa de uma solução? Entre em contato!
+		</p>
 
-								return socialItem && socialItem.link ? (
-									<SocialLink
-										client:load
-										social={socialItem}
-										socialName={socialKey}
-									/>
-								) : null;
-							})}
-						</div>
-					)
-				}
-
-				<hr class="border-border-muted-alt my-2" />
-
-				<div
-					class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between font-detail text-caption text-on-surface-variant"
-				>
-					<p class="shrink-0">© 2026 • Vitor Hugo</p>
-					<p class="flex items-center gap-2 shrink-0">
-						<a
-							href="/termos"
-							class="transition-colors hover:text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
-						>
-							Termos
-						</a>
-						<span aria-hidden="true" class="text-on-surface-variant/60">•</span>
-						<a
-							href="/privacidade"
-							class="transition-colors hover:text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
-						>
-							Privacidade
-						</a>
-					</p>
-				</div>
-			</div>
-		</footer>
+		<Footer />
 	</article>
 </ProjectLayout>
