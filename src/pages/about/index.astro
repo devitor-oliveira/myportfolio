@@ -1,14 +1,16 @@
 ---
 import { Icon } from "astro-icon/components";
+
 import AboutLayout from "@/layouts/AboutLayout.astro";
 import AboutExperiences from "@/components/AboutExperiences";
 import AboutCommentsForm from "@/components/AboutCommentsForm";
+import AboutCommentsSection from "@/components/AboutCommentsSection";
 
 import type { CommentsApiResponse } from "@/hooks/useGetComments";
-import AboutCommentsSection from "@/components/AboutCommentsSection";
 
 // Fetch em build pra evitar layout shift
 // Melhorar entrega de comentários pré-existentes
+// Migrar para API ROUTE
 const URL = import.meta.env.PUBLIC_GET_COMMENTS_WEBHOOK_URL;
 
 let initialComments: CommentsApiResponse;
@@ -20,14 +22,8 @@ try {
 			Accept: "application/json",
 		},
 	});
-
 	if (!res.ok) throw new Error(`Failed: ${res.status}`);
 	initialComments = await res.json();
-	console.log(
-		`Dados no build: ${initialComments.comments.map((cmt) => {
-			return cmt.data.name;
-		})} Total: ${initialComments.total}`,
-	);
 } catch (e) {
 	initialComments = { total: 0, comments: [] };
 	console.error("Falha na busca de comentários", e);
@@ -45,16 +41,21 @@ try {
 		<a href="" class="text-caption text-text-main/85 font-detail">Currículo</a>
 	</header>
 	<main class="flex flex-col gap-8 h-full w-full mt-6">
-		<section class="w-full">
+		<section class="w-full flex flex-col gap-4">
 			<p class="text-justify text-body text-text-main/90">
-				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-				illo vitae aliquid, cumque quia et quasi voluptates error, autem
-				quisquam sint aspernatur sed magnam quidem velit consequatur! Nemo
-				deleniti officiis ipsum maxime dicta nulla dignissimos beatae cupiditate
-				fugiat impedit natus dolorem omnis voluptatem eveniet illo aliquid
-				dolorum magni, atque dolor, sequi cumque! Similique obcaecati quos fuga
-				molestiae odio quo laborum! Lorem, ipsum dolor sit amet consectetur
-				adipisicing elit.
+				Sou Desenvolvedor Fullstack graduado em Análise e Desenvolvimento de
+				Sistemas, com foco em transformar problemas complexos em interfaces
+				performáticas e sistemas resilientes. Minha jornada iniciou-se aos 13
+				anos com lógica de programação em Python e expandiu-se com a fundação de
+				uma comunidade de tecnologia focada em aprendizado contínuo.
+			</p>
+			<p class="text-justify text-body text-text-main/90">
+				Atuei em equipe de Transformação Digital, sendo responsável pela
+				arquitetura e integração da API do Pix Automático do Banco do Brasil,
+				criação de automações com N8N e estruturação de bancos de dados com
+				Supabase. Busco constantemente unir desenvolvimento web moderno
+				(Next.js/Node.js), automação de processos e IA para entregar soluções de
+				software que geram valor real.
 			</p>
 		</section>
 		<section class="w-full">

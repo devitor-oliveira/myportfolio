@@ -1,6 +1,6 @@
-import type { Comment } from "@/hooks/useGetComments";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import type { Comment } from "@/hooks/useGetComments";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -30,10 +30,10 @@ export function formatDate(
 export const terminalTitles: string[] = [
   "[ Vitor Dev ]",
   "[ Full Stack ]",
-  "[ Available for projects ]",
+  "[ Disponível para Projetos ]",
 ];
 
-export const commands = ["/last-post", "/last-project", "/sobre"];
+export const commands = ["/ultimo-post", "/ultimo-projeto", "/sobre"];
 
 export const MOCK_COMMENTS: Comment[] = [
   {

@@ -1,8 +1,6 @@
+import { Icon } from "@iconify/react";
 import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Select } from "radix-ui";
-import { Icon } from "@iconify/react";
-
 
 import {
   InputGroup,
@@ -202,7 +200,7 @@ function CommentPanel({
                 <motion.div variants={fieldVariants}>
                   <Field>
                     <FieldLabel htmlFor={nameId}>
-                      Nome <span className="text-danger">*</span>
+                      Seu Nome <span className="text-danger">*</span>
                     </FieldLabel>
                     <InputGroup>
                       <InputGroupInput
@@ -215,7 +213,10 @@ function CommentPanel({
                         maxLength={80}
                       />
                       <InputGroupAddon align="inline-start">
-                        <Icon icon="mdi:account" className="w-4 h-4 text-text-muted" />
+                        <Icon
+                          icon="mdi:account"
+                          className="w-4 h-4 text-text-muted"
+                        />
                       </InputGroupAddon>
                     </InputGroup>
                   </Field>
@@ -224,7 +225,7 @@ function CommentPanel({
                 <motion.div variants={fieldVariants}>
                   <Field>
                     <FieldLabel htmlFor={jobtitleId}>
-                      Cargo (opcional)
+                      Seu Cargo (opcional)
                     </FieldLabel>
                     <InputGroup>
                       <InputGroupInput
@@ -237,7 +238,10 @@ function CommentPanel({
                         maxLength={80}
                       />
                       <InputGroupAddon align="inline-start">
-                        <Icon icon="mdi:briefcase-outline" className="w-4 h-4 text-text-muted" />
+                        <Icon
+                          icon="mdi:briefcase-outline"
+                          className="w-4 h-4 text-text-muted"
+                        />
                       </InputGroupAddon>
                     </InputGroup>
                   </Field>
@@ -246,7 +250,7 @@ function CommentPanel({
                 <motion.div variants={fieldVariants}>
                   <Field>
                     <FieldLabel htmlFor={relationshipId}>
-                      Relação (opcional)
+                      Relação Comigo (opcional)
                     </FieldLabel>
                     <InputGroup>
                       <InputGroupInput
@@ -255,11 +259,14 @@ function CommentPanel({
                         onChange={(e) =>
                           updateField("relationship", e.target.value)
                         }
-                        placeholder="Ex: Tech Lead na Empresa X"
+                        placeholder="Ex: Colega de Equipe | Gestor"
                         maxLength={80}
                       />
                       <InputGroupAddon align="inline-start">
-                        <Icon icon="mdi:account-group" className="w-4 h-4 text-text-muted" />
+                        <Icon
+                          icon="mdi:account-group"
+                          className="w-4 h-4 text-text-muted"
+                        />
                       </InputGroupAddon>
                     </InputGroup>
                   </Field>
@@ -267,7 +274,9 @@ function CommentPanel({
 
                 <motion.div variants={fieldVariants}>
                   <Field>
-                    <FieldLabel htmlFor={experienceId}>Experiência</FieldLabel>
+                    <FieldLabel htmlFor={experienceId}>
+                      Relacionado a Experiência...
+                    </FieldLabel>
                     <div className="relative">
                       <select
                         id={experienceId}
@@ -292,19 +301,26 @@ function CommentPanel({
                           disabled
                           className="bg-surface-container-low text-text-muted"
                         >
-                          Selecione a experiência...
+                          Escolha uma das opções
                         </option>
-                        {EXPERIENCE_OPTIONS.map((exp) => (
-                          <option
-                            key={exp.value}
-                            value={exp.value}
-                            className="bg-surface-container-low text-text-main"
-                          >
-                            {exp.label}
-                          </option>
-                        ))}
+                        {EXPERIENCE_OPTIONS.map((exp) => {
+                          if (exp.label === "") return null;
+
+                          return (
+                            <option
+                              key={exp.value}
+                              value={exp.value}
+                              className="bg-surface-container-low text-text-main"
+                            >
+                              {exp.label}
+                            </option>
+                          );
+                        })}
                       </select>
-                      <Icon icon="mdi:chevron-down" className="pointer-events-none absolute right-2.5 top-1/2 w-4 h-4 -translate-y-1/2 text-text-muted" />
+                      <Icon
+                        icon="mdi:chevron-down"
+                        className="pointer-events-none absolute right-2.5 top-1/2 w-4 h-4 -translate-y-1/2 text-text-muted"
+                      />
                     </div>
                   </Field>
                 </motion.div>
@@ -384,7 +400,7 @@ function CommentPanel({
                           "ml-auto font-detail text-caption transition-colors",
                           remaining < 20
                             ? "text-danger font-medium"
-                            : "text-text-subtle",
+                            : "text-text-muted",
                         )}
                       >
                         {remaining}
@@ -397,7 +413,10 @@ function CommentPanel({
               {status === "error" && (
                 <FieldError role="alert">
                   <span className="flex items-center gap-2 text-danger">
-                    <Icon icon="mdi:alert-circle" className="w-4 h-4 shrink-0" />
+                    <Icon
+                      icon="mdi:alert-circle"
+                      className="w-4 h-4 shrink-0"
+                    />
                     {errorMessage}
                   </span>
                 </FieldError>
@@ -407,7 +426,7 @@ function CommentPanel({
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="bg-brand-primary text-on-primary hover:bg-brand-hover cursor-pointer transition-colors"
+                  className="bg-brand-primary text-surface-container-lowest hover:bg-brand-hover cursor-pointer transition-colors"
                 >
                   {isLoading && (
                     <Spinner data-icon="inline-start" className="size-4" />
@@ -418,7 +437,7 @@ function CommentPanel({
                   type="button"
                   variant="ghost"
                   onClick={onClose}
-                  className="text-text-muted hover:text-text-main cursor-pointer"
+                  className="text-text-muted hover:text-text-main cursor-pointer border border-border-muted-alt/70"
                 >
                   Cancelar
                 </Button>

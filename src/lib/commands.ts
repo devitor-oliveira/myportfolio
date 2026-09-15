@@ -4,7 +4,7 @@ export type CommandConfig = {
 };
 
 export const commandRegistry: Record<string, CommandConfig> = {
-  "/last-post": {
+  "/ultimo-post": {
     description: "Navega para o artigo mais recente",
     handler: async () => {
       const response = await fetch("/api/terminalData.json");
@@ -22,7 +22,7 @@ export const commandRegistry: Record<string, CommandConfig> = {
       return `Encontrado! Abrindo "${data.latestPost.title}"...`;
     },
   },
-  "/last-project": {
+  "/ultimo-projeto": {
     description: "Navega para o projeto mais recente",
     handler: async () => {
       const response = await fetch("/api/terminalData.json");
