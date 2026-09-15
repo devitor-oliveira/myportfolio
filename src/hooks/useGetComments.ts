@@ -42,10 +42,10 @@ export function useGetComments(initialData?: CommentsApiResponse) {
     `${WEBHOOK_URL}?action=list`,
     fetcher,
     {
+      fallbackData: initialData,
       revalidateOnFocus: false,
       revalidateOnMount: false,
       dedupingInterval: 5 * 60 * 1000,
-      fallbackData: initialData,
     },
   );
 
@@ -58,6 +58,6 @@ export function useGetComments(initialData?: CommentsApiResponse) {
         ? error.message
         : "Erro ao buscar comentários"
       : null,
-    refetch: mutate, // Função para revalidar/recarregar os dados manualmente
+    refetch: mutate,
   };
 }

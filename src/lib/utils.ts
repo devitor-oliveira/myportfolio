@@ -35,6 +35,22 @@ export const terminalTitles: string[] = [
 
 export const commands = ["/ultimo-post", "/ultimo-projeto", "/sobre"];
 
+export function localStorageProvider(): Map<string, any> {
+  if (typeof window === "undefined") {
+    return new Map();
+  }
+  const map = new Map<string, any>(
+    JSON.parse(localStorage.getItem("app-cache") || "[]"),
+  );
+
+  window.addEventListener("beforeunload", () => {
+    const appCache = JSON.stringify(Array.from(map.entries()));
+    localStorage.setItem("app-cache", appCache);
+  });
+
+  return map;
+}
+
 export const MOCK_COMMENTS: Comment[] = [
   {
     key: "comment-1",

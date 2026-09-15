@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { ExperienceValue } from "@/lib/siteContent";
+import { mutate } from "swr";
 
 export interface CommentFormData {
   name: string;
@@ -25,6 +26,7 @@ export interface WebhookCommentPayload {
 type Status = "idle" | "loading" | "success" | "error";
 
 const WEBHOOK_URL = import.meta.env.PUBLIC_COMMENTS_WEBHOOK_URL as string;
+const COMMENTS_KEY = `${WEBHOOK_URL}?action=list`;
 const MESSAGE_MAX_LENGTH = 500;
 const REQUEST_TIMEOUT_MS = 8000;
 
@@ -130,6 +132,8 @@ export function useAboutComments() {
       clearTimeout(timeoutId);
 
       if (!response.ok) throw new Error(`Webhook respondeu ${response.status}`);
+
+      await mutate(COMMENTS_KEY);
 
       setStatus("success");
       setFormData(EMPTY_FORM_DATA);

@@ -15,7 +15,7 @@ function AboutExperiences() {
       {EXPERIENCES.map((experience) => (
         <AccordionItem
           key={experience.title}
-          value={experience.year}
+          value={experience.title}
           className="border-border-muted-alt/80"
         >
           <AccordionTrigger className="group/trigger p-4 cursor-pointer hover:no-underline hover:bg-surface-container-lowest transition-colors">
