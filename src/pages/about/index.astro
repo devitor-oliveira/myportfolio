@@ -10,15 +10,12 @@ import { contato } from "@/lib/siteContent";
 
 import { GET } from "@/pages/api/commentsData.json";
 import type { CommentsApiResponse } from "@/hooks/useGetComments";
-import { MOCK_COMMENTS } from "@/lib/utils";
 
 // Fetch em build pra evitar layout shift
 let initialComments: CommentsApiResponse;
 const resp = await GET(Astro);
 const commentsData = await resp.json();
 initialComments = commentsData.initialComments;
-
-const mocked: CommentsApiResponse = { total: 0, comments: MOCK_COMMENTS };
 ---
 
 <AboutLayout>
@@ -79,7 +76,7 @@ const mocked: CommentsApiResponse = { total: 0, comments: MOCK_COMMENTS };
 					client:load
 				/>
 				<hr class="border-border-muted-alt/60 mb-3 mt-3" />
-				<AboutCommentsSection initialData={mocked} client:load />
+				<AboutCommentsSection initialData={initialComments} client:load />
 			</div>
 		</section>
 	</main>
