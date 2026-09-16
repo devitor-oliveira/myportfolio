@@ -26,7 +26,7 @@ export interface WebhookCommentPayload {
 type Status = "idle" | "loading" | "success" | "error";
 
 const WEBHOOK_URL = import.meta.env.PUBLIC_COMMENTS_WEBHOOK_URL as string;
-const COMMENTS_KEY = `${WEBHOOK_URL}?action=list`;
+const COMMENTS_KEY = `${import.meta.env.PUBLIC_GET_COMMENTS_WEBHOOK_URL}?action=list`;
 const MESSAGE_MAX_LENGTH = 500;
 const REQUEST_TIMEOUT_MS = 8000;
 
