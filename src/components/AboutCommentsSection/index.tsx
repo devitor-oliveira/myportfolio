@@ -19,8 +19,16 @@ interface Props {
 
 const COMMENT_LONG_LENGTH = 200;
 
-function normalizeUrl(url: string): string {
-  return url.startsWith("http") ? url : `https://${url}`;
+function normalizeLinkedinUrl(value: string): string {
+  if (value.startsWith("http")) return value;
+  if (value.includes("linkedin.com")) return `https://${value}`;
+  return `https://linkedin.com/in/${value.replace(/^\/+/, "")}`;
+}
+
+function normalizeGithubUrl(value: string): string {
+  if (value.startsWith("http")) return value;
+  if (value.includes("github.com")) return `https://${value}`;
+  return `https://github.com/${value.replace(/^\/+/, "")}`;
 }
 
 const TOOLTIP_CONTENT_CLASS =
@@ -99,10 +107,10 @@ function AboutCommentsSection({ initialData }: Props) {
                   comment.data.comment.length > COMMENT_LONG_LENGTH;
 
                 const linkedinUrl = comment.data.linkedin
-                  ? normalizeUrl(comment.data.linkedin)
+                  ? normalizeLinkedinUrl(comment.data.linkedin)
                   : null;
                 const githubUrl = comment.data.github
-                  ? normalizeUrl(comment.data.github)
+                  ? normalizeGithubUrl(comment.data.github)
                   : null;
 
                 return (
