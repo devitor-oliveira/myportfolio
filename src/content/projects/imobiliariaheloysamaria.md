@@ -1,7 +1,7 @@
 ---
 type: freelance
 title: Plataforma Imobiliária Heloysa Maria
-description: Plataforma web full-stack com foco em SEO, alta performance mobile, custo mensal baixo.
+description: Plataforma web para divulgação e gestão de imóveis, com portal público, painel administrativo e foco em autonomia operacional e SEO.
 year: 2026-08-30
 liveURL: https://heloysamaria.com.br
 tags:
@@ -18,92 +18,124 @@ tags:
 
 ### Visão Geral
 
-Uma plataforma de gestão de imóveis moderna focada na experiência do usuário final (lead) e da própria cliente. Permitindo contato do interessado com a cliente em poucos cliques, SEO e amostragem dos imóveis e serviços de forma clara e objetiva, permitindo a gestão diária em um painel administrativo simples e intuitivo com custo mensal baixo.
+A plataforma foi desenvolvida para atender dois públicos: pessoas procurando imóveis e a profissional responsável por gerenciar o catálogo.
+
+Na área pública, o objetivo foi facilitar a descoberta dos imóveis e o contato com a corretora. No painel administrativo, a proposta foi simplificar o cadastro, edição e organização do catálogo, reduzindo a necessidade de intervenção técnica nas tarefas do dia a dia.
 
 ### Meu Papel
 
-Projeto desenvolvido solo, validação do design com a cliente, arquitetura, desenvolvimento full-stack e deploy.
+Fui responsável pelo desenvolvimento técnico do projeto de ponta a ponta, incluindo arquitetura, interface, frontend, backend, banco de dados, integrações, infraestrutura e deploy.
 
-- **Design:** protótipos de UI/UX apresentados e validados diretamente com a cliente.
-- **Desenvolvimento:** ambiente self-hosted (VPS Hetzner + Coolify + Docker + Supabase) para prototipagem e iteração com a cliente.
-- **Deploy final:** migração para produção com build local da imagem Docker, push para Docker Hub e deploy direto na VPS via Docker Compose (aplicação + Caddy como reverse proxy), reduzindo custo e carga de build no servidor.
+Os requisitos e feedbacks da cliente foram intermediados pelo responsável pelo contato. A partir dessas informações, transformei as necessidades levantadas em fluxos, interfaces e funcionalidades da aplicação.
+
+- **Interface:** criação e adaptação dos fluxos e componentes com base nos requisitos e feedbacks recebidos.
+- **Desenvolvimento:** implementação do frontend, backend, banco de dados, autenticação e integrações.
+- **Infraestrutura:** definição do ambiente de execução, containerização e publicação da aplicação em produção.
+
+### Solução
+
+A solução foi dividida em duas áreas principais: um portal público para descoberta e apresentação dos imóveis e um painel administrativo para gerenciamento do catálogo.
+
+Os dois fluxos compartilham a mesma base de dados, mas possuem necessidades e níveis de acesso distintos.
+
+A área pública foi estruturada para facilitar a navegação em diferentes dispositivos, a descoberta dos imóveis, principalmente destacados e exclusivos, e o contato com a corretora.
+
+A área administrativa concentra as informações e operações necessárias para gerenciar o catálogo e os conteúdos exibidos no site.
 
 ### Funcionalidades
 
-- **Área Pública (Portal do Cliente):**
-  - Homepage com hero de impacto, vitrine de imóveis em destaque com carregamento em streaming (skeleton) e WhatsApp flutuante para contato imediato.
-  - Listagem "Oportunidades" com filtros por finalidade (venda/aluguel/temporada), tipo, faixa de preço (incluindo "preço a combinar"), ordenação e paginação.
-  - Página de detalhe do imóvel com galeria de imagens, ficha técnica completa, localização e botão de WhatsApp com mensagem pré-preenchida.
-  - Formulário de contato com assunto dedicado (dúvida, avaliação, compra, aluguel, venda, legalização) e placeholders contextuais por tipo de solicitação.
-  - Política de privacidade (LGPD) e páginas de erro tratadas (404, erro interno, acesso não autorizado).
+#### Área Pública
 
-- **Painel Administrativo (Gestão Interna):**
-  - Login com controle de acesso por papel (ADMIN/EDITOR) e proteção contra força bruta.
-  - Dashboard com KPIs: valor total do portfólio, preço médio por finalidade (Venda, Aluguel, Temporada), distribuição de imóveis por tipo, finalidade e status (Disponíveis, Reservados, Alugados e Vendidos).
-  - Listagem de imóveis com busca por código/título/endereço (com debounce), filtros avançados e paginação.
-  - Cadastro via formulário multi-seção (dados do imóvel, localização com CEP automático via ViaCEP, terreno, cômodos, características, imagens), com flags de Destaque e Exclusivo.
-  - Edição em fluxo de 2 passos (editar → revisar) com visualização das alterações antes de confirmar.
-  - Upload e reordenação de imagens por drag-and-drop, definição de capa e remoção em lote.
-  - Exclusão de imóvel com confirmação e limpeza automática das imagens no Cloudinary.
+- Catálogo de imóveis com filtros e ordenação.
+- Página individual de cada imóvel.
+- Galeria de imagens.
+- Contato por WhatsApp e formulário.
+- SEO por imóvel.
+- Interface Responsiva.
 
-### Informações Técnicas
+#### Painel Administrativo
 
-#### Front-end
-
-**Next.js 16 / Typescript / React 19:** App Router + SSR (SEO Otimizado).  
-**Tailwind CSS 4 / Shadcn**: Design system personalizado e componentes acessíveis.  
-**React Hook Form / Zod**: formulários e validação compartilhada entre camadas.  
-
-#### Back-end
-
-**Supabase (PostgreSQL):** Gerenciamento de banco de dados Row Level Security ativo em todas as tabelas.  
-**Supabase Auth:** Autenticação JWT, revalidação de tokens automática, controle de acesso por papel (RBAC).  
-**Pino:** Logs estruturados.  
-**Segurança:** Rate limit de login com bloqueio por IP e cookie assinado, HTTPS, CSP restrito.  
-
-#### Integrações
-
-**ViaCEP**: Consulta e preenchimento automático de endereço no cadastro do imóvel.  
-**EmailJS**: Contato via e-mail sem SMTP dedicado e continuidade do atendimento sem dependência da plataforma.  
-**Cloudinary**: upload, otimização/conversão automática para WebP/AVIF, deleção em lote e armazenamento de imagens.  
-
-#### Infraestrutura & Deploy
-
-- **Desenvolvimento:** Ferramentas self-hosted (VPS Hetzner + Coolify + Docker + Supabase) para iteração rápida e disponibilidade constante.
-- **Produção:** build local da imagem Docker → push para Docker Hub → deploy via Docker Compose + Caddy (reverse proxy) em VPS dedicada, com Cloudflare para DNS/CDN sem custo mensal de serviços de terceiros (Supabase e Cloudinary em camada gratuita), carga de uso otimizada no servidor e versionamento de imagens facilitando rollback de versões.
+- Autenticação e controle de acesso por perfil.
+- Dashboard com indicadores do catálogo de imóveis.
+- Cadastro, edição e exclusão de imóveis.
+- Busca, filtros e paginação.
+- formulários com validação.
+- Fluxo de revisão antes de alterações importantes.
+- Upload, ordenação, seleção de capa e remoção de imagens.
 
 ### Desafios e Soluções
 
 #### Upload, otimização e armazenamento de imagens sem custo
 
-Solução: Integração com cloudinary configurado com upload presets e presets de transformação que otimizam e convertem dinamicamente os formatos da imagem, otimizando a entrega sem perder a qualidade da imagem com plano gratuito generoso e reset mensal de créditos.
+A plataforma precisava lidar com armazenamento e otimização de pelo menos 30 imagens por imóvel em um cenário de recursos limitados, sem adicionar complexidade extra ao projeto.
+
+Solução: Integração com cloudinary configurado com upload presets e presets de transformação que otimizam e convertem dinamicamente os formatos da imagem, otimizando a entrega mantendo qualidade adequada.
 
 #### Custo e performance de infraestrutura
 
 Builds pesados de Next.js sobrecarregaram a RAM e CPU da VPS de produção quando feitos localmente no servidor via Coolify ou via Docker.
 
-Solução: Separar o build do deploy. A imagem Docker é construída localmente e enviada ao Docker Hub em projeto privado, e a VPS apenas faz `pull` e sobe os containers via Docker Compose, eliminando o consumo de CPU/RAM de build em produção e rodando a aplicação de forma otimizada utilizando em torno de 90 MB de RAM.
+Solução: Separar o build do deploy. O build é publicado com imagem versionada em repositório privado e executado no ambiente de produção. O container, no ambiente observado, utiliza aproximadamente em torno de 90 MB de RAM em execução.
 
-#### Design Inclusivo, Responsivo e Redução de Atrito na Gestão
+#### Painel utilizado por uma pessoa sem perfil técnico
 
-Solução: feedback dos clientes a cada Iteração para adequar a arquitetura da informação e abstração dos termos e regras de negócio para uma interface intuitiva e objetiva com retorno visual das ações. Abordagem mobile-first para garantir funcionamento em telas menores.
+Solução: feedback da cliente por intermédio do responsável a cada iteração para adequar regras de domínio e negócio, organização dos fluxos de cadastro e edição, terminologia simplificada,  retorno e confirmação visual das ações.
 
-#### Arquitetura e padrões x IA
+### Informações Técnicas
 
-Solução: Uso do opencode para aceleração do desenvolvimento com agente orquestrador e sub-agentes (Frontend, Backend e Documentação) com regras, documentação de design tokens, stack, fluxos de funcionalidades e PRD, MCP context7 e LSP para Typescript, skills e instruções específicas criados para o projeto, documentação obrigatória a cada tarefa e revisões de código feita por mim.
+### Front-end
+
+**Next.js, React e TypeScript**  
+Interface pública e painel administrativo com renderização SSR adequada à indexação e organização baseada no App Router.
+
+**Tailwind CSS e Shadcn**  
+Estruturação visual, padronização da interface, agilidade de estilização.
+
+**React Hook Form + Zod**  
+Gerenciamento e validação de formulários, compartilhamento de validação entre camadas.
+
+### Back-end
+
+**Supabase (PostgreSQL)**  
+Gerenciamento de banco de dados, RLS e facilidade na migração das configurações aplicando migrations.  
+
+**Supabase Auth**  
+Autenticação, políticas de acesso, validação e revalidação de sessão e login.
+
+**Pino**  
+Logs estruturados para debug no desenvolvimento e identificação de erros em produção.  
+
+**Segurança**  
+Rate limit de login com bloqueio temporário por IP, RLS aplicado às tabelas, HTTPS.  
+
+### Integrações
+
+**ViaCEP**  
+Consulta de endereço por CEP no cadastro do imóvel.  
+
+**EmailJS**  
+Contato via e-mail sem SMTP dedicado e continuidade do atendimento sem dependência da plataforma imobiliária.  
+
+**Cloudinary**  
+Upload, otimização e transformação e armazenamento de imagens sem custos adicionais dentro do plano gratuito com transição simples, caso seja necessário futuramente.  
+
+### Infraestrutura & Deploy
+
+- Aplicação containerizada e executada em VPS.
+- Ambientes de desenvolvimento e produção separados.
+- Build realizado fora do ambiente de produção e publicado como imagem versionada em repositório privado.
 
 ### Impacto
 
-Entregue como projeto solo, do design à infraestrutura, com escopo de 21 requisitos funcionais implementados, cobrindo site público, painel administrativo com RBAC e gestão completa do catálogo de imóveis.
+Entregue do design à infraestrutura, com escopo cobrindo site público, painel administrativo com RBAC e gestão completa do catálogo de imóveis.
 
-| Frente                    | O que foi entregue                                                                                                                     |
+| Necessidade | O que foi entregue |
 | :------------------------ | :------------------------------------------------------------------------------------------------------------------------------------- |
-| **Conversão de lead**     | Contato direto com a corretora em poucos cliques via WhatsApp, com mensagem pré-preenchida (código + título do imóvel) ou E-mail.      |
-| **Facilidade de gestão**  | Painel administrativo simples e intuitivo, permitindo cadastro, edição e organização de imóveis por uma usuária sem perfil técnico.    |
-| **Autonomia operacional** | Cliente gerencia todo o catálogo (cadastro, edição, destaques) sem suporte técnico.                                                    |
-| **Segurança por padrão**  | RLS ativo em 100% das tabelas, RBAC com dois papéis e proteção contra força bruta no login.                                            |
-| **Custo operacional**     | Zero custo mensal em serviços de terceiros (Supabase e Cloudinary em camada gratuita), único custo fixo é a VPS (Servidor contratado). |
-| **Performance & SEO**     | SSR e metadados dinâmicos por página, imagens otimizadas via CDN (WebP/AVIF) e carregamento em streaming na homepage.                  |
+| **Contato facilitado** | Contato direto com a corretora em poucos cliques via WhatsApp, com mensagem contextualizada ou E-mail. |
+| **Autonomia operacional** | As principais operações do catálogo podem ser realizadas diretamente pelo painel administrativo. |
+| **Controle de Acesso** | RLS ativo em 100% das tabelas, RBAC com dois papéis e proteção contra força bruta no login. |
+| **Custo operacional** | Os serviços auxiliares foram mantidos dentro das camadas gratuitas e os custos recorrentes foram concentrados na infraestrutura principal. |
+| **SEO e Conteúdo** | SSR e metadados dinâmicos por página, imagens otimizadas |
 
 ### Showcase
 

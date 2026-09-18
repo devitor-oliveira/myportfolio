@@ -65,9 +65,10 @@ export const EXPERIENCES: Experience[] = [
     company: "MasterClassic Seguros",
     label: "MasterClassic Seguros (2025-2026)",
     description:
-      "Arquitetura e desenvolvimento da plataforma de integração do Pix Automático com o Banco do Brasil, criação de APIs REST em Node.js/Fastify e interfaces reativas em Next.js. Atuação na modelagem de banco de dados e autenticação com Supabase, orquestração de fluxos de automação e integração de ERPs via N8N, gerenciamento de servidores auto-hospedados (Coolify, Hetzner, Docker) e dicas operacionais no uso de IA.",
+      "Atuação em projetos de transformação digital, com desenvolvimento de APIs, automações e integrações entre sistemas. Entre os principais trabalhos, participei da arquitetura e desenvolvimento da integração do Pix Automático com sistemas internos da empresa.",
     link: "",
   },
+
   {
     value: ExperienceValue.FREELANCE_HELOYSA,
     year: "2026",
@@ -75,27 +76,18 @@ export const EXPERIENCES: Experience[] = [
     company: "Cliente",
     label: "Imobiliária Heloysa Maria",
     description:
-      "Desenvolvimento da plataforma web da corretora Heloysa Maria. Construída com Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS, Supabase (PostgreSQL/Auth) e Cloudinary.",
+      "Desenvolvimento completo de uma plataforma imobiliária, passando por interface, backend, banco de dados, autenticação, segurança e infraestrutura.",
     link: "https://heloysamaria.com.br",
   },
+
   {
     value: ExperienceValue.MASTERCLASSIC_OPS,
     year: "2025",
-    title: "Auxiliar de Operações & Automações",
+    title: "Operações & Automações",
     company: "MasterClassic Seguros",
     label: "",
     description:
-      "Gestão operacional no ERP STAR (movimentação de apólices, faturas, cancelamentos, inclusões e relatórios de comissões/carteira). Criação de automação via Google Planilhas (JS) para envio automatizado de relatórios mensais e suporte técnico (Análise e organização de dados) na migração da base de dados para o ERP LIS. Automações de processos com N8N, Typebot, Zapbot e integração com CRM baseado em Odoo. Gerenciamento de conteúdo e site no Wordpress.",
-    link: "",
-  },
-  {
-    value: ExperienceValue.MASTERMAQ,
-    year: "2022",
-    title: "Assistente Administrativo",
-    company: "Mastermaq Software",
-    label: "Mastermaq Software (2022)",
-    description:
-      "Suporte à implementação da metodologia ágil SCRUM na universidade corporativa, mapeamento, padronização e documentação de processos internos e desenvolvimento de planilhas no Excel para controle de métricas da metodologia.",
+      "Atuação em processos operacionais e automação de rotinas, criando planilhas para relatórios, organização de dados e integração entre sistemas. Essa experiência marcou minha transição da área operacional para desenvolvimento e transformação digital.",
     link: "",
   },
 ];
@@ -109,9 +101,9 @@ export const EXPERIENCE_OPTIONS = [
 const heroCardSocials = ["linkedin", "github", "discord", "email"];
 
 export const heroCardContent: CardProps = {
-  title: "Seja Bem Vindo ao meu Refúgio Digital",
+  title: "Transformo problemas e processos em soluções de software.",
   description:
-    "Desenvolvo aplicações web modernas, desde o design de interfaces intuitivas, funcionais e acessíveis até a construção do back-end, automações e infraestrutura completa, sinta-se à vontade para explorar. ",
+    "Desenvolvo aplicações web, integrações e automações, do entendimento do problema à entrega em produção, considerando o contexto e quem vai utilizar a solução.",
   techstack: [
     "Typescript",
     "React",
