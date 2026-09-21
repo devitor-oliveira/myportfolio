@@ -144,7 +144,3 @@ Entregue do design à infraestrutura, com escopo cobrindo site público, painel 
 ![Homepage da Plataforma Imobiliária](/images/projects/heloysa-maria/home.png) _Legenda: Área pública do site com destaque de imóveis, busca otimizada e design responsivo._
 
 ![Painel Administrativo - Dashboard](/images/projects/heloysa-maria/admin-dashboard.png) _Legenda: Painel de gestão administrativa com métricas do portfólio, controle de imóveis e indicadores._
-
-#### Vídeo Demonstrativo
-
-<div class="video-container"> <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" title="Demonstração da Plataforma Imobiliária" frameborder="0" allowfullscreen></iframe> </div>
