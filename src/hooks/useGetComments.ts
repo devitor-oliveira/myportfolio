@@ -1,27 +1,6 @@
-import useSWR from "swr";
-
-export interface CommentData {
-  name: string;
-  status: string;
-  comment: string;
-  jobtitle: string;
-  postedon: string;
-  experience: string;
-  relationship: string;
-  github?: string;
-  linkedin?: string;
-}
-
-export interface Comment {
-  key: string;
-  data: CommentData;
-}
-
-export interface CommentsApiResponse {
-  total: number;
-  comments: Comment[];
-}
-const WEBHOOK_URL = import.meta.env.PUBLIC_GET_COMMENTS_WEBHOOK_URL;
+import useSWRImmutable from "swr/immutable";
+import { commentsResponseSchema } from '@/lib/commentContracts';
+import type { CommentsApiResponse } from '@/lib/commentContracts';
 
 const fetcher = async (url: string): Promise<CommentsApiResponse> => {
   const res = await fetch(url, {
@@ -34,18 +13,18 @@ const fetcher = async (url: string): Promise<CommentsApiResponse> => {
   if (!res.ok) {
     throw new Error(`Erro na requisição: ${res.status}`);
   }
-  return res.json();
+  const payload: unknown = await res.json();
+  const parsed = commentsResponseSchema.safeParse(payload);
+  if (!parsed.success) throw new Error('Resposta de comentários inválida');
+  return parsed.data;
 };
 
-export function useGetComments(initialData?: CommentsApiResponse) {
-  const { data, error, isLoading, mutate } = useSWR<CommentsApiResponse>(
-    `${WEBHOOK_URL}?action=list`,
+export function useGetComments() {
+  const { data, error, isLoading } = useSWRImmutable<CommentsApiResponse>(
+    "/api/commentsData.json",
     fetcher,
     {
-      fallbackData: initialData,
-      revalidateOnFocus: false,
-      revalidateOnMount: false,
-      dedupingInterval: 5 * 60 * 1000,
+      shouldRetryOnError: false,
     },
   );
 
@@ -58,6 +37,5 @@ export function useGetComments(initialData?: CommentsApiResponse) {
         ? error.message
         : "Erro ao buscar comentários"
       : null,
-    refetch: mutate,
   };
 }

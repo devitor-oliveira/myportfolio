@@ -7,15 +7,6 @@ import AboutCommentsForm from "@/components/AboutCommentsForm";
 import AboutCommentsSection from "@/components/AboutCommentsSection";
 
 import { contato } from "@/lib/siteContent";
-
-import { GET } from "@/pages/api/commentsData.json";
-import type { CommentsApiResponse } from "@/hooks/useGetComments";
-
-// Fetch em build pra evitar layout shift
-let initialComments: CommentsApiResponse;
-const resp = await GET(Astro);
-const commentsData = await resp.json();
-initialComments = commentsData.initialComments;
 ---
 
 <AboutLayout>
@@ -77,7 +68,7 @@ initialComments = commentsData.initialComments;
 					client:load
 				/>
 				<hr class="border-border-muted-alt/60 mb-3 mt-3" />
-				<AboutCommentsSection initialData={initialComments} client:load />
+				<AboutCommentsSection client:load />
 			</div>
 		</section>
 	</main>

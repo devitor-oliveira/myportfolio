@@ -1,0 +1,139 @@
+---
+import { contato } from '@/lib/siteContent';
+import '@/styles/global.css';
+---
+
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<meta
+			name="description"
+			content="Termos de uso do portfólio de Vitor Hugo e orientações para envio de comentários."
+		/>
+		<title>Termos de uso | Vitor Hugo</title>
+	</head>
+	<body
+		class="min-h-screen pt-26 pb-12 md:px-4 p-2.5 mx-auto w-full h-full font-body max-w-2xl text-text-main"
+	>
+		<header class="flex flex-col gap-4">
+			<nav aria-label="Navegação da página" class="text-body-sm">
+				<a class="text-primary underline underline-offset-4" href="/about/">
+					Voltar para Sobre mim
+				</a>
+			</nav>
+			<h1 class="font-display text-h3">Termos de uso</h1>
+			<p class="text-body-sm md:text-body text-text-main/90">
+				Este portfólio apresenta meu trabalho, experiências e projetos e oferece
+				um espaço para comentários na página Sobre mim.
+			</p>
+			<p class="text-caption text-text-muted">Última revisão: 24 de setembro de 2026.</p>
+		</header>
+		<main class="flex flex-col gap-8 mt-8 text-body-sm md:text-body">
+			<section aria-labelledby="uso" class="flex flex-col gap-2">
+				<h2 id="uso" class="font-display text-lead">Uso do site</h2>
+				<p>
+					Você pode consultar as informações publicadas, acessar projetos,
+					entrar em contato por e-mail e enviar comentários. O conteúdo do
+					portfólio tem finalidade informativa e profissional.
+				</p>
+			</section>
+			<section aria-labelledby="comentarios" class="flex flex-col gap-2">
+				<h2 id="comentarios" class="font-display text-lead">Comentários</h2>
+				<p>
+					O envio é voluntário. Os comentários são avaliados manualmente, podem
+					ser recusados e não têm publicação garantida. Um comentário publicado
+					pode ser retirado posteriormente. Envie apenas informações que você
+					tenha direito de compartilhar; você é responsável pelo conteúdo enviado.
+				</p>
+			</section>
+			<section aria-labelledby="condutas" class="flex flex-col gap-2">
+				<h2 id="condutas" class="font-display text-lead">Condutas não permitidas</h2>
+				<p>
+					Não use o formulário para spam, conteúdo ilícito ou ofensivo, falsidade
+					de identidade, divulgação não autorizada de dados de terceiros ou
+					abuso do site e de suas funcionalidades.
+				</p>
+			</section>
+			<section aria-labelledby="dados" class="flex flex-col gap-2">
+				<h2 id="dados" class="font-display text-lead">Dados pessoais</h2>
+				<p>
+					Para entender como são tratados os dados enviados por comentário ou
+					e-mail, consulte a <a
+						class="text-primary underline underline-offset-4"
+						href="/privacidade/">Política de privacidade</a
+					>.
+				</p>
+			</section>
+			<section aria-labelledby="conteudo" class="flex flex-col gap-2">
+				<h2 id="conteudo" class="font-display text-lead">Conteúdo e autoria</h2>
+				<p>
+					Salvo quando indicado de outra forma, os textos, códigos, imagens,
+					elementos visuais, identidade gráfica, design, estrutura e demais
+					conteúdos originais deste portfólio são de minha autoria e estão
+					sujeitos à legislação aplicável de propriedade intelectual.
+				</p>
+				<p>
+					Conteúdos de terceiros, incluindo citações, imagens, marcas,
+					bibliotecas, códigos, referências e outros materiais utilizados no site,
+					permanecem de propriedade de seus respectivos titulares e estão sujeitos
+					às licenças, termos de uso ou condições aplicáveis. A inclusão desses
+					materiais não implica reivindicação de autoria ou propriedade sobre eles.
+				</p>
+				<p>
+					Conteúdos pertencentes ao domínio público poderão ser utilizados
+					conforme permitido pela legislação, com indicação de autoria ou fonte
+					quando aplicável. Quando projetos ou trechos de código estiverem
+					disponibilizados publicamente sob uma licença específica, prevalecerão
+					os termos dessa licença.
+				</p>
+			</section>
+			<section aria-labelledby="licenca" class="flex flex-col gap-2">
+				<h2 id="licenca" class="font-display text-lead">Licença do código</h2>
+				<p>
+					O código-fonte deste projeto é disponibilizado sob a licença MIT,
+					salvo quando indicado de outra forma. Essa licença não abrange textos,
+					imagens, identidade visual, design, informações pessoais, depoimentos
+					nem outros conteúdos autorais do portfólio. Materiais de terceiros
+					permanecem sujeitos às respectivas licenças e condições de uso.
+				</p>
+			</section>
+			<section aria-labelledby="links" class="flex flex-col gap-2">
+				<h2 id="links" class="font-display text-lead">Links externos</h2>
+				<p>
+					Links para perfis, repositórios e outros sites levam a serviços
+					independentes. Consulte os termos e políticas desses destinos ao
+					acessá-los.
+				</p>
+			</section>
+			<section aria-labelledby="disponibilidade" class="flex flex-col gap-2">
+				<h2 id="disponibilidade" class="font-display text-lead">Disponibilidade e alterações</h2>
+				<p>
+					O conteúdo e as funcionalidades podem mudar ou ficar temporariamente
+					indisponíveis. Estes termos também podem ser atualizados; a data da
+					revisão será indicada nesta página, sem prejuízo dos direitos previstos
+					em lei.
+				</p>
+			</section>
+			<section aria-labelledby="contato" class="flex flex-col gap-2">
+				<h2 id="contato" class="font-display text-lead">Contato</h2>
+				<p>
+					Para dúvidas ou pedidos de correção ou remoção de comentários, escreva
+					para <a
+						class="text-primary underline underline-offset-4 break-all"
+						href={`mailto:${contato.email}`}>{contato.email}</a
+					>.
+				</p>
+			</section>
+		</main>
+		<footer class="mt-10 pt-6 border-t border-border-muted-alt text-body-sm">
+			<nav aria-label="Páginas relacionadas" class="flex flex-wrap gap-4">
+				<a class="text-primary underline underline-offset-4" href="/privacidade/">Política de privacidade</a>
+				<a class="text-primary underline underline-offset-4" href="/about/">Sobre mim</a>
+			</nav>
+		</footer>
+	</body>
+</html>

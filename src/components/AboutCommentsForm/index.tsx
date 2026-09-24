@@ -148,7 +148,7 @@ function CommentPanel({
               Comentário enviado
             </p>
             <p className="max-w-sm text-body-sm text-text-muted">
-              Obrigado! Ele ficará visível na página assim que for revisado.
+              Obrigado! Se aprovado, poderá aparecer nesta página.
             </p>
             <div className="mt-2 flex gap-2">
               <Button
@@ -337,7 +337,7 @@ function CommentPanel({
                         onChange={(e) =>
                           updateField("linkedin", e.target.value)
                         }
-                        placeholder="Ex: linkedin.com/in/maria-silva"
+                        placeholder="Ex: maria-silva ou linkedin.com/in/maria-silva"
                         maxLength={120}
                       />
                       <InputGroupAddon align="inline-start">
@@ -360,7 +360,7 @@ function CommentPanel({
                         id={githubId}
                         value={formData.github}
                         onChange={(e) => updateField("github", e.target.value)}
-                        placeholder="Ex: github.com/maria-silva"
+                        placeholder="Ex: maria-silva ou github.com/maria-silva"
                         maxLength={120}
                       />
                       <InputGroupAddon align="inline-start">
@@ -421,6 +421,25 @@ function CommentPanel({
                   </span>
                 </FieldError>
               )}
+
+              <p className="text-caption text-text-muted">
+                Se aprovado, seu comentário e as informações de perfil que você
+                informar poderão aparecer publicamente nesta página. Veja a{" "}
+                <a
+                  href="/privacidade/"
+                  className="text-primary underline underline-offset-4 hover:text-brand-hover"
+                >
+                  Política de privacidade
+                </a>{" "}
+                e os{" "}
+                <a
+                  href="/termos/"
+                  className="text-primary underline underline-offset-4 hover:text-brand-hover"
+                >
+                  Termos de uso
+                </a>
+                .
+              </p>
 
               <motion.div variants={fieldVariants} className="flex gap-3">
                 <Button

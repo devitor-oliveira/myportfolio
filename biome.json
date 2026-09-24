@@ -13,6 +13,7 @@
 		}
 	},
 	"vcs": {
+		"enabled": true,
 		"clientKind": "git",
 		"useIgnoreFile": true
 	},
@@ -54,7 +55,17 @@
 		{
 			"includes": ["**/*.astro"],
 			"linter": {
-				"enabled": true
+				"enabled": true,
+				"rules": {
+					"style": {
+						"useConst": "off",
+						"useImportType": "off"
+					},
+					"correctness": {
+						"noUnusedVariables": "off",
+						"noUnusedImports": "off"
+					}
+				}
 			},
 			"formatter": {
 				"enabled": true

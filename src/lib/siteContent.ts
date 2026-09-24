@@ -1,6 +1,10 @@
 import type { CardProps } from "@/components/Card/HeroCard.astro";
 import type { socialItem } from "@/components/ui/SocialLink";
 
+export const contato = {
+  email: "contato.hugodev@gmail.com",
+};
+
 export const SocialLinks: Record<string, socialItem[]> = {
   linkedin: [
     {
@@ -26,14 +30,10 @@ export const SocialLinks: Record<string, socialItem[]> = {
   email: [
     {
       icon: "mdi:mailbox",
-      link: "mailto:contato.dev@gmail.com",
+      link: `mailto:${contato.email}`,
       tooltipValue: "Enviar E-mail",
     },
   ],
-};
-
-export const contato = {
-  email: "contato.dev@gmail.com",
 };
 
 // About

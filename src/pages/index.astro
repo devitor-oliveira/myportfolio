@@ -7,6 +7,7 @@ import TerminalHero from "@/components/TerminalHero";
 import HeroContentWrapper from "@/components/HeroContentWrapper";
 import { heroCardContent } from "@/lib/siteContent";
 import ProjectsList from "@/components/ProjectsList/ProjectsList.astro";
+import Footer from "@/components/Footer/Footer.astro";
 
 const { title, description, socials, techstack } = heroCardContent;
 ---
@@ -36,4 +37,7 @@ const { title, description, socials, techstack } = heroCardContent;
 			</ContentClient>
 		</section>
 	</main>
+	<div class="max-w-7xl mx-auto px-2 md:px-4">
+		<Footer />
+	</div>
 </Layout>

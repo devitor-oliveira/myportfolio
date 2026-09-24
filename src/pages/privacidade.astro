@@ -1,0 +1,142 @@
+---
+import { contato } from '@/lib/siteContent';
+import '@/styles/global.css';
+---
+
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<meta
+			name="description"
+			content="Como os dados enviados por contato e comentários são tratados no portfólio de Vitor Hugo."
+		/>
+		<title>Política de privacidade | Vitor Hugo</title>
+	</head>
+	<body
+		class="min-h-screen pt-26 pb-12 md:px-4 p-2.5 mx-auto w-full h-full font-body max-w-2xl text-text-main"
+	>
+		<header class="flex flex-col gap-4">
+			<nav aria-label="Navegação da página" class="text-body-sm">
+				<a class="text-primary underline underline-offset-4" href="/about/">
+					Voltar para Sobre mim
+				</a>
+			</nav>
+			<h1 class="font-display text-h3">Política de privacidade</h1>
+			<p class="text-body-sm md:text-body text-text-main/90">
+				Esta política explica como são tratados os dados informados ao entrar em
+				contato ou enviar um comentário neste portfólio.
+			</p>
+			<p class="text-caption text-text-muted">Última revisão: 24 de setembro de 2026.</p>
+		</header>
+		<main class="flex flex-col gap-8 mt-8 text-body-sm md:text-body">
+			<section aria-labelledby="responsavel" class="flex flex-col gap-2">
+				<h2 id="responsavel" class="font-display text-lead">Responsável</h2>
+				<p>
+					Vitor Hugo, pessoa física responsável pelo portfólio, é o contato para
+					assuntos de privacidade: <a
+						class="text-primary underline underline-offset-4 break-all"
+						href={`mailto:${contato.email}`}>{contato.email}</a
+					>.
+				</p>
+			</section>
+			<section aria-labelledby="dados" class="flex flex-col gap-2">
+				<h2 id="dados" class="font-display text-lead">Dados e finalidades</h2>
+				<p>
+					Para enviar um comentário, você informa nome, comentário e a experiência
+					à qual ele se refere. Cargo, relação comigo e perfis do LinkedIn e
+					GitHub são opcionais. A data e a hora do envio são geradas pelo site.
+					Esses dados são usados para receber e moderar o comentário e, quando
+					aprovado, publicá-lo na página <a
+						class="text-primary underline underline-offset-4"
+						href="/about/">Sobre mim</a
+					>.
+				</p>
+				<p>
+					Se você escrever para o e-mail de contato, as informações que incluir
+					na mensagem serão usadas para responder à sua solicitação.
+				</p>
+			</section>
+			<section aria-labelledby="publicacao" class="flex flex-col gap-2">
+				<h2 id="publicacao" class="font-display text-lead">Moderação e publicação</h2>
+				<p>
+					Os comentários passam por análise manual. O envio não garante
+					publicação. Se aprovados, poderão aparecer publicamente o nome, o
+					comentário, a data, a experiência selecionada e os dados opcionais
+					informados. Um comentário publicado pode ser retirado posteriormente,
+					inclusive a pedido de quem o enviou.
+				</p>
+			</section>
+			<section aria-labelledby="servicos" class="flex flex-col gap-2">
+				<h2 id="servicos" class="font-display text-lead">Serviços externos</h2>
+				<p>
+					A Vercel hospeda o site e disponibiliza os comentários aprovados. O
+					Make recebe e armazena os comentários e auxilia na automação da
+					moderação. O Discord é utilizado para as notificações dessa moderação.
+					O contato por e-mail também envolve o serviço de e-mail utilizado
+					pelas partes.
+				</p>
+			</section>
+			<section aria-labelledby="retencao" class="flex flex-col gap-2">
+				<h2 id="retencao" class="font-display text-lead">Conservação e exclusão</h2>
+				<p>
+					Não há prazo fixo de conservação dos comentários, publicados ou não.
+					A exclusão é realizada manualmente mediante solicitação pelo e-mail
+					indicado nesta política, observadas eventuais hipóteses legais de
+					conservação. Após a retirada de um comentário público, pode haver um
+					breve tempo técnico para a atualização do conteúdo exibido. Serviços
+					externos podem manter registros conforme suas próprias práticas.
+				</p>
+			</section>
+			<section aria-labelledby="armazenamento" class="flex flex-col gap-2">
+				<h2 id="armazenamento" class="font-display text-lead">Navegação e segurança</h2>
+				<p>
+					Os comentários não são guardados no armazenamento local do seu
+					navegador pelo site. O código do portfólio não inclui ferramentas
+					próprias de publicidade ou análise de comportamento. São adotadas
+					medidas compatíveis com o funcionamento do site para limitar a
+					publicação aos comentários aprovados, sem garantia de segurança absoluta.
+				</p>
+			</section>
+			<section aria-labelledby="direitos" class="flex flex-col gap-2">
+				<h2 id="direitos" class="font-display text-lead">Seus direitos</h2>
+				<p>
+					Nos termos da LGPD, você pode solicitar confirmação do tratamento,
+					acesso e correção dos seus dados, informações sobre compartilhamento e,
+					quando aplicável, anonimização, bloqueio, eliminação ou oposição ao
+					tratamento. Você também pode peticionar perante a ANPD. Para exercer
+					seus direitos ou pedir a remoção de um comentário, escreva para <a
+						class="text-primary underline underline-offset-4 break-all"
+						href={`mailto:${contato.email}`}>{contato.email}</a
+					>. Poderão ser solicitadas informações necessárias para confirmar a
+					titularidade do pedido.
+				</p>
+			</section>
+			<section aria-labelledby="links" class="flex flex-col gap-2">
+				<h2 id="links" class="font-display text-lead">Links externos</h2>
+				<p>
+					Ao acessar perfis, projetos ou outros links para sites de terceiros,
+					consulte as políticas desses serviços. O tratamento realizado por eles
+					não é controlado por este portfólio.
+				</p>
+			</section>
+			<section aria-labelledby="alteracoes" class="flex flex-col gap-2">
+				<h2 id="alteracoes" class="font-display text-lead">Alterações</h2>
+				<p>
+					Esta política poderá ser atualizada caso o funcionamento do site ou
+					os serviços utilizados mudem. A data de revisão será indicada nesta
+					página.
+				</p>
+			</section>
+		</main>
+		<footer class="mt-10 pt-6 border-t border-border-muted-alt text-body-sm">
+			<nav aria-label="Páginas relacionadas" class="flex flex-wrap gap-4">
+				<a class="text-primary underline underline-offset-4" href="/termos/">Termos de uso</a>
+				<a class="text-primary underline underline-offset-4" href="/about/">Sobre mim</a>
+			</nav>
+		</footer>
+	</body>
+</html>

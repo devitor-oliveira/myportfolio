@@ -1,9 +1,6 @@
 import { useState } from "react";
-import {
-  useGetComments,
-  type CommentsApiResponse,
-} from "@/hooks/useGetComments";
-import { formatDate, localStorageProvider } from "@/lib/utils";
+import { useGetComments } from "@/hooks/useGetComments";
+import { formatDate } from "@/lib/utils";
 import { Icon } from "@iconify/react";
 import {
   Tooltip,
@@ -11,25 +8,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { SWRConfig } from "swr";
-
-interface Props {
-  initialData: CommentsApiResponse;
-}
 
 const COMMENT_LONG_LENGTH = 200;
-
-function normalizeLinkedinUrl(value: string): string {
-  if (value.startsWith("http")) return value;
-  if (value.includes("linkedin.com")) return `https://${value}`;
-  return `https://linkedin.com/in/${value.replace(/^\/+/, "")}`;
-}
-
-function normalizeGithubUrl(value: string): string {
-  if (value.startsWith("http")) return value;
-  if (value.includes("github.com")) return `https://${value}`;
-  return `https://github.com/${value.replace(/^\/+/, "")}`;
-}
 
 const TOOLTIP_CONTENT_CLASS =
   "max-w-65 break-all bg-surface-container-high text-text-main border border-border-muted [&_polygon]:fill-surface-container-high";
@@ -67,31 +47,33 @@ function getTimelineDotStyle(index: number, total: number): TimelineDotStyle {
   };
 }
 
-function AboutCommentsSection({ initialData }: Props) {
+function AboutCommentsSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [expandedKey, setExpandedKey] = useState<string | null>(null);
 
-  const { comments, total, loading } = useGetComments(initialData);
+  const { comments, total, loading, error } = useGetComments();
 
   return (
-    <SWRConfig
-      value={{ provider: localStorageProvider, dedupingInterval: 60000 }}
-    >
       <TooltipProvider>
         <article className="flex h-full w-full flex-col gap-6">
           <div className="flex items-center justify-between">
-            <h4 className="font-display text-body md:text-[18px] capitalize text-text-main/95">
+            <h3 className="font-display text-body md:text-[18px] capitalize text-text-main/95">
               comentários, depoimentos & recomendações
-            </h4>
+            </h3>
             <span className="min-w-fit font-detail text-[10px] md:text-caption uppercase text-text-muted">
-              {total} registrados
+              {!loading && !error && `${total} registrados`}
             </span>
           </div>
 
-          {loading && comments.length === 0 ? (
-            <div className="flex items-center justify-center p-8 text-text-muted">
-              <Icon icon="mdi:loading" className="w-6 h-6 animate-spin" />
+          {loading ? (
+            <div role="status" className="flex items-center justify-center gap-2 p-8 text-text-muted">
+              <Icon icon="mdi:loading" className="w-6 h-6 animate-spin" aria-hidden="true" />
+              Carregando comentários...
             </div>
+          ) : error ? (
+            <p role="alert" className="rounded-lg border border-border-muted p-8 text-center text-body-sm text-text-main">
+              Não foi possível carregar os comentários agora. Tente novamente mais tarde.
+            </p>
           ) : comments.length > 0 ? (
             <div className="group/cards relative flex h-full w-full flex-col gap-10 pl-6 sm:pl-8">
               <span
@@ -106,12 +88,8 @@ function AboutCommentsSection({ initialData }: Props) {
                 const isLong =
                   comment.data.comment.length > COMMENT_LONG_LENGTH;
 
-                const linkedinUrl = comment.data.linkedin
-                  ? normalizeLinkedinUrl(comment.data.linkedin)
-                  : null;
-                const githubUrl = comment.data.github
-                  ? normalizeGithubUrl(comment.data.github)
-                  : null;
+                const linkedinUrl = comment.data.linkedin || null;
+                const githubUrl = comment.data.github || null;
 
                 return (
                   <article
@@ -276,7 +254,6 @@ function AboutCommentsSection({ initialData }: Props) {
           )}
         </article>
       </TooltipProvider>
-    </SWRConfig>
   );
 }
 

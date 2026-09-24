@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { ExperienceValue } from "@/lib/siteContent";
-import { mutate } from "swr";
+import { commentCreatedSchema, type CommentInput } from '@/lib/commentContracts';
+import { normalizeProfileUrl } from '@/lib/profileUrl';
 
 export interface CommentFormData {
   name: string;
@@ -12,21 +13,8 @@ export interface CommentFormData {
   linkedin: string;
 }
 
-export interface WebhookCommentPayload {
-  name: string;
-  comment: string;
-  relationship: string;
-  jobtitle: string;
-  experience: ExperienceValue;
-  postedon: string;
-  github: string;
-  linkedin: string;
-}
-
 type Status = "idle" | "loading" | "success" | "error";
 
-const WEBHOOK_URL = import.meta.env.PUBLIC_COMMENTS_WEBHOOK_URL as string;
-const COMMENTS_KEY = `${import.meta.env.PUBLIC_GET_COMMENTS_WEBHOOK_URL}?action=list`;
 const MESSAGE_MAX_LENGTH = 500;
 const REQUEST_TIMEOUT_MS = 8000;
 
@@ -96,33 +84,38 @@ export function useAboutComments() {
       return;
     }
 
-    if (!WEBHOOK_URL) {
-      setStatus("error");
-      setErrorMessage(
-        "Erro no envio do formulário, tente novamente mais tarde.",
-      );
+    const linkedin = normalizeProfileUrl(formData.linkedin, 'linkedin');
+    if (linkedin === null) {
+      setStatus('error');
+      setErrorMessage('Informe o usuário ou o link do seu perfil no LinkedIn.');
+      return;
+    }
+
+    const github = normalizeProfileUrl(formData.github, 'github');
+    if (github === null) {
+      setStatus('error');
+      setErrorMessage('Informe o usuário ou o link do seu perfil no GitHub.');
       return;
     }
 
     setStatus("loading");
     setErrorMessage("");
 
-    const payload: WebhookCommentPayload = {
+    const payload: CommentInput = {
       name,
       comment,
       relationship: sanitizeText(formData.relationship),
       jobtitle: sanitizeText(formData.jobtitle),
       experience: formData.experience,
-      postedon: new Date().toISOString(),
-      github: sanitizeText(formData.github),
-      linkedin: sanitizeText(formData.linkedin),
+      github,
+      linkedin,
     };
 
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
     try {
-      const response = await fetch(WEBHOOK_URL, {
+      const response = await fetch("/api/comments.json", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -131,9 +124,12 @@ export function useAboutComments() {
 
       clearTimeout(timeoutId);
 
-      if (!response.ok) throw new Error(`Webhook respondeu ${response.status}`);
+      if (!response.ok) throw new Error(`Erro no envio: ${response.status}`);
 
-      await mutate(COMMENTS_KEY);
+      const result: unknown = await response.json();
+      if (!commentCreatedSchema.safeParse(result).success) {
+        throw new Error("Resposta inválida no envio");
+      }
 
       setStatus("success");
       setFormData(EMPTY_FORM_DATA);
@@ -146,7 +142,6 @@ export function useAboutComments() {
           "Tempo limite excedido. Verifique sua conexão e tente novamente.",
         );
       } else {
-        console.log(`Error: ${error}`);
         setErrorMessage(
           "Não foi possível enviar agora. Tente novamente em instantes.",
         );
