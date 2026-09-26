@@ -46,11 +46,21 @@ const { Content } = await render(project);
 			<div class="flex flex-col gap-3 mt-4 md:mt-0">
 				{/* Linha 1: data + links — altura fixa, nunca reflui */}
 				<div class="flex items-center justify-between gap-4">
-					<time
-						class="text-body-sm uppercase text-on-surface-variant leading-6 shrink-0"
-					>
-						{formatDate(project.data.year, false, false)}
-					</time>
+					<span class="flex gap-4">
+						<time
+							class="text-body-sm uppercase text-on-surface-variant leading-6 shrink-0"
+						>
+							{formatDate(project.data.year, false, false)}
+						</time>
+						{
+							project.data.yearEnd ? (
+								<span>/</span>
+								<time class="text-body-sm uppercase text-on-surface-variant leading-6 shrink-0">
+									{formatDate(project.data.yearEnd, false, false)}
+								</time>
+							) : null
+						}
+					</span>
 
 					<div class="flex items-center gap-4 shrink-0">
 						{

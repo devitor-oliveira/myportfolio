@@ -19,10 +19,17 @@ const blog = defineCollection({
 const projects = defineCollection({
   loader: glob({ base: "./src/content/projects", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
-    type: z.enum(["personal", "professional", "open-source", "freelance"]),
+    type: z.enum([
+      "pessoal",
+      "profissional",
+      "open-source",
+      "freelance",
+      "corporativo",
+    ]),
     title: z.string(),
     description: z.string(),
     year: z.coerce.date(),
+    yearEnd: z.coerce.date().optional(),
     // update: z.coerce.date().optional(),
     liveURL: z.string().optional(),
     repositoryURL: z.string().optional(),

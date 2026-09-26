@@ -8,6 +8,7 @@ interface ProjectCardProps {
 	title: string;
 	description: string;
 	year: string;
+	yearEnd?: string;
 	// update?: Date;
 	tags?: string[];
 	liveURL?: string;
@@ -22,6 +23,7 @@ const {
 	title,
 	description,
 	year,
+	yearEnd,
 	tags,
 	liveURL,
 	repositoryURL,
@@ -43,11 +45,20 @@ const {
 				<a target="_blank" href={`/projects/${slug}`}>{title}</a>
 			</h2>
 			{
-				year ? (
+				yearEnd ? (
+					<span class="flex flex-col md:flex-row md:gap-1">
+						<time class="text-text-muted text-detail" datetime={year}>
+							{year}
+						</time>
+						<time class="text-text-muted text-detail" datetime={yearEnd}>
+							{yearEnd}
+						</time>
+					</span>
+				) : (
 					<time class="text-text-muted text-detail" datetime={year}>
 						{year}
 					</time>
-				) : null
+				)
 			}
 		</div>
 	</header>
