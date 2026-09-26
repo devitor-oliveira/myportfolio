@@ -134,9 +134,7 @@ Além de preservar o contexto correto das operações, essa distinção era impo
 
 Alguns eventos exigiam consultas, correlação de informações e ações em outros sistemas. Executar todas essas responsabilidades durante o recebimento das notificações aumentaria o acoplamento dos fluxos e dificultaria o tratamento de falhas.
 
-Por isso, estruturei um processamento assíncrono baseado em uma fila persistida no banco de dados. As notificações eram classificadas e registradas para processamento posterior, enquanto workflows especializados assumiam as tarefas de acordo com o contexto de cada evento.
-
-Também implementei controle de estado e reserva das tarefas durante o processamento, permitindo identificar operações concluídas, falhas e situações que deveriam ser processadas novamente.
+Por isso, estruturei o processamento de forma assíncrona, com fila persistida e controle de estado, com suporte ao reprocessamento em situações de falha, separando o recebimento dos eventos das etapas responsáveis por seu tratamento.
 
 Essa separação desacoplou o recebimento das regras posteriores e tornou possível acompanhar e reprocessar as operações sem concentrar toda a lógica no fluxo de entrada.
 
@@ -184,7 +182,7 @@ Durante o desenvolvimento, utilizei o Postman para organizar requisições, repr
 
 Além do desenvolvimento das integrações, também participei da publicação e operação das aplicações em ambiente self-hosted.
 
-Utilizei Docker e Docker Compose para containerização dos serviços e Coolify para gerenciamento e deploy em VPS, incluindo componentes como a API e serviços utilizados pelas automações.
+Utilizei Docker e ferramentas de gerenciamento de aplicações em ambiente self-hosted, para publicação de componentes como a API e serviços utilizados pelas automações.
 
 Também contribuí para a documentação desse processo de publicação, buscando tornar a manutenção das aplicações mais consistente para a realidade da equipe.
 
