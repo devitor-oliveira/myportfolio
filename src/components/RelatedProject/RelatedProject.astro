@@ -1,0 +1,81 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	title: string;
+	description: string;
+	href: string;
+}
+
+const { title, description, href } = Astro.props;
+---
+
+<aside class="not-prose my-8" aria-label="Projeto relacionado">
+	<a
+		href={href}
+		target="_blank"
+		rel="noreferrer"
+		class="group
+			block
+			border-l
+			border-outline-variant
+			py-3
+			pl-5
+			no-underline
+			transition-colors
+			duration-200
+			hover:border-primary
+			focus-visible:outline-none
+			focus-visible:border-primary
+			focus-visible:ring-2
+			focus-visible:ring-primary/40
+			focus-visible:ring-offset-4
+			focus-visible:ring-offset-bg-main
+			active:border-primary
+			md:pl-6"
+	>
+		<span
+			class="mb-2
+				flex
+				items-center
+				gap-2
+				font-detail
+				text-detail
+				uppercase
+				tracking-wider
+				text-on-surface-variant"
+		>
+			Projeto relacionado
+
+			<Icon
+				name="mdi:open-in-new"
+				aria-hidden="true"
+				class="size-4
+					text-primary"
+			/>
+		</span>
+
+		<h3
+			class="font-body
+				text-lead
+				font-medium
+				text-text-main
+				transition-colors
+				duration-200
+				group-hover:text-primary"
+		>
+			{title}
+		</h3>
+
+		<p
+			class="mt-1
+				font-body
+				text-body-sm
+				leading-relaxed
+				text-on-surface-variant
+				md:text-body"
+		>
+			{description}
+		</p>
+	</a>
+</aside>
