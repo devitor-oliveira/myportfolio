@@ -1,0 +1,80 @@
+---
+type: corporativo
+title: Plataforma Interna de Documentação e Validação
+description: Ferramenta criada para apoiar diferentes áreas na compreensão, demonstração e validação das jornadas de uma nova integração de pagamentos.
+year: "2026-10-1"
+tags:
+  - nextjs
+  - typescript
+  - supabase
+  - v0
+  - codex
+  - react
+---
+
+import RelatedProject from '@/components/RelatedProject/RelatedProject.astro';
+
+## Visão geral
+
+Durante a adoção da integração de pagamentos recorrentes, áreas distintas da empresa precisavam compreender como a nova opção de pagamento funcionaria em diferentes cenários e processos, quais informações estariam disponíveis e quais possibilidades a integração passaria a oferecer.
+
+Ao mesmo tempo, os sistemas que utilizariam essas informações ainda estavam sendo desenvolvidos.
+
+A partir desse cenário, desenvolvi uma plataforma interna para centralizar documentação, demonstrar as jornadas e permitir a validação prática da integração. A ferramenta também tornava visível o progresso funcional da solução e servia como referência para explorar formas de apresentar e organizar essas informações nas aplicações que estavam sendo desenvolvidas.
+
+> Este é um projeto corporativo. Informações, dados, regras de negócio e detalhes da integração foram omitidos ou abstraídos.
+
+---
+
+## Contexto
+
+As necessidades variavam conforme a área.
+
+Equipes mais próximas do atendimento precisavam compreender os principais conceitos e cenários das novas jornadas para orientar clientes. Já as áreas ligadas aos processos de cobrança e acompanhamento financeiro precisavam entender com maior profundidade as informações geradas pelas operações e como elas poderiam ser apresentadas e utilizadas nos sistemas internos.
+
+Os colegas de equipe responsáveis pelas demais aplicações também precisavam compreender as capacidades da integração e validar como seus sistemas poderiam utilizá-las.
+
+---
+
+## Meu papel
+
+Tomei a iniciativa de propor uma ferramenta que reunisse essas necessidades em um único ambiente.
+
+Criei o protótipo inicial com v0 e continuei o desenvolvimento em Next.js e TypeScript, utilizando Codex como apoio na implementação das integrações e dos cenários de teste.
+
+Como a principal necessidade era tornar a solução compreensível para públicos com diferentes níveis de conhecimento técnico, mantive a implementação simples e focada na demonstração prática das jornadas, com as informações bem organizadas.
+
+A aplicação concentrava-se em:
+
+- Documentação das jornadas e conceitos necessários às equipes.
+- Formulários para executar cenários controlados da integração.
+- Validação das rotas e comportamentos disponibilizados pela API.
+- Acesso restrito por autenticação com contas previamente cadastradas.
+
+O objetivo não era substituir os sistemas finais, mas fornecer uma referência prática enquanto eles ainda estavam sendo desenvolvidos.
+
+---
+
+## Da documentação aos testes
+
+A plataforma começou como uma forma de organizar e apresentar o conhecimento sobre o novo meio de pagamento.
+
+Conforme a integração evoluiu, adicionei formulários que permitiam executar as jornadas em ambiente controlado e observar o comportamento da solução sem depender das interfaces finais. Além de consultas conforme as demandas de outras equipes.
+
+Isso permitia utilizar a mesma ferramenta tanto para explicar as possibilidades da integração às áreas envolvidas quanto para reproduzir cenários e apoiar sua validação durante o desenvolvimento.
+
+---
+
+## Resultado
+
+A plataforma criou uma referência comum para um projeto que envolvia diferentes áreas e sistemas em desenvolvimento paralelo.
+
+As equipes de negócio passaram a compreender melhor como o novo meio de pagamento se encaixaria em seus processos, quais informações estariam disponíveis e quais etapas seriam automatizadas.
+
+Ao mesmo tempo, os colegas de equipe podiam utilizar os cenários da plataforma para demonstrar e validar o comportamento da integração sem depender diretamente das aplicações consumidoras.
+
+<RelatedProject
+  title="Integração de Pagamentos Recorrentes"
+  href="/projects/integracaopagamentorec"
+  description="Veja o estudo de caso da integração utilizada pela plataforma."
+/>
