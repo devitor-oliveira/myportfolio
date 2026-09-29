@@ -1,6 +1,10 @@
 ---
-import ClickSpark from "@/components/ui/clickspark";
-import "../styles/global.css";
+import SEO from '@/components/SEO/SEO.astro';
+import ClickSpark from '@/components/ui/clickspark';
+import type { SEOProps } from '@/lib/seo';
+import '../styles/global.css';
+
+interface Props extends SEOProps {}
 ---
 
 <!doctype html>
@@ -10,7 +14,7 @@ import "../styles/global.css";
 		<meta name="viewport" initial-scale="1.0" content="width=device-width" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Projeto | {Astro.props.title}</title>
+		<SEO {...Astro.props} />
 	</head>
 
 	<body class="min-h-screen py-12 mb-16 w-full mx-auto font-body bg-surface">
