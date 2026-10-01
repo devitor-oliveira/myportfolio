@@ -4,8 +4,8 @@ title: Plataforma Imobiliária Heloysa Maria
 description: Site para gestão de imóveis, com portal público, painel administrativo e foco em autonomia operacional.
 seoTitle: "Plataforma Imobiliária: Implementação Técnica"
 seoDescription: "Plataforma web para gestão de imóveis, com portal público, painel administrativo, integrações e SEO."
-ogImage: /og/projects/imobiliaria-implementacao-v3.png
-ogImageAlt: "Capa sobre plataforma imobiliária, gestão de imóveis, autenticação e SEO, com blocos ilustrados de Portal e Painel e o domínio vitorhugodev.com."
+ogImage: /og/projects/imobiliaria-implementacao-v4.png
+ogImageAlt: "Capa sobre plataforma imobiliária, com o subtítulo Portal · painel administrativo · integrações, blocos ilustrados de Portal e Painel e o domínio vitorhugodev.com."
 year: 2026-08-30
 liveURL: https://heloysamaria.com.br
 tags:

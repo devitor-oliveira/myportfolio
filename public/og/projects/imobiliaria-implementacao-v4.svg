@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="titulo descricao">
-	<title id="titulo">Plataforma imobiliária — Gestão de imóveis, autenticação e SEO</title>
-	<desc id="descricao">Capa de projeto com ícones de casa e painel acompanhados dos rótulos Portal e Painel. Representação conceitual das duas áreas do projeto, sem reproduzir a interface real, a arquitetura ou resultados comerciais. Sem identificação da cliente.</desc>
+	<title id="titulo">Plataforma imobiliária — Portal · painel administrativo · integrações</title>
+	<desc id="descricao">Capa de projeto de plataforma imobiliária com portal, painel administrativo e integrações. Ícones de casa e painel acompanhados dos rótulos Portal e Painel. Representação conceitual das duas áreas do projeto, sem reproduzir a interface real, a arquitetura ou resultados comerciais. Sem identificação da cliente.</desc>
 	<!-- Tokens: surface, surface-container, on-surface, on-surface-variant e primary. Exportar com as fontes oficiais disponíveis no Fontconfig: Space Grotesk 700, Inter 400 e Geist Mono 400. -->
 	<rect width="1200" height="630" fill="#15121a"/>
 	<text x="88" y="112" font-family="Geist Mono" font-weight="400" font-size="32" fill="#b2c5ff">Projeto</text>
@@ -8,7 +8,7 @@
 		<text x="88" y="212">Plataforma</text>
 		<text x="88" y="300">imobiliária</text>
 	</g>
-	<text x="88" y="356" font-family="Inter" font-weight="400" font-size="34" fill="#c3c6d6">Gestão de imóveis, autenticação e SEO</text>
+	<text x="88" y="356" font-family="Inter" font-weight="400" font-size="34" fill="#c3c6d6">Portal · painel administrativo · integrações</text>
 	<g fill="#211e26">
 		<rect x="88" y="408" width="300" height="80" rx="12"/>
 		<rect x="412" y="408" width="300" height="80" rx="12"/>

@@ -63,7 +63,7 @@ export const seoDefaults: SEODefaults = {
   title: "Vitor Hugo | Desenvolvedor de Software",
   description: heroCardContent.description,
   siteName: "Portfólio | Vitor Hugo",
-  ogImage: "/og/institucional-v2.png",
+  ogImage: "/og/institucional-v3.png",
   ogImageAlt:
-    "Cartão editorial de Vitor Hugo com a atuação em desenvolvimento web, integrações e automações e o endereço vitorhugodev.com.",
+    "Cartão editorial de Vitor Hugo, Desenvolvedor de Software, com a descrição Aplicações web · integrações · automações e o endereço vitorhugodev.com.",
 };

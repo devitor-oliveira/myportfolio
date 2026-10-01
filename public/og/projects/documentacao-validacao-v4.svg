@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="titulo descricao">
-	<title id="titulo">Plataforma de documentação e testes</title>
-	<desc id="descricao">Capa de projeto com três etapas conceituais: documentação, demonstração e validação. A plataforma apoia a compreensão e os testes de integrações. Sem telas, dados ou regras internas.</desc>
+	<title id="titulo">Plataforma de validação da integração</title>
+	<desc id="descricao">Capa de projeto de plataforma de validação da integração com três etapas conceituais: documentação, demonstração e validação. A plataforma apoia a compreensão e os testes da integração. Sem telas, dados ou regras internas.</desc>
 	<!-- Tokens: surface, surface-container, on-surface, on-surface-variant e primary. Exportar com as fontes oficiais disponíveis no Fontconfig: Space Grotesk 700, Inter 400 e Geist Mono 400. -->
 	<rect width="1200" height="630" fill="#15121a"/>
 	<text x="88" y="112" font-family="Geist Mono" font-weight="400" font-size="32" fill="#b2c5ff">Projeto</text>
 	<g font-family="Space Grotesk" font-size="72" font-weight="700" letter-spacing="-1.5" fill="#e7e0eb">
 		<text x="88" y="212">Plataforma de</text>
-		<text x="88" y="300">documentação e testes</text>
+		<text x="88" y="300">validação da integração</text>
 	</g>
 	<g fill="#211e26">
 		<rect x="88" y="398" width="300" height="70" rx="12"/>
