@@ -11,7 +11,7 @@ const PROFILE_SLUG_PATTERN = /^[a-zA-Z0-9][a-zA-Z0-9._-]*$/;
 // null = inválido; string vazia = campo opcional não informado.
 export function normalizeProfileUrl(
 	value: string,
-	service: ProfileService,
+	service: ProfileService
 ): string | null {
 	const raw = value.trim();
 	if (!raw) return '';
@@ -21,7 +21,9 @@ export function normalizeProfileUrl(
 		slug = raw;
 	} else {
 		// Um domínio desconhecido nunca deve ser interpretado como nome de usuário.
-		if (!/^(?:https?:\/\/)?(?:www\.)?(?:linkedin\.com|github\.com)\//i.test(raw)) {
+		if (
+			!/^(?:https?:\/\/)?(?:www\.)?(?:linkedin\.com|github\.com)\//i.test(raw)
+		) {
 			return null;
 		}
 		try {

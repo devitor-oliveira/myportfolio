@@ -1,10 +1,6 @@
 'use client';
 
-import React, {
-	type MouseEvent,
-	useEffect,
-	useState,
-} from 'react';
+import React, { type MouseEvent, useEffect, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -38,16 +34,12 @@ export const RippleButton = React.forwardRef<
 			}>
 		>([]);
 
-		const handleClick = (
-			event: MouseEvent<HTMLButtonElement>
-		) => {
+		const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
 			createRipple(event);
 			onClick?.(event);
 		};
 
-		const createRipple = (
-			event: MouseEvent<HTMLButtonElement>
-		) => {
+		const createRipple = (event: MouseEvent<HTMLButtonElement>) => {
 			const button = event.currentTarget;
 			const rect = button.getBoundingClientRect();
 			const size = Math.max(rect.width, rect.height);
@@ -55,25 +47,18 @@ export const RippleButton = React.forwardRef<
 			const y = event.clientY - rect.top - size / 2;
 
 			const newRipple = { x, y, size, key: Date.now() };
-			setButtonRipples((prevRipples) => [
-				...prevRipples,
-				newRipple,
-			]);
+			setButtonRipples((prevRipples) => [...prevRipples, newRipple]);
 		};
 
 		useEffect(() => {
-			let timeout: ReturnType<typeof setTimeout> | null =
-				null;
+			let timeout: ReturnType<typeof setTimeout> | null = null;
 
 			if (buttonRipples.length > 0) {
-				const lastRipple =
-					buttonRipples[buttonRipples.length - 1];
+				const lastRipple = buttonRipples[buttonRipples.length - 1];
 				timeout = setTimeout(
 					() => {
 						setButtonRipples((prevRipples) =>
-							prevRipples.filter(
-								(ripple) => ripple.key !== lastRipple.key
-							)
+							prevRipples.filter((ripple) => ripple.key !== lastRipple.key)
 						);
 					},
 					parseInt(duration, 10)

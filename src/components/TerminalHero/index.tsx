@@ -1,162 +1,160 @@
-import { Icon } from "@iconify/react";
-import { useRef, useState } from "react";
+import { Icon } from '@iconify/react';
+import { useRef, useState } from 'react';
 import {
-  type CommandLog,
-  useTerminalCommand,
-} from "@/hooks/useTerminalCommand";
-import { commands } from "@/lib/utils";
+	type CommandLog,
+	useTerminalCommand,
+} from '@/hooks/useTerminalCommand';
+import { commands } from '@/lib/utils';
 import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "../ui/input-group";
-import { RippleButton } from "../ui/ripple-button";
-import { Spinner } from "../ui/spinner";
-import { AnimatedSpan, Terminal, TypingAnimation } from "../ui/terminal";
-import TextType from "../ui/text-type";
+	InputGroup,
+	InputGroupAddon,
+	InputGroupInput,
+} from '../ui/input-group';
+import { RippleButton } from '../ui/ripple-button';
+import { Spinner } from '../ui/spinner';
+import { AnimatedSpan, Terminal, TypingAnimation } from '../ui/terminal';
+import TextType from '../ui/text-type';
 
 function TerminalHero() {
-  const [inputCMD, setInputCMD] = useState("");
-  const inputRef = useRef<HTMLInputElement | null>(null);
-  const { logs, executeCommand } = useTerminalCommand();
+	const [inputCMD, setInputCMD] = useState('');
+	const inputRef = useRef<HTMLInputElement | null>(null);
+	const { logs, executeCommand } = useTerminalCommand();
 
-  const handleSubmit = (ev: React.SubmitEvent) => {
-    ev.preventDefault();
-    executeCommand(inputCMD);
-    setInputCMD("");
-    return;
-  };
+	const handleSubmit = (ev: React.SubmitEvent) => {
+		ev.preventDefault();
+		executeCommand(inputCMD);
+		setInputCMD('');
+		return;
+	};
 
-  return (
-    <Terminal
-      sequence={false}
-      className="flex flex-col h-full w-full max-w-none max-h-none border-none bg-bg-main shadow-xl"
-    >
-      <div className="flex flex-col min-h-0 flex-1 bg-none">
-        <div className="flex flex-col overflow-y-auto min-h-0 flex-1 pr-2 font-detail text-caption">
-          <p className="animate-fade-up text-text-main/70">
-            Terminal iniciando...
-          </p>
-          <TypingAnimation
-            startOnView={false}
-            delay={1000}
-            duration={30}
-            className="text-success/90 mt-2  tracking-wide text-xs"
-          >
-            {"[OK] Componentes carregados"}
-          </TypingAnimation>
-          <TypingAnimation
-            startOnView={false}
-            delay={2000}
-            duration={30}
-            className="text-warning/90 mt-2 text-xs tracking-wide"
-          >
-            {"[WARN] Aguardando comandos..."}
-          </TypingAnimation>
-          <TypingAnimation
-            startOnView={false}
-            delay={4000}
-            duration={30}
-            className="text-text-main/90 mt-6 text-xs tracking-wide animate-fade-up"
-          >
-            {"$  system --status: ONLINE"}
-          </TypingAnimation>
-          {logs.map((log: CommandLog) => {
-            return (
-              <>
-                <TypingAnimation
-                  className="text-text-main/90 mt-2 text-xs "
-                  key={log.id}
-                >
-                  {`$  ${log.command}`}
-                </TypingAnimation>
-                {log.status === "pending" && (
-                  <TextType
-                    className="text-text-main/80 mt-2"
-                    words={["Executando..."]}
-                    variant="one-word"
-                  />
-                )}
-                {log.status === "success" && (
-                  <AnimatedSpan
-                    delay={500}
-                    className="text-success wrap-break-word mt-2 tracking-wide text-xs"
-                  >
-                    {log.output}
-                  </AnimatedSpan>
-                )}
-                {log.status === "failed" && (
-                  <AnimatedSpan
-                    delay={1500}
-                    className="text-danger mt-2 tracking-wide text-xs"
-                  >
-                    {log.output}
-                  </AnimatedSpan>
-                )}
-              </>
-            );
-          })}
-        </div>
-        <div className="flex gap-1.5 shrink-0 bg-none">
-          {commands
-            ? commands.map((cmd) => {
-                return (
-                  <RippleButton
-                    className="rounded-full border border-border-muted bg-surface-container-low px-2 py-0.5 font-detail text-[11px] leading-none text-text-main/90 transition-colors hover:border-primary  hover:text-primary"
-                    rippleColor="#03a9f4"
-                    key={cmd}
-                    onClick={() => {
-                      setInputCMD(`cd ${cmd}`);
-                      inputRef.current?.focus();
-                    }}
-                  >
-                    {cmd}
-                  </RippleButton>
-                );
-              })
-            : null}
-        </div>
-        <form
-          onSubmit={handleSubmit}
-          className="mt-2 flex shrink-0 items-center gap-1"
-        >
-          <InputGroup className=" has-[[data-slot=input-group-control]:focus-visible]:border-border-muted-alt has-[[data-slot=input-group-control]:focus-visible]:ring-0">
-            <InputGroupAddon className="text-primary">
-              <Icon icon="mdi:chevron-right" />
-            </InputGroupAddon>
-            <InputGroupInput
-              placeholder="Insira um comando..."
-              type="text"
-              ref={inputRef}
-              value={inputCMD}
-              onChange={(ev) => setInputCMD(ev.target.value)}
-              className="border-border-muted bg-bg-surface font-detail text-xs md:text-sm text-text-main placeholder:text-text-muted placeholder:text-caption"
-            />
+	return (
+		<Terminal
+			sequence={false}
+			className="flex flex-col h-full w-full max-w-none max-h-none border-none bg-bg-main shadow-xl"
+		>
+			<div className="flex flex-col min-h-0 flex-1 bg-none">
+				<div className="flex flex-col overflow-y-auto min-h-0 flex-1 pr-2 font-detail text-caption">
+					<p className="animate-fade-up text-text-main/70">
+						Terminal iniciando...
+					</p>
+					<TypingAnimation
+						startOnView={false}
+						delay={1000}
+						duration={30}
+						className="text-success/90 mt-2  tracking-wide text-xs"
+					>
+						{'[OK] Componentes carregados'}
+					</TypingAnimation>
+					<TypingAnimation
+						startOnView={false}
+						delay={2000}
+						duration={30}
+						className="text-warning/90 mt-2 text-xs tracking-wide"
+					>
+						{'[WARN] Aguardando comandos...'}
+					</TypingAnimation>
+					<TypingAnimation
+						startOnView={false}
+						delay={4000}
+						duration={30}
+						className="text-text-main/90 mt-6 text-xs tracking-wide animate-fade-up"
+					>
+						{'$  system --status: ONLINE'}
+					</TypingAnimation>
+					{logs.map((log: CommandLog) => {
+						return (
+							<>
+								<TypingAnimation
+									className="text-text-main/90 mt-2 text-xs "
+									key={log.id}
+								>
+									{`$  ${log.command}`}
+								</TypingAnimation>
+								{log.status === 'pending' && (
+									<TextType
+										className="text-text-main/80 mt-2"
+										words={['Executando...']}
+										variant="one-word"
+									/>
+								)}
+								{log.status === 'success' && (
+									<AnimatedSpan
+										delay={500}
+										className="text-success wrap-break-word mt-2 tracking-wide text-xs"
+									>
+										{log.output}
+									</AnimatedSpan>
+								)}
+								{log.status === 'failed' && (
+									<AnimatedSpan
+										delay={1500}
+										className="text-danger mt-2 tracking-wide text-xs"
+									>
+										{log.output}
+									</AnimatedSpan>
+								)}
+							</>
+						);
+					})}
+				</div>
+				<div className="flex gap-1.5 shrink-0 bg-none">
+					{commands
+						? commands.map((cmd) => {
+								return (
+									<RippleButton
+										className="rounded-full border border-border-muted bg-surface-container-low px-2 py-0.5 font-detail text-[11px] leading-none text-text-main/90 transition-colors hover:border-primary  hover:text-primary"
+										rippleColor="#03a9f4"
+										key={cmd}
+										onClick={() => {
+											setInputCMD(`cd ${cmd}`);
+											inputRef.current?.focus();
+										}}
+									>
+										{cmd}
+									</RippleButton>
+								);
+							})
+						: null}
+				</div>
+				<form
+					onSubmit={handleSubmit}
+					className="mt-2 flex shrink-0 items-center gap-1"
+				>
+					<InputGroup className=" has-[[data-slot=input-group-control]:focus-visible]:border-border-muted-alt has-[[data-slot=input-group-control]:focus-visible]:ring-0">
+						<InputGroupAddon className="text-primary">
+							<Icon icon="mdi:chevron-right" />
+						</InputGroupAddon>
+						<InputGroupInput
+							placeholder="Insira um comando..."
+							type="text"
+							ref={inputRef}
+							value={inputCMD}
+							onChange={(ev) => setInputCMD(ev.target.value)}
+							className="border-border-muted bg-bg-surface font-detail text-xs md:text-sm text-text-main placeholder:text-text-muted placeholder:text-caption"
+						/>
 
-            <InputGroupAddon
-              align="inline-end"
-              className=" bg-transparent focus-visible:ring-0 focus-visible:outline-none "
-            >
-              <RippleButton
-                type="submit"
-                disabled={!inputCMD.trim()}
-                className="border-none bg-bg-surface h-auto w-auto p-0 font-detail text-caption font-medium text-brand-primary transition-colors disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                {logs[logs.length - 1]?.status === "pending" ? (
-                  <Spinner className="h-5 w-5 text-brand-primary opacity-100 disabled:opacity-100" />
-                ) : (
-                  <Icon
-                    className="h-8 w-8"
-                    icon="mdi:chevron-up"
-                  />
-                )}
-              </RippleButton>
-            </InputGroupAddon>
-          </InputGroup>
-        </form>
-      </div>
-    </Terminal>
-  );
+						<InputGroupAddon
+							align="inline-end"
+							className=" bg-transparent focus-visible:ring-0 focus-visible:outline-none "
+						>
+							<RippleButton
+								type="submit"
+								aria-label="Executar comando"
+								disabled={!inputCMD.trim()}
+								className="border-none bg-bg-surface h-auto w-auto p-0 font-detail text-caption font-medium text-brand-primary transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+							>
+								{logs[logs.length - 1]?.status === 'pending' ? (
+									<Spinner className="h-5 w-5 text-brand-primary opacity-100 disabled:opacity-100" />
+								) : (
+									<Icon className="h-8 w-8" icon="mdi:chevron-up" />
+								)}
+							</RippleButton>
+						</InputGroupAddon>
+					</InputGroup>
+				</form>
+			</div>
+		</Terminal>
+	);
 }
 
 export default TerminalHero;

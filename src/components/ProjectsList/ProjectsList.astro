@@ -1,9 +1,9 @@
 ---
-import { getCollection } from "astro:content";
-import { formatDate } from "@/lib/utils";
-import ProjectCard from "../ProjectCard/ProjectCard.astro";
+import { getCollection } from 'astro:content';
+import { formatDate } from '@/lib/utils';
+import ProjectCard from '../ProjectCard/ProjectCard.astro';
 
-const projects = await getCollection("projects");
+const projects = await getCollection('projects');
 ---
 
 <main class="max-w-3xl w-full gap-16 flex-center flex-col p-2">

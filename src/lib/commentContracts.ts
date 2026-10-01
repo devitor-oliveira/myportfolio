@@ -17,38 +17,42 @@ export type CommentInput = z.infer<typeof commentInputSchema>;
 
 // O Make pode acrescentar campos internos; somente estes são lidos e publicados.
 export const makeCommentsSchema = z.object({
-	comments: z.array(z.object({
-		key: z.string(),
-		data: z.object({
-			status: z.string(),
-			name: z.string(),
-			comment: z.string(),
-			postedon: z.string(),
-			jobtitle: z.string().nullish(),
-			relationship: z.string().nullish(),
-			experience: z.string().nullish(),
-			github: z.string().nullish(),
-			linkedin: z.string().nullish(),
-		}),
-	})),
+	comments: z.array(
+		z.object({
+			key: z.string(),
+			data: z.object({
+				status: z.string(),
+				name: z.string(),
+				comment: z.string(),
+				postedon: z.string(),
+				jobtitle: z.string().nullish(),
+				relationship: z.string().nullish(),
+				experience: z.string().nullish(),
+				github: z.string().nullish(),
+				linkedin: z.string().nullish(),
+			}),
+		})
+	),
 });
 
 export const commentsResponseSchema = z.strictObject({
 	total: z.number().int().nonnegative(),
-	comments: z.array(z.strictObject({
-		key: z.string(),
-		data: z.strictObject({
-			status: z.literal('approved'),
-			name: z.string(),
-			comment: z.string(),
-			postedon: z.string(),
-			jobtitle: z.string(),
-			relationship: z.string(),
-			experience: z.string(),
-			github: z.string().optional(),
-			linkedin: z.string().optional(),
-		}),
-	})),
+	comments: z.array(
+		z.strictObject({
+			key: z.string(),
+			data: z.strictObject({
+				status: z.literal('approved'),
+				name: z.string(),
+				comment: z.string(),
+				postedon: z.string(),
+				jobtitle: z.string(),
+				relationship: z.string(),
+				experience: z.string(),
+				github: z.string().optional(),
+				linkedin: z.string().optional(),
+			}),
+		})
+	),
 });
 export type CommentsApiResponse = z.infer<typeof commentsResponseSchema>;
 export type Comment = CommentsApiResponse['comments'][number];

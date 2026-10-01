@@ -2,7 +2,8 @@
 title: Variáveis e Simbologia
 topic: programação
 description: Descrevendo o conceito de variáveis para quem nunca programou
-seoTitle: Variáveis e Simbologia
+metaTitle: Variáveis e Simbologia
+ogTitle: Variáveis e Simbologia
 ogImage: /og/blog/variaveis-simbologia-v2.png
 ogImageAlt: "Capa de Blog com o título Variáveis e simbologia, exemplo didático da variável nome com o valor Vitor e o domínio vitorhugodev.com."
 date: 2025-04-05
@@ -55,7 +56,7 @@ print(nome) #O resultado impresso no terminal seria "Ronaldo"
 
 As variáveis no ambiente de programação representam um espaço para armazenamento de informações que usamos para realizar as operações necessárias para cumprir o objetivo do programa. **Pense nelas como caixas vazias que guardamos um objeto para utilizá-lo depois.**
 
-![Imagem de um armário com gavetas representando o espaço das variáveis](https://miro.medium.com/v2/resize:fit:695/1*KY11xozS52pUO8mfibr-dA.png)
+![Imagem de um armário com gavetas representando o espaço das variáveis](/blog/armario-variaveis.png)
 
 Elas podem armazenar diferentes tipos de informações, são eles:
 

@@ -12,20 +12,33 @@ const {
 	type = 'website',
 	author,
 	article,
+	noindex = false,
 } = Astro.props;
 
 if (!Astro.site)
 	throw new Error('Configure site no astro.config.mjs para SEO.');
-const { seoTitle, seoDescription, language, ogLocale, ogImage, ogImageAlt } =
-	seoMetadataSchema.parse(Astro.props);
-const socialTitle = seoTitle ?? title;
-const socialDescription = seoDescription ?? description;
+const parsed = seoMetadataSchema.parse(Astro.props);
+
+// Títulos e descrições separados para SERP (Google) e Social (Open Graph/Twitter)
+const searchTitle = parsed.metaTitle ?? parsed.seoTitle ?? title;
+const searchDescription =
+	parsed.metaDescription ?? parsed.seoDescription ?? description;
+
+const socialTitle =
+	parsed.ogTitle ?? parsed.metaTitle ?? parsed.seoTitle ?? title;
+const socialDescription =
+	parsed.ogDescription ??
+	parsed.metaDescription ??
+	parsed.seoDescription ??
+	description;
+
 // en_US é a convenção editorial para inglês, não a nacionalidade do autor.
-const locale = ogLocale ?? (language === 'en' ? 'en_US' : 'pt_BR');
+const locale =
+	parsed.ogLocale ?? (parsed.language === 'en' ? 'en_US' : 'pt_BR');
 // trailingSlash permanece no padrão ignore: preservar o pathname da rota.
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const imagePath = ogImage ?? seoDefaults.ogImage;
-const imageAlt = ogImageAlt ?? seoDefaults.ogImageAlt;
+const imagePath = parsed.ogImage ?? seoDefaults.ogImage;
+const imageAlt = parsed.ogImageAlt ?? seoDefaults.ogImageAlt;
 const imageURL = new URL(imagePath, Astro.site);
 const image = await getSEOImageMetadata(imagePath, new URL(publicDir, root));
 const articleAuthor = article?.authorURL
@@ -33,9 +46,15 @@ const articleAuthor = article?.authorURL
 	: undefined;
 ---
 
-<title>{title}</title>
-<meta name="description" content={description} />
-<meta name="robots" content="max-image-preview:large" />
+<title>{searchTitle}</title>
+<meta name="description" content={searchDescription} />
+{
+	noindex ? (
+		<meta name="robots" content="noindex, nofollow" />
+	) : (
+		<meta name="robots" content="index, follow, max-image-preview:large" />
+	)
+}
 <link rel="canonical" href={canonical.href} />
 {author && <meta name="author" content={author} />}
 <meta property="og:title" content={socialTitle} />
@@ -55,7 +74,7 @@ const articleAuthor = article?.authorURL
 <meta name="twitter:image" content={imageURL.href} />
 <meta name="twitter:image:alt" content={imageAlt} />
 {
-	type === 'article' && (
+	type === "article" && (
 		<>
 			{article?.publishedTime && (
 				<meta

@@ -2,7 +2,8 @@
 title: Browser and Renderization
 topic: web concepts
 description: Article to practice english describing the basics about browser rendering and how browsers treat HTML, CSS and JavaScript
-seoTitle: Browser and Renderization
+metaTitle: Browser and Renderization
+ogTitle: Browser and Renderization
 language: en
 ogLocale: en_US
 ogImage: /og/blog/browser-render-v2.png

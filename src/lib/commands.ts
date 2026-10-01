@@ -1,53 +1,53 @@
 export type CommandConfig = {
-  description: string;
-  handler: () => Promise<string>;
+	description: string;
+	handler: () => Promise<string>;
 };
 
 export const commandRegistry: Record<string, CommandConfig> = {
-  "/ultimo-post": {
-    description: "Navega para o artigo mais recente",
-    handler: async () => {
-      const response = await fetch("/api/terminalData.json");
-      if (!response.ok) throw new Error("Erro ao carregar o manifesto");
+	'/ultimo-post': {
+		description: 'Navega para o artigo mais recente',
+		handler: async () => {
+			const response = await fetch('/api/terminalData.json');
+			if (!response.ok) throw new Error('Erro ao carregar o manifesto');
 
-      const data = await response.json();
+			const data = await response.json();
 
-      if (!data.latestPost)
-        throw new Error("Nenhum post publicado encontrado.");
+			if (!data.latestPost)
+				throw new Error('Nenhum post publicado encontrado.');
 
-      setTimeout(() => {
-        window.location.href = data.latestPost.url;
-      }, 3000);
+			setTimeout(() => {
+				window.location.href = data.latestPost.url;
+			}, 3000);
 
-      return `Encontrado! Abrindo "${data.latestPost.title}"...`;
-    },
-  },
-  "/ultimo-projeto": {
-    description: "Navega para o projeto mais recente",
-    handler: async () => {
-      const response = await fetch("/api/terminalData.json");
-      if (!response.ok) throw new Error("Erro ao carregar o manifesto");
+			return `Encontrado! Abrindo "${data.latestPost.title}"...`;
+		},
+	},
+	'/ultimo-projeto': {
+		description: 'Navega para o projeto mais recente',
+		handler: async () => {
+			const response = await fetch('/api/terminalData.json');
+			if (!response.ok) throw new Error('Erro ao carregar o manifesto');
 
-      const data = await response.json();
+			const data = await response.json();
 
-      if (!data.latestProj)
-        throw new Error("Nenhum projeto publicado encontrado.");
+			if (!data.latestProj)
+				throw new Error('Nenhum projeto publicado encontrado.');
 
-      setTimeout(() => {
-        window.location.href = data.latestProj.url;
-      }, 3000);
+			setTimeout(() => {
+				window.location.href = data.latestProj.url;
+			}, 3000);
 
-      return `Encontrado! Abrindo projeto "${data.latestProj.title}"...`;
-    },
-  },
-  "/sobre": {
-    description: "Navega para a página Sobre",
-    handler: async () => {
-      setTimeout(() => {
-        window.location.href = "/about";
-      }, 3000);
+			return `Encontrado! Abrindo projeto "${data.latestProj.title}"...`;
+		},
+	},
+	'/sobre': {
+		description: 'Navega para a página Sobre',
+		handler: async () => {
+			setTimeout(() => {
+				window.location.href = '/about';
+			}, 3000);
 
-      return `Abrindo a página Sobre...`;
-    },
-  },
+			return `Abrindo a página Sobre...`;
+		},
+	},
 };

@@ -20,8 +20,7 @@ export default function TextType({
 	className,
 	variant = 'default',
 }: TextTypeProps) {
-	const [currentWordIndex, setCurrentWordIndex] =
-		useState(0);
+	const [currentWordIndex, setCurrentWordIndex] = useState(0);
 	const [currentText, setCurrentText] = useState('');
 	const [isDeleting, setIsDeleting] = useState(false);
 
@@ -33,24 +32,15 @@ export default function TextType({
 
 		const handleType = () => {
 			if (!isDeleting) {
-				setCurrentText(
-					fullWord.substring(0, currentText.length + 1)
-				);
+				setCurrentText(fullWord.substring(0, currentText.length + 1));
 				if (currentText === fullWord) {
-					setTimeout(
-						() => setIsDeleting(true),
-						pauseDuration
-					);
+					setTimeout(() => setIsDeleting(true), pauseDuration);
 				}
 			} else {
-				setCurrentText(
-					fullWord.substring(0, currentText.length - 1)
-				);
+				setCurrentText(fullWord.substring(0, currentText.length - 1));
 				if (currentText === '') {
 					setIsDeleting(false);
-					setCurrentWordIndex(
-						(prev) => (prev + 1) % words.length
-					);
+					setCurrentWordIndex((prev) => (prev + 1) % words.length);
 				}
 			}
 		};
@@ -70,30 +60,20 @@ export default function TextType({
 	// string mais longa do array define a largura máxima reservada
 	const longestWord = useMemo(() => {
 		if (!words || words.length === 0) return '';
-		return words.reduce(
-			(a, b) => (b.length > a.length ? b : a),
-			''
-		);
+		return words.reduce((a, b) => (b.length > a.length ? b : a), '');
 	}, [words]);
 
 	const renderedContent = useMemo(() => {
 		if (variant === 'one-word' || variant === 'default') {
-			return (
-				<span className={cn(className)}>{currentText}</span>
-			);
+			return <span className={cn(className)}>{currentText}</span>;
 		}
 
 		if (variant === 'last-word-colorful') {
 			const fraseCompleta = words[currentWordIndex];
-			const ultimoEspacoIndex =
-				fraseCompleta.lastIndexOf(' ');
+			const ultimoEspacoIndex = fraseCompleta.lastIndexOf(' ');
 
 			if (ultimoEspacoIndex === -1) {
-				return (
-					<span className={cn(className)}>
-						{currentText}
-					</span>
-				);
+				return <span className={cn(className)}>{currentText}</span>;
 			}
 
 			const tamanhoTextoBase = ultimoEspacoIndex + 1;
@@ -102,32 +82,19 @@ export default function TextType({
 				return <span>{currentText}</span>;
 			}
 
-			const textoBaseDigitado = currentText.substring(
-				0,
-				tamanhoTextoBase
-			);
-			const ultimaPalavraParcial = currentText.substring(
-				tamanhoTextoBase
-			);
+			const textoBaseDigitado = currentText.substring(0, tamanhoTextoBase);
+			const ultimaPalavraParcial = currentText.substring(tamanhoTextoBase);
 
 			return (
 				<>
 					<span>{textoBaseDigitado}</span>
-					<span className={cn(className)}>
-						{ultimaPalavraParcial}
-					</span>
+					<span className={cn(className)}>{ultimaPalavraParcial}</span>
 				</>
 			);
 		}
 
 		return null;
-	}, [
-		currentText,
-		variant,
-		className,
-		words,
-		currentWordIndex,
-	]);
+	}, [currentText, variant, className, words, currentWordIndex]);
 
 	return (
 		<span className="relative inline-grid animate-cursor-blink border-r-2 border-transparent pr-1 will-change-contents leading-normal">

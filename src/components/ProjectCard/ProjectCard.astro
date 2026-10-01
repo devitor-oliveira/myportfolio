@@ -42,7 +42,11 @@ const {
 		</span>
 		<div class="flex justify-between font-display items-center">
 			<h2 class="text-body text-primary tracking-wide md:text-[17px]">
-				<a target="_blank" href={`/projects/${slug}`}>{title}</a>
+				<a
+					class="inline-block py-1 leading-normal"
+					target="_blank"
+					href={`/projects/${slug}`}>{title}</a
+				>
 			</h2>
 			{
 				yearEnd ? (
@@ -73,7 +77,7 @@ const {
 			{
 				liveURL && (
 					<a
-						class="flex items-center gap-1.5 md:gap-2 md:tracking-wide hover:text-primary"
+						class="flex items-center gap-1.5 md:gap-2 md:tracking-wide hover:text-primary py-1 px-1 min-h-6"
 						href={liveURL}
 						target="_blank"
 						rel="noopener noreferrer"
@@ -86,7 +90,7 @@ const {
 				repositoryURL && (
 					<a
 						href={repositoryURL}
-						class="flex items-center gap-1.5 md:gap-2 md:tracking-wide hover:text-primary"
+						class="flex items-center gap-1.5 md:gap-2 md:tracking-wide hover:text-primary py-1 px-1 min-h-6"
 						target="_blank"
 						rel="noopener noreferrer"
 					>

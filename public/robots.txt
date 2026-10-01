@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vitorhugodev.com/sitemap-index.xml
+

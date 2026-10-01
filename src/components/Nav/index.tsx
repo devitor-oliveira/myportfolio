@@ -1,35 +1,35 @@
-import ButtonTab from "../ui/buttontab.tsx";
+import ButtonTab from '../ui/buttontab.tsx';
 
 interface NavProps {
-  activeTab: string;
-  handleTabChange: (tab: "projects" | "blog") => void;
+	activeTab: string;
+	handleTabChange: (tab: 'projects' | 'blog') => void;
 }
 
 const TABS = [
-  { id: "projects", label: "Projetos", icon: "mdi:folder" },
-  { id: "blog", label: "Blogs", icon: "mdi:notebook" },
+	{ id: 'projects', label: 'Projetos', icon: 'mdi:folder' },
+	{ id: 'blog', label: 'Blogs', icon: 'mdi:notebook' },
 ] as const;
 
 function Nav({ activeTab, handleTabChange }: NavProps) {
-  return (
-    <div
-      role="tablist"
-      aria-label="Conteúdo do portfólio"
-      className="flex w-full max-w-2xl items-center gap-4 border-b border-border-muted p-0"
-    >
-      {TABS.map(({ id, label, icon }) => (
-        <ButtonTab
-          key={id}
-          isactive={activeTab === id}
-          variant="tab"
-          icon={icon}
-          onClick={() => handleTabChange(id)}
-        >
-          {label}
-        </ButtonTab>
-      ))}
-    </div>
-  );
+	return (
+		<div
+			role="tablist"
+			aria-label="Conteúdo do portfólio"
+			className="flex w-full max-w-2xl items-center gap-4 border-b border-border-muted p-0"
+		>
+			{TABS.map(({ id, label, icon }) => (
+				<ButtonTab
+					key={id}
+					isactive={activeTab === id}
+					variant="tab"
+					icon={icon}
+					onClick={() => handleTabChange(id)}
+				>
+					{label}
+				</ButtonTab>
+			))}
+		</div>
+	);
 }
 
 export default Nav;

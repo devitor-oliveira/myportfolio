@@ -28,8 +28,15 @@ const cache = new Map<
 
 function assertConfined(directory: string, file: string) {
 	const path = relative(directory, file);
-	if (!path || path === '..' || path.startsWith(`..${sep}`) || isAbsolute(path)) {
-		throw new Error('A imagem Open Graph deve permanecer dentro de public/og/.');
+	if (
+		!path ||
+		path === '..' ||
+		path.startsWith(`..${sep}`) ||
+		isAbsolute(path)
+	) {
+		throw new Error(
+			'A imagem Open Graph deve permanecer dentro de public/og/.'
+		);
 	}
 }
 
@@ -46,7 +53,9 @@ async function decodeImage(file: string, path: string, size: number) {
 	const metadata = await decoder.metadata();
 	// O formato identificado pelo decoder deve corresponder à extensão pública.
 	if (metadata.format !== expected.format) {
-		throw new Error(`Formato real e extensão Open Graph incompatíveis: ${path}`);
+		throw new Error(
+			`Formato real e extensão Open Graph incompatíveis: ${path}`
+		);
 	}
 	// libvips não expõe frames APNG. Recusar conservadoramente a assinatura
 	// do controle de animação (acTL), sem implementar um parser de PNG.
@@ -67,7 +76,9 @@ async function decodeImage(file: string, path: string, size: number) {
 		);
 	}
 	if (metadata.width !== WIDTH || metadata.height !== HEIGHT) {
-		throw new Error(`A imagem Open Graph deve ter exatamente 1200×630: ${path}`);
+		throw new Error(
+			`A imagem Open Graph deve ter exatamente 1200×630: ${path}`
+		);
 	}
 	// metadata() não decodifica pixels: validar também o conteúdo comprimido.
 	const { info } = await decoder.raw().toBuffer({ resolveWithObject: true });

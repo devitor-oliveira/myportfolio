@@ -1,9 +1,9 @@
 ---
-import { getCollection } from "astro:content";
-import { formatDate } from "@/lib/utils";
-import BlogCard from "../BlogCard/BlogCard.astro";
+import { getCollection } from 'astro:content';
+import { formatDate } from '@/lib/utils';
+import BlogCard from '../BlogCard/BlogCard.astro';
 
-const posts = await getCollection("blog");
+const posts = await getCollection('blog');
 ---
 
 <main class="max-w-2xl w-full gap-6 flex-center flex-col p-0 md:p-1">

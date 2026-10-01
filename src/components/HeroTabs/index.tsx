@@ -45,6 +45,7 @@ const HeroTabs = ({ tab, setTab }: HeroTabsProps) => {
           {tabs.map(({ id, icon }) => {
             return id === "split" ? (
               <TabsTrigger
+                aria-label={`Visualização em ${id}`}
                 className={cn(tabTriggerVariants(), "hidden md:flex")}
                 value={id}
                 key={id}
@@ -57,6 +58,7 @@ const HeroTabs = ({ tab, setTab }: HeroTabsProps) => {
               </TabsTrigger>
             ) : (
               <TabsTrigger
+                aria-label={`Visualização em ${id}`}
                 className={cn(tabTriggerVariants())}
                 value={id}
                 key={id}
