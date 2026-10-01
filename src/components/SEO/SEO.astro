@@ -1,6 +1,8 @@
 ---
+import { publicDir, root } from 'astro:config/server';
+import { getSEOImageMetadata } from '@/lib/ogImage';
 import type { SEOProps } from '@/lib/seo';
-import { getSEOImageMetadata, seoDefaults } from '@/lib/seo';
+import { seoDefaults, seoMetadataSchema } from '@/lib/seo';
 
 interface Props extends SEOProps {}
 
@@ -10,22 +12,22 @@ const {
 	type = 'website',
 	author,
 	article,
-	ogImage,
-	ogImageAlt,
 } = Astro.props;
 
-if (!Astro.site) throw new Error('Configure site no astro.config.mjs para SEO.');
-if (
-	(ogImage !== undefined || ogImageAlt !== undefined) &&
-	(!ogImage || !ogImageAlt?.trim())
-) {
-	throw new Error('Informe ogImage e ogImageAlt juntos.');
-}
+if (!Astro.site)
+	throw new Error('Configure site no astro.config.mjs para SEO.');
+const { seoTitle, seoDescription, language, ogLocale, ogImage, ogImageAlt } =
+	seoMetadataSchema.parse(Astro.props);
+const socialTitle = seoTitle ?? title;
+const socialDescription = seoDescription ?? description;
+// en_US é a convenção editorial para inglês, não a nacionalidade do autor.
+const locale = ogLocale ?? (language === 'en' ? 'en_US' : 'pt_BR');
+// trailingSlash permanece no padrão ignore: preservar o pathname da rota.
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const imagePath = ogImage ?? seoDefaults.ogImage;
-const imageAlt = ogImageAlt?.trim() ?? seoDefaults.ogImageAlt;
+const imageAlt = ogImageAlt ?? seoDefaults.ogImageAlt;
 const imageURL = new URL(imagePath, Astro.site);
-const image = await getSEOImageMetadata(imagePath);
+const image = await getSEOImageMetadata(imagePath, new URL(publicDir, root));
 const articleAuthor = article?.authorURL
 	? new URL(article.authorURL, Astro.site)
 	: undefined;
@@ -33,22 +35,23 @@ const articleAuthor = article?.authorURL
 
 <title>{title}</title>
 <meta name="description" content={description} />
+<meta name="robots" content="max-image-preview:large" />
 <link rel="canonical" href={canonical.href} />
 {author && <meta name="author" content={author} />}
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
+<meta property="og:title" content={socialTitle} />
+<meta property="og:description" content={socialDescription} />
 <meta property="og:type" content={type} />
 <meta property="og:url" content={canonical.href} />
 <meta property="og:site_name" content={seoDefaults.siteName} />
-<meta property="og:locale" content={seoDefaults.locale} />
+<meta property="og:locale" content={locale} />
 <meta property="og:image" content={imageURL.href} />
 <meta property="og:image:alt" content={imageAlt} />
 <meta property="og:image:type" content={image.type} />
 <meta property="og:image:width" content={String(image.width)} />
 <meta property="og:image:height" content={String(image.height)} />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content={title} />
-<meta name="twitter:description" content={description} />
+<meta name="twitter:title" content={socialTitle} />
+<meta name="twitter:description" content={socialDescription} />
 <meta name="twitter:image" content={imageURL.href} />
 <meta name="twitter:image:alt" content={imageAlt} />
 {

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="titulo descricao">
+	<title id="titulo">Como o navegador renderiza uma página</title>
+	<desc id="descricao">Capa em português para um artigo escrito em inglês. Fluxo abstrato simplificado: HTML + CSS + JS, renderização e tela. JavaScript pode modificar o conteúdo e os estilos; sua execução não é uma etapa linear obrigatória da renderização. A ilustração não é um diagrama completo do motor do navegador.</desc>
+	<!-- Tokens: surface, surface-container, on-surface, on-surface-variant e primary. Exportar com as fontes oficiais disponíveis no Fontconfig: Space Grotesk 700, Inter 400 e Geist Mono 400. -->
+	<rect width="1200" height="630" fill="#15121a"/>
+	<text x="88" y="112" font-family="Geist Mono" font-weight="400" font-size="32" fill="#b2c5ff">Blog</text>
+	<g font-family="Space Grotesk" font-size="72" font-weight="700" letter-spacing="-1.5" fill="#e7e0eb">
+		<text x="88" y="212">Como o navegador</text>
+		<text x="88" y="300">renderiza uma página</text>
+	</g>
+	<text x="88" y="356" font-family="Inter" font-weight="400" font-size="34" fill="#c3c6d6">HTML, CSS, JavaScript e renderização</text>
+	<g fill="#211e26">
+		<rect x="88" y="408" width="276" height="80" rx="12"/>
+		<rect x="426" y="408" width="360" height="80" rx="12"/>
+		<rect x="848" y="408" width="264" height="80" rx="12"/>
+	</g>
+	<g fill="none" stroke="#b2c5ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+		<path d="M380 448h29m-8-8 8 8-8 8"/>
+		<path d="M802 448h29m-8-8 8 8-8 8"/>
+	</g>
+	<g font-family="Geist Mono" font-weight="400" font-size="28" fill="#b2c5ff" text-anchor="middle">
+		<text x="226" y="458">HTML + CSS + JS</text>
+		<text x="606" y="458">Renderização</text>
+		<text x="980" y="458">Tela</text>
+	</g>
+	<text x="88" y="560" font-family="Geist Mono" font-weight="400" font-size="32" fill="#e7e0eb">vitorhugodev.com</text>
+</svg>

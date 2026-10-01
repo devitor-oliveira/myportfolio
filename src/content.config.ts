@@ -1,28 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
-
-const ogFields = {
-	ogImage: z
-		.string()
-		.regex(
-			/^\/og\/[a-zA-Z0-9][a-zA-Z0-9/_-]*\.png$/,
-			'Use um PNG local em /og/, sem query ou hash.'
-		)
-		.optional(),
-	ogImageAlt: z.string().trim().min(1).optional(),
-};
-
-// Validar o par antes de aplicar qualquer fallback institucional no componente.
-const hasImageAndAlt = (data: {
-	ogImage?: string;
-	ogImageAlt?: string;
-}) => Boolean(data.ogImage) === Boolean(data.ogImageAlt);
-
-const imagePairError = {
-	message: 'Informe ogImage e ogImageAlt juntos, ou omita ambos.',
-	path: ['ogImageAlt'],
-};
+import { hasImageAndAlt, imagePairError, seoFields } from '@/lib/seo';
 
 const blog = defineCollection({
 	loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
@@ -34,7 +13,7 @@ const blog = defineCollection({
 			date: z.coerce.date(),
 			tags: z.array(z.string()).optional(),
 			author: z.string().optional(),
-			...ogFields,
+			...seoFields,
 		})
 		.refine(hasImageAndAlt, imagePairError),
 });
@@ -58,7 +37,7 @@ const projects = defineCollection({
 			liveURL: z.string().optional(),
 			repositoryURL: z.string().optional(),
 			tags: z.array(z.string()).optional(),
-			...ogFields,
+			...seoFields,
 		})
 		.refine(hasImageAndAlt, imagePairError),
 });

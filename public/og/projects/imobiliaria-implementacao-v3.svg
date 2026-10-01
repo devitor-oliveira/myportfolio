@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="titulo descricao">
+	<title id="titulo">Plataforma imobiliária — Gestão de imóveis, autenticação e SEO</title>
+	<desc id="descricao">Capa de projeto com ícones de casa e painel acompanhados dos rótulos Portal e Painel. Representação conceitual das duas áreas do projeto, sem reproduzir a interface real, a arquitetura ou resultados comerciais. Sem identificação da cliente.</desc>
+	<!-- Tokens: surface, surface-container, on-surface, on-surface-variant e primary. Exportar com as fontes oficiais disponíveis no Fontconfig: Space Grotesk 700, Inter 400 e Geist Mono 400. -->
+	<rect width="1200" height="630" fill="#15121a"/>
+	<text x="88" y="112" font-family="Geist Mono" font-weight="400" font-size="32" fill="#b2c5ff">Projeto</text>
+	<g font-family="Space Grotesk" font-size="72" font-weight="700" letter-spacing="-1.5" fill="#e7e0eb">
+		<text x="88" y="212">Plataforma</text>
+		<text x="88" y="300">imobiliária</text>
+	</g>
+	<text x="88" y="356" font-family="Inter" font-weight="400" font-size="34" fill="#c3c6d6">Gestão de imóveis, autenticação e SEO</text>
+	<g fill="#211e26">
+		<rect x="88" y="408" width="300" height="80" rx="12"/>
+		<rect x="412" y="408" width="300" height="80" rx="12"/>
+	</g>
+	<g fill="none" stroke="#b2c5ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+		<path d="m116 444 18-14 18 14m-31-4v25h26v-25m-16 25v-14h8v14"/>
+		<rect x="440" y="431" width="34" height="34" rx="3"/>
+		<path d="M451 431v34m0-22h23m-23 11h23"/>
+	</g>
+	<g font-family="Geist Mono" font-weight="400" font-size="30" fill="#b2c5ff">
+		<text x="176" y="459">Portal</text>
+		<text x="500" y="459">Painel</text>
+	</g>
+	<text x="88" y="560" font-family="Geist Mono" font-weight="400" font-size="32" fill="#e7e0eb">vitorhugodev.com</text>
+</svg>

@@ -1,10 +1,42 @@
-import { readFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { z } from 'astro/zod';
 import { heroCardContent } from '@/lib/siteContent';
+
+export const ogImagePathSchema = z.string().regex(
+	/^\/og\/[a-zA-Z0-9][a-zA-Z0-9_-]*(?:\/[a-zA-Z0-9][a-zA-Z0-9_-]*)*\.(?:png|jpg|jpeg|webp)$/,
+	'Use uma imagem local PNG, JPEG ou WebP em /og/, sem query ou hash.'
+);
+
+// O mesmo contrato vale para frontmatter e props diretas, sem truncamento.
+export const seoFields = {
+	seoTitle: z.string().trim().min(1).max(70).optional(),
+	seoDescription: z.string().trim().min(1).max(200).optional(),
+	language: z.enum(['pt-BR', 'en']).default('pt-BR'),
+	ogLocale: z.enum(['pt_BR', 'en_US']).optional(),
+	ogImage: ogImagePathSchema.optional(),
+	ogImageAlt: z.string().trim().min(1).optional(),
+};
+
+export const hasImageAndAlt = (data: {
+	ogImage?: string;
+	ogImageAlt?: string;
+}) => Boolean(data.ogImage) === Boolean(data.ogImageAlt);
+
+export const imagePairError = {
+	message: 'Informe ogImage e ogImageAlt juntos, ou omita ambos.',
+	path: ['ogImageAlt'],
+};
+
+export const seoMetadataSchema = z
+	.object(seoFields)
+	.refine(hasImageAndAlt, imagePairError);
 
 export interface SEOProps {
 	title?: string;
 	description?: string;
+	seoTitle?: string;
+	seoDescription?: string;
+	language?: 'pt-BR' | 'en';
+	ogLocale?: 'pt_BR' | 'en_US';
 	ogImage?: string;
 	ogImageAlt?: string;
 	type?: 'website' | 'article';
@@ -21,7 +53,6 @@ interface SEODefaults {
 	title: string;
 	description: string;
 	siteName: string;
-	locale: string;
 	ogImage: string;
 	ogImageAlt: string;
 }
@@ -30,30 +61,7 @@ export const seoDefaults: SEODefaults = {
 	title: 'Portfólio | Vitor Hugo',
 	description: heroCardContent.description,
 	siteName: 'Portfólio | Vitor Hugo',
-	locale: 'pt_BR',
-	ogImage: '/og/institucional.png',
+	ogImage: '/og/institucional-v2.png',
 	ogImageAlt:
-		'Vitor Hugo — Desenvolvimento web, integrações e automações. vitorhugodev.com',
+		'Cartão editorial de Vitor Hugo com a atuação em desenvolvimento web, integrações e automações e o endereço vitorhugodev.com.',
 };
-
-// Somente arquivos públicos locais: sem rede, geração ou endpoint de imagens.
-export async function getSEOImageMetadata(path: string) {
-	if (!/^\/og\/[a-zA-Z0-9][a-zA-Z0-9/_-]*\.png$/.test(path)) {
-		throw new Error('A imagem Open Graph deve ser um PNG local em /og/.');
-	}
-	const buffer = await readFile(resolve('public', path.slice(1)));
-	const signature = '89504e470d0a1a0a';
-	if (
-		buffer.length < 24 ||
-		buffer.subarray(0, 8).toString('hex') !== signature ||
-		buffer.toString('ascii', 12, 16) !== 'IHDR'
-	) {
-		throw new Error(`Imagem Open Graph PNG inválida: ${path}`);
-	}
-	const width = buffer.readUInt32BE(16);
-	const height = buffer.readUInt32BE(20);
-	if (!width || !height) {
-		throw new Error(`Dimensões Open Graph inválidas: ${path}`);
-	}
-	return { width, height, type: 'image/png' };
-}

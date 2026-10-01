@@ -2,6 +2,11 @@
 title: Browser and Renderization
 topic: web concepts
 description: Article to practice english describing the basics about browser rendering and how browsers treat HTML, CSS and JavaScript
+seoTitle: Browser and Renderization
+language: en
+ogLocale: en_US
+ogImage: /og/blog/browser-render-v2.png
+ogImageAlt: "Capa de Blog com o título Como o navegador renderiza uma página, diagrama simplificado de HTML, CSS e JavaScript até a renderização e a tela, e o domínio vitorhugodev.com."
 date: 2025-04-11
 tags:
   - conceitos-basicos

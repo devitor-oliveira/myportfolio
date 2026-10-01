@@ -8,7 +8,7 @@ interface Props extends SEOProps {}
 ---
 
 <!doctype html>
-<html lang="pt-BR">
+<html lang={Astro.props.language ?? 'pt-BR'}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" initial-scale="1.0" content="width=device-width" />

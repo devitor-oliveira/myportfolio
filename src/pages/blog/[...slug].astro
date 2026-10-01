@@ -1,14 +1,16 @@
 ---
-import DockNav from "@/components/DockNav";
-import Footer from "@/components/Footer/Footer.astro";
-import TagList from "@/components/ui/TagList";
-import BlogLayout from "@/layouts/BlogLayout.astro";
-import { formatDate } from "@/lib/utils";
-import { Icon } from "astro-icon/components";
-import { getCollection, render } from "astro:content";
+import { getCollection, render } from 'astro:content';
+import { Icon } from 'astro-icon/components';
+import DockNav from '@/components/DockNav';
+import Footer from '@/components/Footer/Footer.astro';
+import TagList from '@/components/ui/TagList';
+import BlogLayout from '@/layouts/BlogLayout.astro';
+import { formatDate } from '@/lib/utils';
+
+export const prerender = true;
 
 export async function getStaticPaths() {
-	const posts = await getCollection("blog");
+	const posts = await getCollection('blog');
 
 	return posts.map((post) => ({
 		params: { slug: post.id },
@@ -26,6 +28,10 @@ const { Content } = await render(post);
 <BlogLayout
 	title={`${post.data.title} | Blog | Vitor Hugo`}
 	description={post.data.description}
+	seoTitle={post.data.seoTitle ?? post.data.title}
+	seoDescription={post.data.seoDescription}
+	language={post.data.language}
+	ogLocale={post.data.ogLocale}
 	ogImage={post.data.ogImage}
 	ogImageAlt={post.data.ogImageAlt}
 	type="article"

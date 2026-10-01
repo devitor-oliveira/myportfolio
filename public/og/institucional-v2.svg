@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="titulo descricao">
+	<title id="titulo">Vitor Hugo — Desenvolvimento web, integrações e automações</title>
+	<desc id="descricao">Assinatura editorial em fundo escuro, com nome em destaque e endereço vitorhugodev.com. Sem borda, gradiente ou ilustração.</desc>
+	<!-- Fonte de renderização: Segoe UI, instalada no Windows. Fallback: sans-serif. -->
+	<rect width="1200" height="630" fill="#15121a"/>
+	<path d="M88 104h64" stroke="#b2c5ff" stroke-width="6"/>
+	<g font-family="Segoe UI, sans-serif">
+		<text x="88" y="256" font-size="94" font-weight="700" letter-spacing="-2" fill="#e7e0eb">Vitor Hugo</text>
+		<g font-size="44" fill="#b2c5ff">
+			<text x="88" y="346">Desenvolvimento web,</text>
+			<text x="88" y="404">integrações e automações</text>
+		</g>
+		<text x="88" y="542" font-size="32" fill="#e7e0eb">vitorhugodev.com</text>
+	</g>
+</svg>

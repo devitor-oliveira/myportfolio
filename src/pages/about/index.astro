@@ -1,12 +1,12 @@
 ---
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components';
+import AboutCommentsForm from '@/components/AboutCommentsForm';
+import AboutCommentsSection from '@/components/AboutCommentsSection';
+import AboutExperiences from '@/components/AboutExperiences';
+import AboutLayout from '@/layouts/AboutLayout.astro';
+import { contato } from '@/lib/siteContent';
 
-import AboutLayout from "@/layouts/AboutLayout.astro";
-import AboutExperiences from "@/components/AboutExperiences";
-import AboutCommentsForm from "@/components/AboutCommentsForm";
-import AboutCommentsSection from "@/components/AboutCommentsSection";
-
-import { contato } from "@/lib/siteContent";
+export const prerender = true;
 ---
 
 <AboutLayout

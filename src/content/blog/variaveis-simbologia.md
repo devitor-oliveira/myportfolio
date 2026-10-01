@@ -2,6 +2,9 @@
 title: Variáveis e Simbologia
 topic: programação
 description: Descrevendo o conceito de variáveis para quem nunca programou
+seoTitle: Variáveis e Simbologia
+ogImage: /og/blog/variaveis-simbologia-v2.png
+ogImageAlt: "Capa de Blog com o título Variáveis e simbologia, exemplo didático da variável nome com o valor Vitor e o domínio vitorhugodev.com."
 date: 2025-04-05
 tags:
   - variaveis

@@ -2,6 +2,9 @@
 type: freelance
 title: Plataforma Imobiliária Heloysa Maria
 description: Plataforma web para divulgação e gestão de imóveis, com portal público, painel administrativo e foco em autonomia operacional e SEO.
+seoTitle: "Plataforma Imobiliária: Implementação Técnica"
+ogImage: /og/projects/imobiliaria-implementacao-v3.png
+ogImageAlt: "Capa sobre plataforma imobiliária, gestão de imóveis, autenticação e SEO, com blocos ilustrados de Portal e Painel e o domínio vitorhugodev.com."
 year: 2026-08-30
 liveURL: https://heloysamaria.com.br
 tags:

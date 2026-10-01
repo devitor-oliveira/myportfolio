@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="titulo descricao">
+	<title id="titulo">Pagamentos recorrentes — Integração com Pix Automático</title>
+	<desc id="descricao">Capa de projeto com um ciclo abstrato e três pontos sugerindo recorrência. Ilustração conceitual, sem arquitetura ou dados internos.</desc>
+	<!-- Tokens: surface, on-surface, on-surface-variant e primary. Exportar com as fontes oficiais disponíveis no Fontconfig: Space Grotesk 700, Inter 400 e Geist Mono 400. -->
+	<rect width="1200" height="630" fill="#15121a"/>
+	<text x="88" y="112" font-family="Geist Mono" font-weight="400" font-size="32" fill="#b2c5ff">Projeto</text>
+	<g font-family="Space Grotesk" font-size="72" font-weight="700" letter-spacing="-1.5" fill="#e7e0eb">
+		<text x="88" y="212">Pagamentos</text>
+		<text x="88" y="300">recorrentes</text>
+	</g>
+	<text x="88" y="356" font-family="Inter" font-weight="400" font-size="34" fill="#c3c6d6">Integração com Pix Automático</text>
+	<g fill="none" stroke="#b2c5ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+		<path d="M112 430h340c44 0 44 48 0 48H142c-34 0-46-20-30-40"/>
+		<path d="m101 441 11-13 11 13"/>
+	</g>
+	<g fill="#b2c5ff" stroke="#15121a" stroke-width="5">
+		<circle cx="174" cy="430" r="10"/>
+		<circle cx="296" cy="430" r="10"/>
+		<circle cx="418" cy="430" r="10"/>
+	</g>
+	<text x="88" y="560" font-family="Geist Mono" font-weight="400" font-size="32" fill="#e7e0eb">vitorhugodev.com</text>
+</svg>

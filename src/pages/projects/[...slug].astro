@@ -1,16 +1,16 @@
 ---
-import DockNav from "@/components/DockNav";
-import Footer from "@/components/Footer/Footer.astro";
+import { getCollection, render } from 'astro:content';
+import { Icon } from 'astro-icon/components';
+import DockNav from '@/components/DockNav';
+import Footer from '@/components/Footer/Footer.astro';
+import TagList from '@/components/ui/TagList';
+import ProjectLayout from '@/layouts/ProjectLayout.astro';
+import { formatDate } from '@/lib/utils';
 
-import TagList from "@/components/ui/TagList";
-import ProjectLayout from "@/layouts/ProjectLayout.astro";
-
-import { formatDate } from "@/lib/utils";
-import { Icon } from "astro-icon/components";
-import { getCollection, render } from "astro:content";
+export const prerender = true;
 
 export async function getStaticPaths() {
-	const projects = await getCollection("projects");
+	const projects = await getCollection('projects');
 
 	return projects.map((project) => ({
 		params: { slug: project.id },
@@ -26,6 +26,10 @@ const { Content } = await render(project);
 <ProjectLayout
 	title={`${project.data.title} | Projeto | Vitor Hugo`}
 	description={project.data.description}
+	seoTitle={project.data.seoTitle ?? project.data.title}
+	seoDescription={project.data.seoDescription}
+	language={project.data.language}
+	ogLocale={project.data.ogLocale}
 	ogImage={project.data.ogImage}
 	ogImageAlt={project.data.ogImageAlt}
 >
