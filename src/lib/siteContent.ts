@@ -103,7 +103,7 @@ const heroCardSocials = ["linkedin", "github", "discord", "email"];
 export const heroCardContent: CardProps = {
   title: "Transformo problemas e processos em soluções de software.",
   description:
-    "Desenvolvo aplicações web, integrações e automações, do entendimento do problema à entrega em produção, considerando o contexto e quem vai utilizar a solução.",
+    "Desenvolvo aplicações web, integrações e automações, do entendimento do problema à entrega em produção, considerando o contexto do negócio e usuário final.",
   techstack: [
     "Typescript",
     "React",
