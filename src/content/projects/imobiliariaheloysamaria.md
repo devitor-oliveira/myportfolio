@@ -2,8 +2,8 @@
 type: freelance
 title: Plataforma Imobiliária Heloysa Maria
 description: Site para gestão de imóveis, com portal público, painel administrativo e foco em autonomia operacional.
-metaTitle: "Plataforma Imobiliária: Implementação Técnica"
-metaDescription: "Plataforma web para gestão de imóveis, com portal público, painel administrativo, integrações e SEO."
+metaTitle: "Site para Corretora"
+metaDescription: "Aplicação web para gestão de imóveis, com portal público e painel administrativo."
 ogTitle: "Plataforma Imobiliária: Implementação Técnica"
 ogDescription: "Plataforma web para gestão de imóveis, com portal público, painel administrativo, integrações e SEO."
 ogImage: /og/projects/imobiliaria-implementacao-v4.png

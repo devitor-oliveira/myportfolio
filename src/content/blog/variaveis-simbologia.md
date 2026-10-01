@@ -1,6 +1,6 @@
 ---
-title: Variáveis e Simbologia
 topic: programação
+title: Variáveis e Simbologia
 description: Descrevendo o conceito de variáveis para quem nunca programou
 metaTitle: Variáveis e Simbologia
 ogTitle: Variáveis e Simbologia
