@@ -142,11 +142,3 @@ Entregue do design à infraestrutura, com escopo cobrindo site público, painel 
 | **Controle de Acesso** | RLS ativo em 100% das tabelas, RBAC com dois papéis e proteção contra força bruta no login. |
 | **Custo operacional** | Os serviços auxiliares foram mantidos dentro das camadas gratuitas e os custos recorrentes foram concentrados na infraestrutura principal. |
 | **SEO e Conteúdo** | SSR e metadados dinâmicos por página, imagens otimizadas |
-
-### Showcase
-
-#### Screenshots do Projeto
-
-![Homepage da Plataforma Imobiliária](/images/projects/heloysa-maria/home.png) _Legenda: Área pública do site com destaque de imóveis, busca otimizada e design responsivo._
-
-![Painel Administrativo - Dashboard](/images/projects/heloysa-maria/admin-dashboard.png) _Legenda: Painel de gestão administrativa com métricas do portfólio, controle de imóveis e indicadores._
